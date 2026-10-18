@@ -1,0 +1,10 @@
+{
+  "datasets": ["email-Enron", "tags-ask-ubuntu"],
+  "seeds": [0, 1, 2],
+  "models": ["deepsets", "gcn", "allset", "allset_cpa", "allset_size"],
+  "experiments": [
+    {"protocol": "random", "k": 3},
+    {"protocol": "order", "k": 3},
+    {"protocol": "interpolation", "k": 3, "interpolation_bounds": [2, 5]}
+  ]
+}

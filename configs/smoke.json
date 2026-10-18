@@ -1,0 +1,14 @@
+{
+  "datasets": ["synthetic"],
+  "seeds": [0],
+  "models": ["deepsets", "gcn", "allset", "allset_cpa", "allset_size", "allset_cpa_encoder", "allset_cpa_both", "allset_additive"],
+  "experiments": [{"protocol": "order", "k": 3}],
+  "hidden_dim": 16,
+  "heads": 2,
+  "layers": 1,
+  "epochs": 3,
+  "eval_every": 1,
+  "patience": 3,
+  "batch_size": 64,
+  "probe_limit": 100
+}

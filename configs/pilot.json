@@ -1,0 +1,13 @@
+{
+  "datasets": ["email-Enron", "tags-ask-ubuntu"],
+  "seeds": [0],
+  "models": ["deepsets", "gcn", "allset", "allset_cpa", "allset_size"],
+  "experiments": [{"protocol": "order", "k": 3}],
+  "hidden_dim": 32,
+  "heads": 4,
+  "layers": 1,
+  "epochs": 10,
+  "eval_every": 2,
+  "patience": 6,
+  "probe_limit": 500
+}
