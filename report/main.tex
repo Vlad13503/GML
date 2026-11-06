@@ -1,208 +1,113 @@
 \documentclass{article}
-
-
-% if you need to pass options to natbib, use, e.g.:
-%     \PassOptionsToPackage{numbers, compress}{natbib}
-% before loading neurips_2023
-
-
-% ready for submission
 \usepackage[preprint]{neurips_2023}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{amsmath,amssymb}
+\usepackage{nicefrac}
+\usepackage{microtype}
+\usepackage{xcolor}
 
-
-% to compile a preprint version, e.g., for submission to arXiv, add add the
-% [preprint] option:
-%     \usepackage[preprint]{neurips_2023}
-
-
-% to compile a camera-ready version, add the [final] option, e.g.:
-%     \usepackage[final]{neurips_2023}
-
-
-% to avoid loading the natbib package, add option nonatbib:
-%    \usepackage[nonatbib]{neurips_2023}
-
-
-\usepackage[utf8]{inputenc} % allow utf-8 input
-\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
-\usepackage{hyperref}       % hyperlinks
-\usepackage{url}            % simple URL typesetting
-\usepackage{booktabs}       % professional-quality tables
-\usepackage{amsfonts}       % blackboard math symbols
-\usepackage{nicefrac}       % compact symbols for 1/2, etc.
-\usepackage{microtype}      % microtypography
-\usepackage{xcolor}         % colors
-
-
-\title{Project Title}
-
-
-% The \author macro works with any number of authors. There are two commands
-% used to separate the names and addresses of multiple authors: \And and \AND.
-%
-% Using \And between authors leaves it to LaTeX to determine where to break the
-% lines. Using \AND forces a line break at that point. So, if LaTeX puts 3 of 4
-% authors names on the first line, and the last on the second line, try using
-% \AND instead of \And before the third author name.
-
-
-\author{%
-  Team names in alphabetic order of the surname.\\
-  \texttt{\{netid1; netid2\}@student.tudelft.nl} \\
-  % examples of more authors
-  % \And
-  % Coauthor \\
-  % Affiliation \\
-  % Address \\
-  % \texttt{email} \\
-  % \AND
-  % Coauthor \\
-  % Affiliation \\
-  % Address \\
-  % \texttt{email} \\
-  % \And
-  % Coauthor \\
-  % Affiliation \\
-  % Address \\
-  % \texttt{email} \\
-  % \And
-  % Coauthor \\
-  % Affiliation \\
-  % Address \\
-  % \texttt{email} \\
-}
-
+\title{Do Hypergraph Neural Networks Generalize Across Interaction Order?}
+\author{Group 13\\Author names and affiliations to be completed}
 
 \begin{document}
-
-
 \maketitle
 
-
 \begin{abstract}
-Provide here a summary/abstract of your project in around 250 words but do not exceed 300 words. The whole content should be in 4 pages of this format + 2 pages for the author statement and references. Please do not alter the margins, font size, or headers/footers.
-
-Try to convey the following information in your summary:
-\begin{itemize}
-    \item Introduction to the context. Provide some background to motivate and understand where the project is placed.
-    \item State the problem tackled in the project and how it relates to adding new knowledge to the above context.
-    \item Which methods did you use/propose in this project? How does it relate to the problem approached?
-    \item Which is your main finding?
-    \item What other results did you find that are worth mentioning? (if any)
-\end{itemize}
-
-Another way to write the abstract is to answer the following questions: 1) what was done?; 2) what was found? 3) what are the main conclusions?
-
-Use any of the above formats that best apply to your project.
-
+Higher-order interactions involve groups of entities whose sizes may differ between training and deployment. We investigate whether preserving cardinality in attention improves hyperedge prediction when test interactions contain more members than training interactions. This draft covers one component of the project: a controlled comparison between a vanilla AllSetTransformer-based predictor and a variant with fixed cardinality scaling in node-to-hyperedge attention. Inspired by Cardinality Preserved Attention (CPA), the modification multiplies each normalized attention aggregate by the number of hyperedge members, without introducing additional parameters. We hypothesize that this change can improve representations learned from observed interactions and reduce performance degradation on larger candidate groups. However, the aggregate is subsequently processed by a query residual and LayerNorm, which may weaken the introduced cardinality signal. We therefore distinguish whether the signal survives the pooling block from whether it improves prediction. The planned evaluation uses deduplicated Enron email and AskUbuntu tag interactions, size-matched negatives, shared splits, and validation-only model selection. Predictive performance will be reported by cardinality and interaction-order gap, alongside controlled representation diagnostics. Experiments have not yet established an outcome; results and conclusions will be added after evaluation.
 \end{abstract}
 
-
 \section{Introduction}
+Email conversations and question tags are examples of interactions involving more than two entities. A hypergraph represents each such interaction as a hyperedge containing its participants. A predictor trained on small groups may nevertheless encounter larger groups at test time. We study this interaction-order shift through hyperedge prediction: determining whether a candidate node set corresponds to an observed interaction.
 
-The introduction should serve to introduce the context of the problem. It should have started broad and narrowed down in the form of a reverse cone. Try to convey the following points in your introduction:
+AllSetTransformer learns from the hypergraph incidence structure using attention-based node-to-hyperedge and hyperedge-to-node aggregation \citep{allset}. We use an AllSetTransformer-based predictor as an established baseline, adapting its node representations to candidate scoring. Normalized attention can map different multisets with proportionally repeated features to the same aggregate. CPA addresses this limitation in graph neighborhood aggregation by incorporating cardinality \citep{cpa}.
 
-\begin{itemize}
-    \item Introduce the topic and emphasize why it is important; Include: a general motivation and context of the project; and/or a graph machine learning context of it.
-    \item Relate the topic to some current knowledge. That is, mention what has been done in this and "what needs to be done" (i.e., what is the research gap).
-    \item In the what needs to be done, you can also put a hypothesis/research question or others.
-    \item State the objective of your work (in relation to the research gap). Introduce it and give the purpose and main objective.
-    \item Mention briefly what is found.
-\end{itemize}
-
-The abstract and introduction should not take more than 1 page and a quarter. You could also add multiple sections/subsections if needed.
+Our research question is: \emph{Does fixed cardinality scaling in AllSetTransformer's node-to-hyperedge attention improve prediction of larger interactions than those represented in training?} Our contribution is the adaptation and controlled evaluation of this mechanism, including its interaction with normalization. We do not assume that increased sensitivity to cardinality guarantees extrapolation. This initial draft concerns only vanilla versus encoder CPA; additional variants will require separate motivation and evidence.
 
 \section{Methods}
+\subsection{Task and data representation}
+Let $\mathcal H=(V,\mathcal E)$ be a hypergraph, where each $e\in\mathcal E$ is an unordered set of nodes and $|e|$ is its cardinality. The proposed datasets are Enron emails and AskUbuntu tags from the higher-order network collection associated with \citet{benson}. Nodes represent email addresses or tags; hyperedges represent email participant sets or question tag sets. Identical sets are collapsed before splitting. Timestamps are not used for forecasting, and the email representation does not distinguish senders, recipients, or CC roles.
 
-Here you need to formulate in detail the problem of your current study. Try to include the following points (not necessarily all apply to all projects; and not necessarily in this order)
+The model assigns a logit $s_\theta(e;\mathcal C)$ to a candidate group, given known context hyperedges $\mathcal C$. Observed target hyperedges have label $y_e=1$; sampled unobserved candidates have label $y_e=0$. These negatives are unobserved sets, not confirmed impossible interactions. We train using binary cross-entropy on the logits.
 
-\begin{itemize}
-    \item Preliminary terminology to formulate the problem.
-    \item Describe the problem precisely using technical language and mathematical equations wherever required. That is the objective of the project and its setup.
-    \item Try to add a figure if possible
-    \item Describe the techniques used in this project; these could be existing methods/architectures; any new solutions/architectures developed in the project; experimental setup etc.
-    \item Describe the theoretical results if you obtained any.
-    \item how the problem is transformed into a graph machine learning context (if applicable)
-    \item make sure your creative idea is crystal clear.
-\end{itemize}
+For an interaction-order threshold $k$, context, training targets, and validation positives have size at most $k$, while test positives have size greater than $k$. These sets are mutually disjoint. Candidate nodes must occur in the context, isolating group-size shift from unseen-node prediction. Negatives match positive cardinalities, are shared across models, and exclude known positives. Thus, size alone cannot distinguish positive from negative candidates within a partition. The order gap is $\Delta(e)=|e|-k$.
 
-The main goal of the method section is to provide enough detail for any of your colleagues to understand how you formulated your problem and approached it from a graph machine learning perspective.
+\subsection{Vanilla AllSetTransformer-based predictor}
+Each node starts with a trainable embedding transformed by an MLP. Encoder layers alternate between pooling node representations within each context hyperedge and pooling incident hyperedge representations back to each node. Context membership is retained explicitly rather than replaced by a clique expansion.
 
-\begin{itemize}
-    \item mention everything that you did that is important for the project;
-    \item do not mention all you did and discarded (e.g., we tried this and that but it did not work)
-\end{itemize}
+For one node-to-hyperedge attention head, the implementation projects a node representation $x_v$ into a key $k_v$ and value $z_v$. A shared learned query $q$ gives
+\begin{equation}
+ t_{ev}=\operatorname{LeakyReLU}(q^\top k_v),\qquad
+ \alpha_{ev}=\frac{\exp(t_{ev})}{\sum_{u\in e}\exp(t_{eu})},\qquad
+ a_e=\sum_{v\in e}\alpha_{ev}z_v.
+\end{equation}
+Head outputs are concatenated. Writing $a_e$ and $q$ for the concatenated vectors, the pooling block computes
+\begin{equation}
+ u_e=\operatorname{LN}_1(q+a_e),\qquad
+ h_e=\operatorname{LN}_2\bigl(u_e+\operatorname{ReLU}(\operatorname{FF}(u_e))\bigr).
+ \label{eq:block}
+\end{equation}
+The query acts both in attention scoring and as a residual input. Hyperedge-to-node pooling uses an analogous attention block. ReLU and dropout are applied between message-passing stages.
+
+The encoder produces node embeddings from the fixed context. To score a candidate, a separate attention pooling block combines its members' encoded embeddings; an MLP maps the pooled vector to a logit. This readout remains identical in both compared models. The implementation is an adaptation for hyperedge prediction, not a reproduction claim for the original paper's node-classification benchmarks.
+
+\subsection{Proposed modification and hypothesis}
+Our initial CPA variant replaces the node-to-hyperedge aggregate with
+\begin{equation}
+ a_e^{\mathrm{CPA}}=|e|a_e,\qquad
+ u_e^{\mathrm{CPA}}=\operatorname{LN}_1(q+|e|a_e).
+ \label{eq:cpa}
+\end{equation}
+Scaling is applied to every head in every encoder layer, before the query residual and first normalization. It adds no parameters. Attention weights, hyperedge-to-node aggregation, candidate readout, and classifier are otherwise unchanged. This corresponds to comparing \texttt{allset} with \texttt{allset\_cpa\_encoder} in the current scaffold; \texttt{allset\_cpa} instead modifies the readout and is outside this initial comparison.
+
+\paragraph{Hypothesis.}
+Encoding context-interaction cardinality will yield node representations that support better prediction of larger groups. We expect higher held-out AUROC and AUPRC, or less degradation as $\Delta$ increases, relative to vanilla attention under matched conditions. This is an empirical hypothesis, not an implication of CPA's expressivity motivation.
+
+\paragraph{Expected limitations.}
+First, cardinality enters through magnitude. Ignoring numerical $\epsilon$, LayerNorm satisfies $\operatorname{LN}(c a)=\operatorname{LN}(a)$ for positive $c$. The query residual means $q+3a$ and $q+6a$ generally are not scalar multiples, so some signal may survive. Nevertheless, when $q=0$ scaling is essentially removed; as the scaled aggregate dominates $q$, sensitivity may weaken. The second normalization and subsequent message passing can further alter the signal.
+
+Second, the fixed encoder context contains only small interactions even during testing. Larger test candidates are pooled by the unchanged decoder, not inserted into the encoder context. This experiment tests whether cardinality-aware \emph{context encoding} improves larger-group prediction; it does not directly test the modified encoder aggregator on unseen hyperedge sizes.
+
+\subsection{Planned mechanism diagnostics}
+Hold an attention aggregate and query fixed, vary only the cardinality multiplier, and compare representations before normalization, after the first LayerNorm, and after the full pooling block. Measure L2 distances and cosine similarity against a reference multiplier across multiple aggregates. Vanilla attention and a zero-query intervention provide controls. These interventions isolate computational sensitivity rather than construct actual new interactions. Encoder-level effects on predictions require recomputing downstream node embeddings. Diagnostic support will need extending beyond the scaffold's current decoder-focused traces. Signal survival and predictive usefulness will be assessed separately.
 
 \section{Numerical Experiments and Results}
+\subsection{Planned experimental setup}
+The first comparison will use vanilla and encoder-CPA predictors with identical context, target splits, candidate sets, hidden dimensions, heads, layers, optimization settings, and paired seeds. We will first select the vanilla predictor's hyperparameter configuration using validation data, then hold that configuration fixed while training both variants from initialization. Each variant will select its own checkpoint using the same validation set and criterion. A random-split control will accompany the order-shift experiment. Cardinality thresholds will be chosen after inspecting data coverage and bin counts, without selecting for favorable test performance. Order-shift validation remains within the training size range; test candidates will not be evaluated during tuning.
 
-Here you need to cover two main things: experimental setup and results.
+We will report AUROC and AUPRC overall and by test cardinality, positive counts per bin, and paired differences across seeds. Small bins will be flagged and variation across seeds reported. Negative sampling prevalence will be recorded because it affects AUPRC. Final dataset audits, hyperparameters, sampler settings, and run identities remain to be documented. Code: \url{https://github.com/Vlad13503/GML}.
 
-The experimental setup should contain all details needed to reproduce your results: Some points to consider:
-\begin{itemize}
-\item Data set description - link and source of the data set; data division in train / validation / test
-\item the baselines and alternative comparison graph machine learning solutions
-\item hyperparameters; loss function; optimization method;
-\item Add a link to the github repository containing your code;
-\end{itemize}
-
-Results should be organized from the most important to the least one. Use subsections if needed. Some points to focus on are as follows.
-
-
-\begin{itemize}
-    \item Provide a summary of the main results.
-    \item Compare the results; analyze the findings and provide an explanation using the concepts taught in the course or literature.
-    \item Put more focus on what should be emphasized
-    \item Provide insights and analysis of the secondary results. Why were they reported here? They should add some new knowledge. Otherwise, they are not needed.    
-    \item If you have an ablation study or sensitivity analysis provide it as a separate subsection. The same applies to the challenges.
-
-   \item For the result analysis/evaluation, some questions to think about:
-    \begin{itemize}
-        \item What do you observe?
-        \item How is it related to the method?
-        \item What inference can you make?
-        \item What distinctions can you make?
-        \item Are the results statistically significant?
-        \item What might have caused that observation?
-        \item What is your opinion on those findings? Do you agree with them?
-        \item What part of the methodology could be responsible for these observations?
-        \item What would you recommend?
-    \end{itemize}
-    
-    \item State at least one limitation of your method or experiments conducted. This could be something that you figured out and would do it differently if starting the project again. Or it could be just a limitation in the data/methods considered etc. It is always beneficial that you provide a critique of your project as it shows that you know it in detail.
-    \item State what should a follow-up group could do in regard to any current limitation.
-\end{itemize}
-
+\subsection{Results pending}
+No measured results are reported in this draft. This section will present the matched baseline comparison and normalization diagnostics after the experiments have been run and verified.
 
 \section{Discussion}
+Conclusions are pending. The analysis will distinguish a cardinality signal lost during processing from a retained signal that does not improve prediction. An improvement would support this specific adaptation under the tested splits and sampling protocol; a null or negative effect would delimit its usefulness. Follow-up experiments will be motivated by these findings and documented separately, without retrospectively treating them as part of the initial comparison.
 
-This should be the mirror part of the introduction. Start narrow and end broad with further implications. Some points to focus on:
-\begin{itemize}
-    \item State your main finding: What did you achieve in your project? What do you conclude about your hypothesis? What is the answer to your research question?
-    \item Support the answer above with the results; the analysis and the explanation.
-    \item Summarize important details worth mentioning; conflicting results; unexpected findings; discrepancies with existing works/knowledge. Note that we do not care if you achieve the best results or not. We care that you develop a project that covers the learning objective of the course.
-\end{itemize}
-
+\clearpage
 \section{CRediT author statement}
+To be completed by the team with verified individual contributions, including methodology, implementation, experimentation, and writing. No individual contribution assignments are asserted in this draft.
 
-Add here in alphabetic order the individual contribution of each team member. Follow the CRediT statement here: \url{https://www.elsevier.com/authors/policies-and-guidelines/credit-author-statement}. Follow the alphabetic order with acronyms only. Example:
+\clearpage
+\begin{thebibliography}{9}
+\bibitem[Benson et~al.(2018)]{benson}
+A.~R. Benson, R.~Abebe, M.~T. Schaub, A.~Jadbabaie, and J.~Kleinberg.
+Simplicial closure and higher-order link prediction.
+\emph{Proceedings of the National Academy of Sciences}, 115(48):E11221--E11230, 2018.
+\url{https://doi.org/10.1073/pnas.1800683115}.
 
-\textbf{A.B} conceptualization; methodology; results. \textbf{B.C} methodology; results; ablation study; \textbf{C.D} data curation; wrote first draft.
+\bibitem[Chien et~al.(2022)]{allset}
+E.~Chien, C.~Pan, J.~Peng, and O.~Milenkovic.
+You are AllSet: A multiset function framework for hypergraph neural networks.
+\emph{International Conference on Learning Representations}, 2022.
+\url{https://arxiv.org/abs/2106.13264}.
 
-Note that you should show high academic integrity here too; i) claim your real contribution; ii) assign to your peers their real contribution. Doing favor and receiving/giving free credit is considered unethical. Make explicit also what part and how much each team member contributed to coding using commits/ line of codes.
-
-\section*{References}
-
-\medskip
-
-
-{
-\small
-
-Add here your references. They should start on a new page and should take at most one page.
-
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
+\bibitem[Zhang and Xie(2020)]{cpa}
+S.~Zhang and L.~Xie.
+Improving attention mechanism in graph neural networks via cardinality preservation.
+\emph{Proceedings of IJCAI}, pages 1395--1402, 2020.
+\url{https://doi.org/10.24963/ijcai.2020/194}.
+\end{thebibliography}
 \end{document}
