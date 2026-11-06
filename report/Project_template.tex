@@ -1,0 +1,208 @@
+\documentclass{article}
+
+
+% if you need to pass options to natbib, use, e.g.:
+%     \PassOptionsToPackage{numbers, compress}{natbib}
+% before loading neurips_2023
+
+
+% ready for submission
+\usepackage[preprint]{neurips_2023}
+
+
+% to compile a preprint version, e.g., for submission to arXiv, add add the
+% [preprint] option:
+%     \usepackage[preprint]{neurips_2023}
+
+
+% to compile a camera-ready version, add the [final] option, e.g.:
+%     \usepackage[final]{neurips_2023}
+
+
+% to avoid loading the natbib package, add option nonatbib:
+%    \usepackage[nonatbib]{neurips_2023}
+
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+
+
+\title{Project Title}
+
+
+% The \author macro works with any number of authors. There are two commands
+% used to separate the names and addresses of multiple authors: \And and \AND.
+%
+% Using \And between authors leaves it to LaTeX to determine where to break the
+% lines. Using \AND forces a line break at that point. So, if LaTeX puts 3 of 4
+% authors names on the first line, and the last on the second line, try using
+% \AND instead of \And before the third author name.
+
+
+\author{%
+  Team names in alphabetic order of the surname.\\
+  \texttt{\{netid1; netid2\}@student.tudelft.nl} \\
+  % examples of more authors
+  % \And
+  % Coauthor \\
+  % Affiliation \\
+  % Address \\
+  % \texttt{email} \\
+  % \AND
+  % Coauthor \\
+  % Affiliation \\
+  % Address \\
+  % \texttt{email} \\
+  % \And
+  % Coauthor \\
+  % Affiliation \\
+  % Address \\
+  % \texttt{email} \\
+  % \And
+  % Coauthor \\
+  % Affiliation \\
+  % Address \\
+  % \texttt{email} \\
+}
+
+
+\begin{document}
+
+
+\maketitle
+
+
+\begin{abstract}
+Provide here a summary/abstract of your project in around 250 words but do not exceed 300 words. The whole content should be in 4 pages of this format + 2 pages for the author statement and references. Please do not alter the margins, font size, or headers/footers.
+
+Try to convey the following information in your summary:
+\begin{itemize}
+    \item Introduction to the context. Provide some background to motivate and understand where the project is placed.
+    \item State the problem tackled in the project and how it relates to adding new knowledge to the above context.
+    \item Which methods did you use/propose in this project? How does it relate to the problem approached?
+    \item Which is your main finding?
+    \item What other results did you find that are worth mentioning? (if any)
+\end{itemize}
+
+Another way to write the abstract is to answer the following questions: 1) what was done?; 2) what was found? 3) what are the main conclusions?
+
+Use any of the above formats that best apply to your project.
+
+\end{abstract}
+
+
+\section{Introduction}
+
+The introduction should serve to introduce the context of the problem. It should have started broad and narrowed down in the form of a reverse cone. Try to convey the following points in your introduction:
+
+\begin{itemize}
+    \item Introduce the topic and emphasize why it is important; Include: a general motivation and context of the project; and/or a graph machine learning context of it.
+    \item Relate the topic to some current knowledge. That is, mention what has been done in this and "what needs to be done" (i.e., what is the research gap).
+    \item In the what needs to be done, you can also put a hypothesis/research question or others.
+    \item State the objective of your work (in relation to the research gap). Introduce it and give the purpose and main objective.
+    \item Mention briefly what is found.
+\end{itemize}
+
+The abstract and introduction should not take more than 1 page and a quarter. You could also add multiple sections/subsections if needed.
+
+\section{Methods}
+
+Here you need to formulate in detail the problem of your current study. Try to include the following points (not necessarily all apply to all projects; and not necessarily in this order)
+
+\begin{itemize}
+    \item Preliminary terminology to formulate the problem.
+    \item Describe the problem precisely using technical language and mathematical equations wherever required. That is the objective of the project and its setup.
+    \item Try to add a figure if possible
+    \item Describe the techniques used in this project; these could be existing methods/architectures; any new solutions/architectures developed in the project; experimental setup etc.
+    \item Describe the theoretical results if you obtained any.
+    \item how the problem is transformed into a graph machine learning context (if applicable)
+    \item make sure your creative idea is crystal clear.
+\end{itemize}
+
+The main goal of the method section is to provide enough detail for any of your colleagues to understand how you formulated your problem and approached it from a graph machine learning perspective.
+
+\begin{itemize}
+    \item mention everything that you did that is important for the project;
+    \item do not mention all you did and discarded (e.g., we tried this and that but it did not work)
+\end{itemize}
+
+\section{Numerical Experiments and Results}
+
+Here you need to cover two main things: experimental setup and results.
+
+The experimental setup should contain all details needed to reproduce your results: Some points to consider:
+\begin{itemize}
+\item Data set description - link and source of the data set; data division in train / validation / test
+\item the baselines and alternative comparison graph machine learning solutions
+\item hyperparameters; loss function; optimization method;
+\item Add a link to the github repository containing your code;
+\end{itemize}
+
+Results should be organized from the most important to the least one. Use subsections if needed. Some points to focus on are as follows.
+
+
+\begin{itemize}
+    \item Provide a summary of the main results.
+    \item Compare the results; analyze the findings and provide an explanation using the concepts taught in the course or literature.
+    \item Put more focus on what should be emphasized
+    \item Provide insights and analysis of the secondary results. Why were they reported here? They should add some new knowledge. Otherwise, they are not needed.    
+    \item If you have an ablation study or sensitivity analysis provide it as a separate subsection. The same applies to the challenges.
+
+   \item For the result analysis/evaluation, some questions to think about:
+    \begin{itemize}
+        \item What do you observe?
+        \item How is it related to the method?
+        \item What inference can you make?
+        \item What distinctions can you make?
+        \item Are the results statistically significant?
+        \item What might have caused that observation?
+        \item What is your opinion on those findings? Do you agree with them?
+        \item What part of the methodology could be responsible for these observations?
+        \item What would you recommend?
+    \end{itemize}
+    
+    \item State at least one limitation of your method or experiments conducted. This could be something that you figured out and would do it differently if starting the project again. Or it could be just a limitation in the data/methods considered etc. It is always beneficial that you provide a critique of your project as it shows that you know it in detail.
+    \item State what should a follow-up group could do in regard to any current limitation.
+\end{itemize}
+
+
+\section{Discussion}
+
+This should be the mirror part of the introduction. Start narrow and end broad with further implications. Some points to focus on:
+\begin{itemize}
+    \item State your main finding: What did you achieve in your project? What do you conclude about your hypothesis? What is the answer to your research question?
+    \item Support the answer above with the results; the analysis and the explanation.
+    \item Summarize important details worth mentioning; conflicting results; unexpected findings; discrepancies with existing works/knowledge. Note that we do not care if you achieve the best results or not. We care that you develop a project that covers the learning objective of the course.
+\end{itemize}
+
+\section{CRediT author statement}
+
+Add here in alphabetic order the individual contribution of each team member. Follow the CRediT statement here: \url{https://www.elsevier.com/authors/policies-and-guidelines/credit-author-statement}. Follow the alphabetic order with acronyms only. Example:
+
+\textbf{A.B} conceptualization; methodology; results. \textbf{B.C} methodology; results; ablation study; \textbf{C.D} data curation; wrote first draft.
+
+Note that you should show high academic integrity here too; i) claim your real contribution; ii) assign to your peers their real contribution. Doing favor and receiving/giving free credit is considered unethical. Make explicit also what part and how much each team member contributed to coding using commits/ line of codes.
+
+\section*{References}
+
+\medskip
+
+
+{
+\small
+
+Add here your references. They should start on a new page and should take at most one page.
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}

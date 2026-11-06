@@ -2,6 +2,10 @@
 
 Compare DeepSets, GCN, AllSetTransformer, and cardinality-aware variants on Enron and AskUbuntu.
 
+## Project report
+
+Write the team report in [`report/main.tex`](report/main.tex), starting from the supplied Overleaf template. Set `main.tex` as the main document when uploading the `report/` folder to Overleaf. Keep `Project_template.tex` and `Project_template.pdf` as the original references; both `.sty` files are required for compilation.
+
 ## Run
 
 Python 3.10+:
