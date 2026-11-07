@@ -15,6 +15,8 @@ from torch.nn import functional as F
 from .data import Candidates, Context, Protocol, pack
 from .models import Predictor
 
+MIN_BIN_POSITIVES = 20  # Per-size results below this many positives are flagged as sparse.
+
 
 def write_json(path: Path, value):
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -60,7 +62,7 @@ def metrics(labels, logits) -> dict:
 def evaluate_metrics(candidates: Candidates, logits: np.ndarray) -> dict:
     sizes = candidates.sizes
     by_size = {str(int(s)): {**metrics(candidates.labels[sizes == s], logits[sizes == s]),
-                            "small_bin": int((sizes == s).sum()) < 40}
+                            "small_bin": int(candidates.labels[sizes == s].sum()) < MIN_BIN_POSITIVES}
                for s in np.unique(sizes)}
     return {"overall": metrics(candidates.labels, logits), "by_size": by_size,
             "macro_size_auprc": float(np.mean([r["auprc"] for r in by_size.values()
@@ -123,23 +125,28 @@ def fit(model_name: str, protocol: Protocol, context: Context, config: dict, see
         rng = np.random.default_rng(seed)
         history, best_state, best_score, best_epoch, stale = [], None, -float("inf"), 0, 0
         started = time.perf_counter()
-        for epoch in range(1, config["epochs"] + 1):
-            loss = train_epoch(model, context, protocol.train, optimizer,
-                               config["batch_size"], device, rng)
-            if not np.isfinite(loss):
-                raise FloatingPointError(f"Non-finite training objective for {model_name}, lr={lr}")
-            if epoch % config["eval_every"] and epoch != config["epochs"]:
-                continue
+        # Epoch 0 records the untrained model before any parameter update.
+        for epoch in range(config["epochs"] + 1):
+            loss = None
+            if epoch:
+                loss = train_epoch(model, context, protocol.train, optimizer,
+                                   config["batch_size"], device, rng)
+                if not np.isfinite(loss):
+                    raise FloatingPointError(f"Non-finite training objective for {model_name}, lr={lr}")
+                if epoch % config["eval_every"] and epoch != config["epochs"]:
+                    continue
+            train = metrics(protocol.train.labels,
+                            predict(model, context, protocol.train, config["batch_size"], device))
             logits = predict(model, context, protocol.val, config["batch_size"], device)
             val = metrics(protocol.val.labels, logits)
-            history.append({"epoch": epoch, "loss": loss, "val": val})
+            history.append({"epoch": epoch, "loss": loss, "train": train, "val": val})
             score = val["auprc"]
             if score is not None and score > best_score + 1e-6:
                 best_score, best_epoch, stale = score, epoch, 0
                 best_state = {k: v.detach().cpu().clone() for k, v in model.state_dict().items()}
-            else:
+            elif epoch:
                 stale += config["eval_every"]
-            if epoch % config.get("log_every", 25) == 0:
+            if epoch and epoch % config.get("log_every", 25) == 0:
                 print(f"  {model_name} lr={lr} epoch={epoch} loss={loss:.4f} val_AP={score:.4f}", flush=True)
             if stale >= config["patience"]:
                 break
@@ -156,6 +163,7 @@ def fit(model_name: str, protocol: Protocol, context: Context, config: dict, see
         torch.cuda.synchronize()
     info = {"selected_learning_rate": winner_info["learning_rate"],
             "best_epoch": winner_info["best_epoch"], "validation_auprc": winner_score,
+            "never_improved": winner_info["best_epoch"] == 0,
             "training_seconds_all_trials": time.perf_counter() - total_start,
             "parameters": sum(p.numel() for p in model.parameters()), "trials": trials,
             "cuda_peak_allocated_bytes": (torch.cuda.max_memory_allocated()

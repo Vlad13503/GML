@@ -1,18 +1,22 @@
 import copy
 from collections import Counter
+import json
 from pathlib import Path
+import tempfile
 import unittest
+from unittest import mock
 import uuid
 
 import numpy as np
 import torch
 from torch.nn import functional as F
 
-from hnn_project.cli import DEFAULTS, validate
+from hnn_project.cli import DEFAULTS, run_suite, tune_suite, validate
 from hnn_project.data import (Candidates, load_dataset, make_context, make_protocol, pack,
                               sample_negatives, synthetic_dataset)
 from hnn_project.models import AttentionPool, Predictor, segment_softmax
-from hnn_project.train import metrics, seed_everything, train_epoch
+from hnn_project.report import compare, report
+from hnn_project.train import evaluate_metrics, metrics, seed_everything, train_epoch
 
 
 class ProjectTests(unittest.TestCase):
@@ -105,6 +109,28 @@ class ProjectTests(unittest.TestCase):
         self.assertTrue(all(len(e) <= 2 or len(e) >= 5 for e in p.context))
         self.assertTrue(all(2 < len(e) < 5 for e, y in zip(p.test.edges, p.test.labels) if y))
 
+    def test_matched_arms_share_evaluation_and_differ_only_in_training(self):
+        arms = {arm: make_protocol(self.dataset, {**self.config, "protocol": f"matched_{arm}"}, 0)
+                for arm in ("unseen", "targets", "all")}
+        unseen, targets, full = arms["unseen"], arms["targets"], arms["all"]
+        for p in arms.values():
+            self.assertEqual(p.val.edges, unseen.val.edges)
+            self.assertEqual(p.test.edges, unseen.test.edges)
+            self.assertEqual(p.manifest["shared_eval_sha256"], unseen.manifest["shared_eval_sha256"])
+            evaluation = set(p.val.edges) | set(p.test.edges)
+            self.assertFalse(evaluation & set(p.train.edges))
+            self.assertFalse(evaluation & set(p.context))
+            self.assertTrue(all(len(e) > 3 for e, y in zip(p.test.edges, p.test.labels) if y))
+            self.assertTrue(all(len(e) <= 3 for e, y in zip(p.val.edges, p.val.labels) if y))
+        positives = lambda part: [e for e, y in zip(part.edges, part.labels) if y]
+        self.assertTrue(all(len(e) <= 3 for e in unseen.context + positives(unseen.train)))
+        self.assertEqual(targets.context, unseen.context)
+        self.assertEqual(len(positives(targets.train)), len(positives(unseen.train)))
+        self.assertTrue(any(len(e) > 3 for e in positives(targets.train)))
+        self.assertTrue(any(len(e) > 3 for e in full.context))
+        self.assertTrue(set(unseen.context) < set(full.context))
+        self.assertTrue(set(positives(unseen.train)) < set(positives(full.train)))
+
     def test_clique_contains_only_context_pairs(self):
         p = make_protocol(self.dataset, self.config, 0)
         adjacency = make_context(p, clique=True).adjacency
@@ -179,6 +205,82 @@ class ProjectTests(unittest.TestCase):
         self.assertEqual(result["auroc"], .5)
         self.assertEqual(result["auprc"], .5)
         self.assertEqual(result["unique_logits"], 1)
+
+
+    def test_sparse_bins_follow_positive_counts(self):
+        edges = [(0, 1, 2)] * 19 + [(0, 1, 2)] * 41 + [(0, 1)] * 40
+        labels = np.r_[np.ones(19), np.zeros(41), np.ones(20), np.zeros(20)].astype(np.float32)
+        by_size = evaluate_metrics(Candidates(edges, labels), np.arange(100.))["by_size"]
+        self.assertTrue(by_size["3"]["small_bin"])
+        self.assertFalse(by_size["2"]["small_bin"])
+
+
+class SuiteTests(unittest.TestCase):
+    small = {"datasets": ["synthetic"], "seeds": [0], "experiments": [{"protocol": "order", "k": 3}],
+             "models": ["allset", "allset_cpa"], "hidden_dim": 8, "heads": 2, "layers": 1, "epochs": 2,
+             "eval_every": 1, "patience": 2, "batch_size": 64, "probe_limit": 50}
+
+    def setUp(self):
+        folder = tempfile.TemporaryDirectory()
+        self.addCleanup(folder.cleanup)
+        self.output = Path(folder.name)
+
+    def run_small(self, **changes):
+        return run_suite({**DEFAULTS, **self.small, **changes}, Path("data"), self.output, "cpu")
+
+    def test_training_records_epoch_zero_and_convergence(self):
+        root = self.run_small()
+        training = json.loads((root / "synthetic/order-k3/seed-0/allset/training.json").read_text())
+        history = training["trials"][0]["history"]
+        self.assertEqual([h["epoch"] for h in history], [0, 1, 2])
+        self.assertIsNone(history[0]["loss"])
+        self.assertIsNotNone(history[1]["loss"])
+        self.assertIn("auprc", history[0]["train"])
+        self.assertEqual(training["never_improved"], training["best_epoch"] == 0)
+        report(root)
+        for name in ("convergence.csv", "paired_cpa_summary.csv", "interpretability_summary.csv",
+                     "size_response.csv", "figures/synthetic-order-k3-convergence.png"):
+            self.assertTrue((root / name).exists(), name)
+
+    def test_report_refuses_mixed_suites(self):
+        root = self.run_small()
+        with self.assertRaisesRegex(ValueError, "not a single suite"):
+            report(self.output)
+        path = root / "synthetic/order-k3/seed-0/allset/result.json"
+        result = json.loads(path.read_text())
+        path.write_text(json.dumps({**result, "suite": "another"}))
+        with self.assertRaisesRegex(ValueError, "other suites"):
+            report(root)
+        path.write_text(json.dumps({**result, "split_sha256": "different"}))
+        with self.assertRaisesRegex(ValueError, "did not share candidates"):
+            report(root)
+
+    def test_compare_labels_only_what_differs(self):
+        easy = self.run_small(hard_negative_fraction=0.)
+        hard = self.run_small(hard_negative_fraction=1.)
+        output = compare([easy, hard], self.output / "comparison")
+        self.assertIn("hard_negative_fraction", output.read_text())
+        with self.assertRaisesRegex(ValueError, "differ"):
+            compare([easy, easy], self.output / "same")
+
+    def test_tuning_never_scores_the_test_partition(self):
+        real = make_protocol
+
+        def without_test_labels(*args):
+            protocol = real(*args)
+            protocol.test.labels = np.full_like(protocol.test.labels, np.nan)
+            return protocol
+
+        with mock.patch("hnn_project.cli.make_protocol", without_test_labels):
+            root = tune_suite({**DEFAULTS, **self.small}, {"dropout": [0., .2]}, Path("data"), self.output, "cpu")
+        best = json.loads((root / "best_settings.json").read_text())["dataset_overrides"]["synthetic"]
+        self.assertIn(best["dropout"], (0., .2))
+        validate({**DEFAULTS, **self.small, "dataset_overrides": {"synthetic": best}})
+
+    def test_overrides_only_accept_listed_datasets_and_tunable_keys(self):
+        for overrides in ({"other": {"dropout": .1}}, {"synthetic": {"epochs": 1}}):
+            with self.assertRaisesRegex(ValueError, "Overrides"):
+                validate({**DEFAULTS, **self.small, "dataset_overrides": overrides})
 
 
 if __name__ == "__main__":
