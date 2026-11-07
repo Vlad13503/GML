@@ -1,0 +1,64 @@
+{
+  "dataset": "tags-ask-ubuntu",
+  "protocol": "order",
+  "k": 4,
+  "seed": 2,
+  "context_fraction": 0.6,
+  "context_edges": 57397,
+  "context_nodes": 2861,
+  "dropped_cold_node_positives": {
+    "train": 165,
+    "val": 98,
+    "test": 107
+  },
+  "split_sha256": "244d848c937bfd72b6f91c4af9e9cd2daf81d52b6edf2fa082e24d0e777f3196",
+  "source": {
+    "name": "tags-ask-ubuntu",
+    "raw_interactions": 271233,
+    "n_nodes": 3029,
+    "unique_non_singleton_interactions": 145053,
+    "raw_cardinalities": {
+      "1": 52157,
+      "2": 74881,
+      "3": 71949,
+      "4": 44704,
+      "5": 27542
+    },
+    "unique_cardinalities": {
+      "2": 28138,
+      "3": 52282,
+      "4": 39158,
+      "5": 25475
+    },
+    "source_sha256": "817adfb7d1c70d7ef6a3bcfb4f73a2ca39d764d5c178e432c5003efd61478a48",
+    "note": "Exact sets deduplicated; singleton interactions discarded; timestamps not used."
+  },
+  "partitions": {
+    "train": {
+      "positives": 38100,
+      "negatives": 38100,
+      "positive_cardinalities": {
+        "2": 8921,
+        "3": 16671,
+        "4": 12508
+      }
+    },
+    "val": {
+      "positives": 23818,
+      "negatives": 23818,
+      "positive_cardinalities": {
+        "2": 5540,
+        "3": 10411,
+        "4": 7867
+      }
+    },
+    "test": {
+      "positives": 25368,
+      "negatives": 25368,
+      "positive_cardinalities": {
+        "5": 25368
+      }
+    }
+  },
+  "scope": "Static, closed-node hyperedge completion; not temporal forecasting or unseen-node induction."
+}

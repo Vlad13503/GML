@@ -1,0 +1,217 @@
+{
+  "suite": "01de8531e3a0",
+  "dataset": "email-Enron",
+  "protocol": "matched_targets",
+  "k": 2,
+  "interpolation_bounds": null,
+  "model": "allset_size",
+  "seed": 5,
+  "split_sha256": "6dc1e21667e151321890919a1b371a42bc796f810640a75c9f53762ce6090d08",
+  "training": {
+    "selected_learning_rate": 0.01,
+    "best_epoch": 95,
+    "validation_auprc": 0.5891985570757419,
+    "never_improved": false,
+    "training_seconds_all_trials": 4.996631300076842,
+    "parameters": 20961,
+    "cuda_peak_allocated_bytes": null
+  },
+  "evaluation_seconds": 0.04321839998010546,
+  "evaluation": {
+    "val": {
+      "overall": {
+        "n": 318,
+        "positives": 159,
+        "prevalence": 0.5,
+        "auroc": 0.5857363237213717,
+        "auprc": 0.5891985570757419,
+        "logit_std": 1.1444693803787231,
+        "unique_logits": 318,
+        "bce": 0.7633680701255798
+      },
+      "by_size": {
+        "2": {
+          "n": 318,
+          "positives": 159,
+          "prevalence": 0.5,
+          "auroc": 0.5857363237213717,
+          "auprc": 0.5891985570757419,
+          "logit_std": 1.1444693803787231,
+          "unique_logits": 318,
+          "bce": 0.7633680701255798,
+          "small_bin": false
+        }
+      },
+      "macro_size_auprc": 0.5891985570757419
+    },
+    "test": {
+      "overall": {
+        "n": 636,
+        "positives": 318,
+        "prevalence": 0.5,
+        "auroc": 0.6519916142557651,
+        "auprc": 0.6075759283722855,
+        "logit_std": 1.1409419775009155,
+        "unique_logits": 636,
+        "bce": 0.703092634677887
+      },
+      "by_size": {
+        "3": {
+          "n": 316,
+          "positives": 158,
+          "prevalence": 0.5,
+          "auroc": 0.6355952571703253,
+          "auprc": 0.6027973491153927,
+          "logit_std": 1.147264003753662,
+          "unique_logits": 316,
+          "bce": 0.7342099547386169,
+          "small_bin": false
+        },
+        "4": {
+          "n": 146,
+          "positives": 73,
+          "prevalence": 0.5,
+          "auroc": 0.6472133608556953,
+          "auprc": 0.5948450291673366,
+          "logit_std": 1.1307368278503418,
+          "unique_logits": 146,
+          "bce": 0.7104765176773071,
+          "small_bin": false
+        },
+        "5": {
+          "n": 64,
+          "positives": 32,
+          "prevalence": 0.5,
+          "auroc": 0.689453125,
+          "auprc": 0.6458970876653976,
+          "logit_std": 1.107133388519287,
+          "unique_logits": 64,
+          "bce": 0.6423671841621399,
+          "small_bin": false
+        },
+        "6": {
+          "n": 38,
+          "positives": 19,
+          "prevalence": 0.5,
+          "auroc": 0.7285318559556786,
+          "auprc": 0.7175789583936887,
+          "logit_std": 1.1325774192810059,
+          "unique_logits": 38,
+          "bce": 0.6056501269340515,
+          "small_bin": true
+        },
+        "7": {
+          "n": 14,
+          "positives": 7,
+          "prevalence": 0.5,
+          "auroc": 0.4489795918367347,
+          "auprc": 0.5738705738705738,
+          "logit_std": 1.0183955430984497,
+          "unique_logits": 14,
+          "bce": 0.8510580062866211,
+          "small_bin": true
+        },
+        "8": {
+          "n": 20,
+          "positives": 10,
+          "prevalence": 0.5,
+          "auroc": 0.87,
+          "auprc": 0.8671031746031745,
+          "logit_std": 1.1988592147827148,
+          "unique_logits": 20,
+          "bce": 0.49874958395957947,
+          "small_bin": true
+        },
+        "9": {
+          "n": 2,
+          "positives": 1,
+          "prevalence": 0.5,
+          "auroc": 0.0,
+          "auprc": 0.5,
+          "logit_std": 0.01780855655670166,
+          "unique_logits": 2,
+          "bce": 0.9400399923324585,
+          "small_bin": true
+        },
+        "10": {
+          "n": 10,
+          "positives": 5,
+          "prevalence": 0.5,
+          "auroc": 0.6000000000000001,
+          "auprc": 0.75,
+          "logit_std": 0.9024500250816345,
+          "unique_logits": 10,
+          "bce": 0.6150954365730286,
+          "small_bin": true
+        },
+        "11": {
+          "n": 4,
+          "positives": 2,
+          "prevalence": 0.5,
+          "auroc": 0.75,
+          "auprc": 0.8333333333333333,
+          "logit_std": 0.9174922108650208,
+          "unique_logits": 4,
+          "bce": 0.5622720122337341,
+          "small_bin": true
+        },
+        "12": {
+          "n": 10,
+          "positives": 5,
+          "prevalence": 0.5,
+          "auroc": 0.8400000000000001,
+          "auprc": 0.8528571428571428,
+          "logit_std": 1.0215964317321777,
+          "unique_logits": 10,
+          "bce": 0.6165711283683777,
+          "small_bin": true
+        },
+        "13": {
+          "n": 4,
+          "positives": 2,
+          "prevalence": 0.5,
+          "auroc": 0.75,
+          "auprc": 0.8333333333333333,
+          "logit_std": 0.11249220371246338,
+          "unique_logits": 4,
+          "bce": 0.8792797923088074,
+          "small_bin": true
+        },
+        "15": {
+          "n": 2,
+          "positives": 1,
+          "prevalence": 0.5,
+          "auroc": 1.0,
+          "auprc": 1.0,
+          "logit_std": 1.2009907960891724,
+          "unique_logits": 2,
+          "bce": 0.26400357484817505,
+          "small_bin": true
+        },
+        "16": {
+          "n": 4,
+          "positives": 2,
+          "prevalence": 0.5,
+          "auroc": 0.25,
+          "auprc": 0.5,
+          "logit_std": 0.11856275796890259,
+          "unique_logits": 4,
+          "bce": 0.8115155696868896,
+          "small_bin": true
+        },
+        "18": {
+          "n": 2,
+          "positives": 1,
+          "prevalence": 0.5,
+          "auroc": 1.0,
+          "auprc": 1.0,
+          "logit_std": 0.000171661376953125,
+          "unique_logits": 2,
+          "bce": 0.8369856476783752,
+          "small_bin": true
+        }
+      },
+      "macro_size_auprc": 0.7336868558813838
+    }
+  }
+}

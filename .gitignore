@@ -3,8 +3,12 @@ __pycache__/
 .venv/
 *.egg-info/
 data/
-results/
 tmp/
 .pytest_cache/
 .idea/
 Project_Proposal.pdf
+
+# Large per-run outputs (regenerable from checkpoints/configs)
+results/**/interpretability.json
+results/**/*_predictions.npz
+results/**/splits.json.gz

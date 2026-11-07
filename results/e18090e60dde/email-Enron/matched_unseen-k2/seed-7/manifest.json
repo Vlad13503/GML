@@ -1,0 +1,91 @@
+{
+  "dataset": "email-Enron",
+  "protocol": "matched_unseen",
+  "k": 2,
+  "seed": 7,
+  "context_fraction": 0.6,
+  "context_edges": 388,
+  "context_nodes": 136,
+  "split_sha256": "2b45a3dda7f4c998941c78f7e79298f6dc87308b5930929e165ee3d188e0661f",
+  "shared_eval_sha256": "ae13fd42dea5530dee2ddb51de5ff4789a6a7b6d5a88a096b12723201c9897b2",
+  "source": {
+    "name": "email-Enron",
+    "raw_interactions": 10883,
+    "n_nodes": 143,
+    "unique_non_singleton_interactions": 1457,
+    "raw_cardinalities": {
+      "1": 431,
+      "2": 7940,
+      "3": 1231,
+      "4": 567,
+      "5": 364,
+      "6": 91,
+      "7": 123,
+      "8": 50,
+      "9": 25,
+      "10": 12,
+      "11": 17,
+      "12": 24,
+      "13": 3,
+      "15": 1,
+      "16": 2,
+      "18": 2
+    },
+    "unique_cardinalities": {
+      "2": 809,
+      "3": 317,
+      "4": 138,
+      "5": 63,
+      "6": 43,
+      "7": 27,
+      "8": 22,
+      "9": 6,
+      "10": 11,
+      "11": 6,
+      "12": 7,
+      "13": 3,
+      "15": 1,
+      "16": 2,
+      "18": 2
+    },
+    "source_sha256": "af8390b49c1510dfa501a1995c4d1e6e9ea70ec135f704c3635041b6362ed36e",
+    "note": "Exact sets deduplicated; singleton interactions discarded; timestamps not used."
+  },
+  "partitions": {
+    "train": {
+      "positives": 249,
+      "negatives": 249,
+      "positive_cardinalities": {
+        "2": 249
+      }
+    },
+    "val": {
+      "positives": 154,
+      "negatives": 154,
+      "positive_cardinalities": {
+        "2": 154
+      }
+    },
+    "test": {
+      "positives": 310,
+      "negatives": 310,
+      "positive_cardinalities": {
+        "3": 143,
+        "4": 76,
+        "5": 27,
+        "6": 23,
+        "7": 14,
+        "8": 8,
+        "9": 3,
+        "10": 6,
+        "11": 3,
+        "12": 3,
+        "13": 1,
+        "15": 1,
+        "16": 1,
+        "18": 1
+      }
+    }
+  },
+  "scope": "Static, closed-node hyperedge completion; not temporal forecasting or unseen-node induction."
+}

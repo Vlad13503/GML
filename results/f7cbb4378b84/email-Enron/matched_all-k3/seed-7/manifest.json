@@ -1,0 +1,100 @@
+{
+  "dataset": "email-Enron",
+  "protocol": "matched_all",
+  "k": 3,
+  "seed": 7,
+  "context_fraction": 0.6,
+  "context_edges": 641,
+  "context_nodes": 142,
+  "split_sha256": "9713f5ad27f5ef4b2ef38f74c50013c8975a080cc6900b52af4ec47dc60ededf",
+  "shared_eval_sha256": "0e8d6b7f934fbf4231b3eae6d802dd1c3f3837b9661b8ec6d51116a4d655382a",
+  "source": {
+    "name": "email-Enron",
+    "raw_interactions": 10883,
+    "n_nodes": 143,
+    "unique_non_singleton_interactions": 1457,
+    "raw_cardinalities": {
+      "1": 431,
+      "2": 7940,
+      "3": 1231,
+      "4": 567,
+      "5": 364,
+      "6": 91,
+      "7": 123,
+      "8": 50,
+      "9": 25,
+      "10": 12,
+      "11": 17,
+      "12": 24,
+      "13": 3,
+      "15": 1,
+      "16": 2,
+      "18": 2
+    },
+    "unique_cardinalities": {
+      "2": 809,
+      "3": 317,
+      "4": 138,
+      "5": 63,
+      "6": 43,
+      "7": 27,
+      "8": 22,
+      "9": 6,
+      "10": 11,
+      "11": 6,
+      "12": 7,
+      "13": 3,
+      "15": 1,
+      "16": 2,
+      "18": 2
+    },
+    "source_sha256": "af8390b49c1510dfa501a1995c4d1e6e9ea70ec135f704c3635041b6362ed36e",
+    "note": "Exact sets deduplicated; singleton interactions discarded; timestamps not used."
+  },
+  "partitions": {
+    "train": {
+      "positives": 418,
+      "negatives": 418,
+      "positive_cardinalities": {
+        "2": 269,
+        "3": 84,
+        "4": 33,
+        "5": 11,
+        "6": 11,
+        "7": 2,
+        "8": 2,
+        "10": 1,
+        "11": 2,
+        "12": 2,
+        "18": 1
+      }
+    },
+    "val": {
+      "positives": 218,
+      "negatives": 218,
+      "positive_cardinalities": {
+        "2": 155,
+        "3": 63
+      }
+    },
+    "test": {
+      "positives": 160,
+      "negatives": 160,
+      "positive_cardinalities": {
+        "4": 65,
+        "5": 33,
+        "6": 20,
+        "7": 15,
+        "8": 9,
+        "9": 3,
+        "10": 4,
+        "11": 3,
+        "12": 3,
+        "13": 2,
+        "15": 1,
+        "16": 2
+      }
+    }
+  },
+  "scope": "Static, closed-node hyperedge completion; not temporal forecasting or unseen-node induction."
+}

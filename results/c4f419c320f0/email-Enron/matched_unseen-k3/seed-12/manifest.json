@@ -1,0 +1,90 @@
+{
+  "dataset": "email-Enron",
+  "protocol": "matched_unseen",
+  "k": 3,
+  "seed": 12,
+  "context_fraction": 0.6,
+  "context_edges": 541,
+  "context_nodes": 136,
+  "split_sha256": "937a54838ca815f112579802f661b74468cde073be5f88d678e18b330a797749",
+  "shared_eval_sha256": "10fb10efd0ed1d495812100f62cd329ea15e542ec43f65f0df9d16a8c96fc0a3",
+  "source": {
+    "name": "email-Enron",
+    "raw_interactions": 10883,
+    "n_nodes": 143,
+    "unique_non_singleton_interactions": 1457,
+    "raw_cardinalities": {
+      "1": 431,
+      "2": 7940,
+      "3": 1231,
+      "4": 567,
+      "5": 364,
+      "6": 91,
+      "7": 123,
+      "8": 50,
+      "9": 25,
+      "10": 12,
+      "11": 17,
+      "12": 24,
+      "13": 3,
+      "15": 1,
+      "16": 2,
+      "18": 2
+    },
+    "unique_cardinalities": {
+      "2": 809,
+      "3": 317,
+      "4": 138,
+      "5": 63,
+      "6": 43,
+      "7": 27,
+      "8": 22,
+      "9": 6,
+      "10": 11,
+      "11": 6,
+      "12": 7,
+      "13": 3,
+      "15": 1,
+      "16": 2,
+      "18": 2
+    },
+    "source_sha256": "af8390b49c1510dfa501a1995c4d1e6e9ea70ec135f704c3635041b6362ed36e",
+    "note": "Exact sets deduplicated; singleton interactions discarded; timestamps not used."
+  },
+  "partitions": {
+    "train": {
+      "positives": 347,
+      "negatives": 347,
+      "positive_cardinalities": {
+        "2": 247,
+        "3": 100
+      }
+    },
+    "val": {
+      "positives": 222,
+      "negatives": 222,
+      "positive_cardinalities": {
+        "2": 159,
+        "3": 63
+      }
+    },
+    "test": {
+      "positives": 159,
+      "negatives": 159,
+      "positive_cardinalities": {
+        "4": 69,
+        "5": 29,
+        "6": 18,
+        "7": 13,
+        "8": 11,
+        "9": 4,
+        "10": 5,
+        "11": 3,
+        "12": 4,
+        "13": 1,
+        "18": 2
+      }
+    }
+  },
+  "scope": "Static, closed-node hyperedge completion; not temporal forecasting or unseen-node induction."
+}

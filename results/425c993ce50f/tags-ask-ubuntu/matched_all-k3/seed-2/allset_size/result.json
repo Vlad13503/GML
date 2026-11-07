@@ -1,0 +1,96 @@
+{
+  "suite": "425c993ce50f",
+  "dataset": "tags-ask-ubuntu",
+  "protocol": "matched_all",
+  "k": 3,
+  "interpolation_bounds": null,
+  "model": "allset_size",
+  "seed": 2,
+  "split_sha256": "0eae33cf081f1d746de37e65ee61f109e8a07dbc5f08bb6b1526a51d2a90a075",
+  "training": {
+    "selected_learning_rate": 0.001,
+    "best_epoch": 150,
+    "validation_auprc": 0.8675472501748623,
+    "never_improved": false,
+    "training_seconds_all_trials": 298.74407399992924,
+    "parameters": 291265,
+    "cuda_peak_allocated_bytes": null
+  },
+  "evaluation_seconds": 0.7044600000372157,
+  "evaluation": {
+    "val": {
+      "overall": {
+        "n": 31876,
+        "positives": 15938,
+        "prevalence": 0.5,
+        "auroc": 0.885268317856301,
+        "auprc": 0.8675472501748623,
+        "logit_std": 2.422090768814087,
+        "unique_logits": 31852,
+        "bce": 0.43178704380989075
+      },
+      "by_size": {
+        "2": {
+          "n": 11090,
+          "positives": 5545,
+          "prevalence": 0.5,
+          "auroc": 0.8646457177564333,
+          "auprc": 0.8486592475537067,
+          "logit_std": 2.473633289337158,
+          "unique_logits": 11086,
+          "bce": 0.47801047563552856,
+          "small_bin": false
+        },
+        "3": {
+          "n": 20786,
+          "positives": 10393,
+          "prevalence": 0.5,
+          "auroc": 0.8966618993723702,
+          "auprc": 0.8777718545784381,
+          "logit_std": 2.3923497200012207,
+          "unique_logits": 20779,
+          "bce": 0.4071253538131714,
+          "small_bin": false
+        }
+      },
+      "macro_size_auprc": 0.8632155510660724
+    },
+    "test": {
+      "overall": {
+        "n": 64046,
+        "positives": 32023,
+        "prevalence": 0.5,
+        "auroc": 0.8996617548591592,
+        "auprc": 0.8759439269302465,
+        "logit_std": 2.3793442249298096,
+        "unique_logits": 63966,
+        "bce": 0.39389702677726746
+      },
+      "by_size": {
+        "4": {
+          "n": 38970,
+          "positives": 19485,
+          "prevalence": 0.5,
+          "auroc": 0.8986356230018169,
+          "auprc": 0.8750840016947723,
+          "logit_std": 2.3883092403411865,
+          "unique_logits": 38941,
+          "bce": 0.3968300521373749,
+          "small_bin": false
+        },
+        "5": {
+          "n": 25076,
+          "positives": 12538,
+          "prevalence": 0.5,
+          "auroc": 0.9015604112389706,
+          "auprc": 0.8778944863641385,
+          "logit_std": 2.3645527362823486,
+          "unique_logits": 25066,
+          "bce": 0.3893389403820038,
+          "small_bin": false
+        }
+      },
+      "macro_size_auprc": 0.8764892440294554
+    }
+  }
+}

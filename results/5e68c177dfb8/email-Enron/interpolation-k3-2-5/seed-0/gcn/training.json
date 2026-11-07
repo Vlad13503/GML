@@ -1,0 +1,795 @@
+{
+  "selected_learning_rate": 0.01,
+  "best_epoch": 30,
+  "validation_auprc": 0.6910096597109124,
+  "never_improved": false,
+  "training_seconds_all_trials": 4.8139481000253,
+  "parameters": 13249,
+  "trials": [
+    {
+      "learning_rate": 0.001,
+      "best_epoch": 60,
+      "validation_auprc": 0.6808658484976557,
+      "seconds": 2.857861199998297,
+      "history": [
+        {
+          "epoch": 0,
+          "loss": null,
+          "train": {
+            "n": 636,
+            "positives": 318,
+            "prevalence": 0.5,
+            "auroc": 0.6205994620465962,
+            "auprc": 0.6240405709066099,
+            "logit_std": 0.0018243419472128153,
+            "unique_logits": 632,
+            "bce": 0.740256667137146
+          },
+          "val": {
+            "n": 400,
+            "positives": 200,
+            "prevalence": 0.5,
+            "auroc": 0.660975,
+            "auprc": 0.6682177345192206,
+            "logit_std": 0.0018430213676765561,
+            "unique_logits": 399,
+            "bce": 0.7401887774467468
+          }
+        },
+        {
+          "epoch": 5,
+          "loss": 0.7043226361274719,
+          "train": {
+            "n": 636,
+            "positives": 318,
+            "prevalence": 0.5,
+            "auroc": 0.3966219690676793,
+            "auprc": 0.4399993587840271,
+            "logit_std": 0.0039994195103645325,
+            "unique_logits": 633,
+            "bce": 0.6988691687583923
+          },
+          "val": {
+            "n": 400,
+            "positives": 200,
+            "prevalence": 0.5,
+            "auroc": 0.36392500000000005,
+            "auprc": 0.4078191649620687,
+            "logit_std": 0.0042291912250220776,
+            "unique_logits": 399,
+            "bce": 0.698991060256958
+          }
+        },
+        {
+          "epoch": 10,
+          "loss": 0.6990973949432373,
+          "train": {
+            "n": 636,
+            "positives": 318,
+            "prevalence": 0.5,
+            "auroc": 0.39386298010363513,
+            "auprc": 0.44028415713915864,
+            "logit_std": 0.006108281668275595,
+            "unique_logits": 633,
+            "bce": 0.6946437954902649
+          },
+          "val": {
+            "n": 400,
+            "positives": 200,
+            "prevalence": 0.5,
+            "auroc": 0.355925,
+            "auprc": 0.4039866869405389,
+            "logit_std": 0.006506575737148523,
+            "unique_logits": 399,
+            "bce": 0.6948814392089844
+          }
+        },
+        {
+          "epoch": 15,
+          "loss": 0.6991512775421143,
+          "train": {
+            "n": 636,
+            "positives": 318,
+            "prevalence": 0.5,
+            "auroc": 0.40111150666508444,
+            "auprc": 0.44571311095142463,
+            "logit_std": 0.004611050710082054,
+            "unique_logits": 633,
+            "bce": 0.6969443559646606
+          },
+          "val": {
+            "n": 400,
+            "positives": 200,
+            "prevalence": 0.5,
+            "auroc": 0.358625,
+            "auprc": 0.4051876107662255,
+            "logit_std": 0.004892389755696058,
+            "unique_logits": 399,
+            "bce": 0.6971653699874878
+          }
+        },
+        {
+          "epoch": 20,
+          "loss": 0.6940127015113831,
+          "train": {
+            "n": 636,
+            "positives": 318,
+            "prevalence": 0.5,
+            "auroc": 0.49190103239587046,
+            "auprc": 0.5011669689851997,
+            "logit_std": 0.001394239254295826,
+            "unique_logits": 632,
+            "bce": 0.6941452026367188
+          },
+          "val": {
+            "n": 400,
+            "positives": 200,
+            "prevalence": 0.5,
+            "auroc": 0.4327749999999999,
+            "auprc": 0.43738275205989147,
+            "logit_std": 0.0014637730782851577,
+            "unique_logits": 398,
+            "bce": 0.6942388415336609
+          }
+        },
+        {
+          "epoch": 25,
+          "loss": 0.6961192488670349,
+          "train": {
+            "n": 636,
+            "positives": 318,
+            "prevalence": 0.5,
+            "auroc": 0.6495194019223923,
+            "auprc": 0.6455812632370646,
+            "logit_std": 0.002782310824841261,
+            "unique_logits": 632,
+            "bce": 0.6928256750106812
+          },
+          "val": {
+            "n": 400,
+            "positives": 200,
+            "prevalence": 0.5,
+            "auroc": 0.6731,
+            "auprc": 0.670829463167016,
+            "logit_std": 0.002870420692488551,
+            "unique_logits": 399,
+            "bce": 0.6927520036697388
+          }
+        },
+        {
+          "epoch": 30,
+          "loss": 0.694181501865387,
+          "train": {
+            "n": 636,
+            "positives": 318,
+            "prevalence": 0.5,
+            "auroc": 0.6436157588702978,
+            "auprc": 0.6380933406195014,
+            "logit_std": 0.005348382983356714,
+            "unique_logits": 632,
+            "bce": 0.6931478381156921
+          },
+          "val": {
+            "n": 400,
+            "positives": 200,
+            "prevalence": 0.5,
+            "auroc": 0.67125,
+            "auprc": 0.66424559245583,
+            "logit_std": 0.005581711418926716,
+            "unique_logits": 399,
+            "bce": 0.6929824352264404
+          }
+        },
+        {
+          "epoch": 35,
+          "loss": 0.694154679775238,
+          "train": {
+            "n": 636,
+            "positives": 318,
+            "prevalence": 0.5,
+            "auroc": 0.646859301451683,
+            "auprc": 0.6432955532754092,
+            "logit_std": 0.007500647101551294,
+            "unique_logits": 633,
+            "bce": 0.6926846504211426
+          },
+          "val": {
+            "n": 400,
+            "positives": 200,
+            "prevalence": 0.5,
+            "auroc": 0.6689,
+            "auprc": 0.66442842726493,
+            "logit_std": 0.007811110932379961,
+            "unique_logits": 399,
+            "bce": 0.6924890279769897
+          }
+        },
+        {
+          "epoch": 40,
+          "loss": 0.6940252780914307,
+          "train": {
+            "n": 636,
+            "positives": 318,
+            "prevalence": 0.5,
+            "auroc": 0.6515367271864245,
+            "auprc": 0.6493100031786693,
+            "logit_std": 0.009705038741230965,
+            "unique_logits": 633,
+            "bce": 0.691946268081665
+          },
+          "val": {
+            "n": 400,
+            "positives": 200,
+            "prevalence": 0.5,
+            "auroc": 0.6686,
+            "auprc": 0.6685691536778553,
+            "logit_std": 0.010045294649899006,
+            "unique_logits": 399,
+            "bce": 0.6917504072189331
+          }
+        },
+        {
+          "epoch": 45,
+          "loss": 0.6902202367782593,
+          "train": {
+            "n": 636,
+            "positives": 318,
+            "prevalence": 0.5,
+            "auroc": 0.6561943752224992,
+            "auprc": 0.6550897557285136,
+            "logit_std": 0.012906056828796864,
+            "unique_logits": 633,
+            "bce": 0.6914429664611816
+          },
+          "val": {
+            "n": 400,
+            "positives": 200,
+            "prevalence": 0.5,
+            "auroc": 0.6666000000000001,
+            "auprc": 0.6718485284153435,
+            "logit_std": 0.013280256651341915,
+            "unique_logits": 399,
+            "bce": 0.691264808177948
+          }
+        },
+        {
+          "epoch": 50,
+          "loss": 0.6946113705635071,
+          "train": {
+            "n": 636,
+            "positives": 318,
+            "prevalence": 0.5,
+            "auroc": 0.6609311340532417,
+            "auprc": 0.6637570869193097,
+            "logit_std": 0.018530918285250664,
+            "unique_logits": 633,
+            "bce": 0.6906404495239258
+          },
+          "val": {
+            "n": 400,
+            "positives": 200,
+            "prevalence": 0.5,
+            "auroc": 0.6662750000000001,
+            "auprc": 0.6759943526524356,
+            "logit_std": 0.018973391503095627,
+            "unique_logits": 399,
+            "bce": 0.6904931664466858
+          }
+        },
+        {
+          "epoch": 55,
+          "loss": 0.6905461549758911,
+          "train": {
+            "n": 636,
+            "positives": 318,
+            "prevalence": 0.5,
+            "auroc": 0.6654800047466476,
+            "auprc": 0.6721055367931421,
+            "logit_std": 0.02783108875155449,
+            "unique_logits": 633,
+            "bce": 0.6893697381019592
+          },
+          "val": {
+            "n": 400,
+            "positives": 200,
+            "prevalence": 0.5,
+            "auroc": 0.663575,
+            "auprc": 0.6788265424227542,
+            "logit_std": 0.028352895751595497,
+            "unique_logits": 399,
+            "bce": 0.6893449425697327
+          }
+        },
+        {
+          "epoch": 60,
+          "loss": 0.6882344484329224,
+          "train": {
+            "n": 636,
+            "positives": 318,
+            "prevalence": 0.5,
+            "auroc": 0.6691685455480401,
+            "auprc": 0.6784554188135187,
+            "logit_std": 0.04322656989097595,
+            "unique_logits": 633,
+            "bce": 0.687393844127655
+          },
+          "val": {
+            "n": 400,
+            "positives": 200,
+            "prevalence": 0.5,
+            "auroc": 0.6594500000000001,
+            "auprc": 0.6808658484976557,
+            "logit_std": 0.04380438104271889,
+            "unique_logits": 399,
+            "bce": 0.6877155900001526
+          }
+        },
+        {
+          "epoch": 65,
+          "loss": 0.6837844848632812,
+          "train": {
+            "n": 636,
+            "positives": 318,
+            "prevalence": 0.5,
+            "auroc": 0.672629642814762,
+            "auprc": 0.6850180073624093,
+            "logit_std": 0.06890866160392761,
+            "unique_logits": 633,
+            "bce": 0.6839396357536316
+          },
+          "val": {
+            "n": 400,
+            "positives": 200,
+            "prevalence": 0.5,
+            "auroc": 0.6539999999999999,
+            "auprc": 0.6796624594653251,
+            "logit_std": 0.06959113478660583,
+            "unique_logits": 399,
+            "bce": 0.6850735545158386
+          }
+        },
+        {
+          "epoch": 70,
+          "loss": 0.6806691288948059,
+          "train": {
+            "n": 636,
+            "positives": 318,
+            "prevalence": 0.5,
+            "auroc": 0.6753886317788063,
+            "auprc": 0.6928116600074257,
+            "logit_std": 0.11213389039039612,
+            "unique_logits": 633,
+            "bce": 0.6783708333969116
+          },
+          "val": {
+            "n": 400,
+            "positives": 200,
+            "prevalence": 0.5,
+            "auroc": 0.648675,
+            "auprc": 0.6791081472732883,
+            "logit_std": 0.11297771334648132,
+            "unique_logits": 399,
+            "bce": 0.681143045425415
+          }
+        },
+        {
+          "epoch": 75,
+          "loss": 0.6760247945785522,
+          "train": {
+            "n": 636,
+            "positives": 318,
+            "prevalence": 0.5,
+            "auroc": 0.6763775167121554,
+            "auprc": 0.6976466367385874,
+            "logit_std": 0.18537943065166473,
+            "unique_logits": 633,
+            "bce": 0.6702951192855835
+          },
+          "val": {
+            "n": 400,
+            "positives": 200,
+            "prevalence": 0.5,
+            "auroc": 0.6452,
+            "auprc": 0.6784933022218422,
+            "logit_std": 0.1843489408493042,
+            "unique_logits": 399,
+            "bce": 0.6756055355072021
+          }
+        },
+        {
+          "epoch": 80,
+          "loss": 0.6657283306121826,
+          "train": {
+            "n": 636,
+            "positives": 318,
+            "prevalence": 0.5,
+            "auroc": 0.6784640639215221,
+            "auprc": 0.703123807932951,
+            "logit_std": 0.2770364284515381,
+            "unique_logits": 633,
+            "bce": 0.659678041934967
+          },
+          "val": {
+            "n": 400,
+            "positives": 200,
+            "prevalence": 0.5,
+            "auroc": 0.6427249999999999,
+            "auprc": 0.6760351008900218,
+            "logit_std": 0.272309809923172,
+            "unique_logits": 399,
+            "bce": 0.6682194471359253
+          }
+        },
+        {
+          "epoch": 85,
+          "loss": 0.6570566296577454,
+          "train": {
+            "n": 636,
+            "positives": 318,
+            "prevalence": 0.5,
+            "auroc": 0.6839029310549424,
+            "auprc": 0.7095557226851712,
+            "logit_std": 0.40391042828559875,
+            "unique_logits": 633,
+            "bce": 0.6456281542778015
+          },
+          "val": {
+            "n": 400,
+            "positives": 200,
+            "prevalence": 0.5,
+            "auroc": 0.644075,
+            "auprc": 0.6777758547660563,
+            "logit_std": 0.39700281620025635,
+            "unique_logits": 399,
+            "bce": 0.6584886908531189
+          }
+        },
+        {
+          "epoch": 90,
+          "loss": 0.6350547671318054,
+          "train": {
+            "n": 636,
+            "positives": 318,
+            "prevalence": 0.5,
+            "auroc": 0.691359123452395,
+            "auprc": 0.7165151092021034,
+            "logit_std": 0.5448151230812073,
+            "unique_logits": 633,
+            "bce": 0.6289010643959045
+          },
+          "val": {
+            "n": 400,
+            "positives": 200,
+            "prevalence": 0.5,
+            "auroc": 0.6497750000000001,
+            "auprc": 0.6786888687818209,
+            "logit_std": 0.5340505242347717,
+            "unique_logits": 399,
+            "bce": 0.6459922790527344
+          }
+        }
+      ]
+    },
+    {
+      "learning_rate": 0.01,
+      "best_epoch": 30,
+      "validation_auprc": 0.6910096597109124,
+      "seconds": 1.9365404999698512,
+      "history": [
+        {
+          "epoch": 0,
+          "loss": null,
+          "train": {
+            "n": 636,
+            "positives": 318,
+            "prevalence": 0.5,
+            "auroc": 0.6205994620465962,
+            "auprc": 0.6240405709066099,
+            "logit_std": 0.0018243419472128153,
+            "unique_logits": 632,
+            "bce": 0.740256667137146
+          },
+          "val": {
+            "n": 400,
+            "positives": 200,
+            "prevalence": 0.5,
+            "auroc": 0.660975,
+            "auprc": 0.6682177345192206,
+            "logit_std": 0.0018430213676765561,
+            "unique_logits": 399,
+            "bce": 0.7401887774467468
+          }
+        },
+        {
+          "epoch": 5,
+          "loss": 0.6923549771308899,
+          "train": {
+            "n": 636,
+            "positives": 318,
+            "prevalence": 0.5,
+            "auroc": 0.6203374075392587,
+            "auprc": 0.6155600079261734,
+            "logit_std": 0.004475417546927929,
+            "unique_logits": 633,
+            "bce": 0.6941738724708557
+          },
+          "val": {
+            "n": 400,
+            "positives": 200,
+            "prevalence": 0.5,
+            "auroc": 0.6608999999999999,
+            "auprc": 0.6396829814953897,
+            "logit_std": 0.004739630967378616,
+            "unique_logits": 399,
+            "bce": 0.6939842700958252
+          }
+        },
+        {
+          "epoch": 10,
+          "loss": 0.6945093274116516,
+          "train": {
+            "n": 636,
+            "positives": 318,
+            "prevalence": 0.5,
+            "auroc": 0.6389185554368894,
+            "auprc": 0.6337017872977891,
+            "logit_std": 0.0075463177636265755,
+            "unique_logits": 633,
+            "bce": 0.6929309964179993
+          },
+          "val": {
+            "n": 400,
+            "positives": 200,
+            "prevalence": 0.5,
+            "auroc": 0.6662,
+            "auprc": 0.6539627280611693,
+            "logit_std": 0.007872055284678936,
+            "unique_logits": 399,
+            "bce": 0.6927016377449036
+          }
+        },
+        {
+          "epoch": 15,
+          "loss": 0.6909960508346558,
+          "train": {
+            "n": 636,
+            "positives": 318,
+            "prevalence": 0.5,
+            "auroc": 0.6654404493493138,
+            "auprc": 0.6662818607133276,
+            "logit_std": 0.02413092739880085,
+            "unique_logits": 633,
+            "bce": 0.691085159778595
+          },
+          "val": {
+            "n": 400,
+            "positives": 200,
+            "prevalence": 0.5,
+            "auroc": 0.6686000000000001,
+            "auprc": 0.6759957101154925,
+            "logit_std": 0.024216406047344208,
+            "unique_logits": 399,
+            "bce": 0.6910287737846375
+          }
+        },
+        {
+          "epoch": 20,
+          "loss": 0.684463381767273,
+          "train": {
+            "n": 636,
+            "positives": 318,
+            "prevalence": 0.5,
+            "auroc": 0.6786915074561924,
+            "auprc": 0.6981108769501682,
+            "logit_std": 0.08712853491306305,
+            "unique_logits": 633,
+            "bce": 0.6814455389976501
+          },
+          "val": {
+            "n": 400,
+            "positives": 200,
+            "prevalence": 0.5,
+            "auroc": 0.645175,
+            "auprc": 0.6757042455904199,
+            "logit_std": 0.08677530288696289,
+            "unique_logits": 399,
+            "bce": 0.6843023896217346
+          }
+        },
+        {
+          "epoch": 25,
+          "loss": 0.6635394096374512,
+          "train": {
+            "n": 636,
+            "positives": 318,
+            "prevalence": 0.5,
+            "auroc": 0.6802045014042166,
+            "auprc": 0.7115107738047528,
+            "logit_std": 0.34362930059432983,
+            "unique_logits": 633,
+            "bce": 0.6525478959083557
+          },
+          "val": {
+            "n": 400,
+            "positives": 200,
+            "prevalence": 0.5,
+            "auroc": 0.6370750000000001,
+            "auprc": 0.6689020900804635,
+            "logit_std": 0.33637726306915283,
+            "unique_logits": 399,
+            "bce": 0.6656842231750488
+          }
+        },
+        {
+          "epoch": 30,
+          "loss": 0.6226861476898193,
+          "train": {
+            "n": 636,
+            "positives": 318,
+            "prevalence": 0.5,
+            "auroc": 0.7350282821090938,
+            "auprc": 0.7370656824111612,
+            "logit_std": 1.03529953956604,
+            "unique_logits": 633,
+            "bce": 0.606273353099823
+          },
+          "val": {
+            "n": 400,
+            "positives": 200,
+            "prevalence": 0.5,
+            "auroc": 0.6931999999999999,
+            "auprc": 0.6910096597109124,
+            "logit_std": 1.0306823253631592,
+            "unique_logits": 399,
+            "bce": 0.6445803046226501
+          }
+        },
+        {
+          "epoch": 35,
+          "loss": 0.6037179827690125,
+          "train": {
+            "n": 636,
+            "positives": 318,
+            "prevalence": 0.5,
+            "auroc": 0.7633697242988806,
+            "auprc": 0.7477968864578455,
+            "logit_std": 0.8664993643760681,
+            "unique_logits": 633,
+            "bce": 0.5869444012641907
+          },
+          "val": {
+            "n": 400,
+            "positives": 200,
+            "prevalence": 0.5,
+            "auroc": 0.7072,
+            "auprc": 0.686049664373424,
+            "logit_std": 0.8518691658973694,
+            "unique_logits": 399,
+            "bce": 0.6321629881858826
+          }
+        },
+        {
+          "epoch": 40,
+          "loss": 0.5915714502334595,
+          "train": {
+            "n": 636,
+            "positives": 318,
+            "prevalence": 0.5,
+            "auroc": 0.7586626320161386,
+            "auprc": 0.7505778276745583,
+            "logit_std": 0.9995601773262024,
+            "unique_logits": 633,
+            "bce": 0.5850080847740173
+          },
+          "val": {
+            "n": 400,
+            "positives": 200,
+            "prevalence": 0.5,
+            "auroc": 0.6931999999999999,
+            "auprc": 0.677118083242259,
+            "logit_std": 0.977253794670105,
+            "unique_logits": 399,
+            "bce": 0.6544334292411804
+          }
+        },
+        {
+          "epoch": 45,
+          "loss": 0.5774287581443787,
+          "train": {
+            "n": 636,
+            "positives": 318,
+            "prevalence": 0.5,
+            "auroc": 0.7580396345081286,
+            "auprc": 0.7500469489317507,
+            "logit_std": 1.0160547494888306,
+            "unique_logits": 633,
+            "bce": 0.576185405254364
+          },
+          "val": {
+            "n": 400,
+            "positives": 200,
+            "prevalence": 0.5,
+            "auroc": 0.6850499999999999,
+            "auprc": 0.6665720136075615,
+            "logit_std": 0.9891645312309265,
+            "unique_logits": 399,
+            "bce": 0.665159285068512
+          }
+        },
+        {
+          "epoch": 50,
+          "loss": 0.5846410989761353,
+          "train": {
+            "n": 636,
+            "positives": 318,
+            "prevalence": 0.5,
+            "auroc": 0.7616836754875204,
+            "auprc": 0.7523305875346851,
+            "logit_std": 1.0294644832611084,
+            "unique_logits": 632,
+            "bce": 0.5715488195419312
+          },
+          "val": {
+            "n": 400,
+            "positives": 200,
+            "prevalence": 0.5,
+            "auroc": 0.6711375,
+            "auprc": 0.6498390414473647,
+            "logit_std": 0.9975797533988953,
+            "unique_logits": 398,
+            "bce": 0.6690003871917725
+          }
+        },
+        {
+          "epoch": 55,
+          "loss": 0.5724067091941833,
+          "train": {
+            "n": 636,
+            "positives": 318,
+            "prevalence": 0.5,
+            "auroc": 0.7661682686602586,
+            "auprc": 0.7624593204499602,
+            "logit_std": 1.1309797763824463,
+            "unique_logits": 633,
+            "bce": 0.5662029981613159
+          },
+          "val": {
+            "n": 400,
+            "positives": 200,
+            "prevalence": 0.5,
+            "auroc": 0.6686500000000001,
+            "auprc": 0.649162316702949,
+            "logit_std": 1.122686743736267,
+            "unique_logits": 399,
+            "bce": 0.683198094367981
+          }
+        },
+        {
+          "epoch": 60,
+          "loss": 0.5674904584884644,
+          "train": {
+            "n": 636,
+            "positives": 318,
+            "prevalence": 0.5,
+            "auroc": 0.7684921482536293,
+            "auprc": 0.7681376209087449,
+            "logit_std": 1.084539532661438,
+            "unique_logits": 633,
+            "bce": 0.561491072177887
+          },
+          "val": {
+            "n": 400,
+            "positives": 200,
+            "prevalence": 0.5,
+            "auroc": 0.6658,
+            "auprc": 0.6482409082171348,
+            "logit_std": 1.0822453498840332,
+            "unique_logits": 399,
+            "bce": 0.6845129132270813
+          }
+        }
+      ]
+    }
+  ],
+  "cuda_peak_allocated_bytes": null
+}
