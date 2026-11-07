@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import argparse
+import csv
 import gzip
 import hashlib
+import itertools
 import json
 from pathlib import Path
 import platform
@@ -12,11 +14,11 @@ import numpy as np
 import sklearn
 import torch
 
-from .data import (DATASETS, download, load_dataset, make_context, make_protocol,
+from .data import (DATASETS, MATCHED_ARMS, download, load_dataset, make_context, make_protocol,
                    synthetic_dataset)
 from .interpret import analyze
 from .models import CORE_MODELS, MODELS
-from .report import report
+from .report import compare, report
 from .train import evaluate_metrics, fit, predict, write_json
 
 DEFAULTS = {
@@ -27,8 +29,9 @@ DEFAULTS = {
     "learning_rates": [.001], "weight_decay": .0001, "epochs": 150,
     "patience": 30, "eval_every": 5, "batch_size": 2048, "threads": 4,
     "negative_ratio": 1, "hard_negative_fraction": .5, "context_fraction": .6,
-    "min_partition_positives": 10, "probe_limit": 2000,
+    "min_partition_positives": 10, "probe_limit": 2000, "dataset_overrides": {},
 }
+TUNABLE = ("hidden_dim", "layers", "dropout", "weight_decay")
 
 
 def validate(config):
@@ -57,6 +60,10 @@ def validate(config):
         raise ValueError("Datasets and models must be unique")
     if any(lr <= 0 for lr in config["learning_rates"]):
         raise ValueError("Learning rates must be positive")
+    for name, override in config["dataset_overrides"].items():
+        if name not in config["datasets"] or set(override) - set(TUNABLE):
+            raise ValueError(f"Overrides must name a listed dataset and only set {TUNABLE}")
+        validate({**config, **override, "dataset_overrides": {}})
     seen_experiments = set()
     for experiment in config["experiments"]:
         if set(experiment) - {"protocol", "k", "interpolation_bounds"}:
@@ -65,7 +72,7 @@ def validate(config):
         if identity in seen_experiments:
             raise ValueError("Each (protocol, k) must be unique; run alternative interpolation bounds in a separate suite")
         seen_experiments.add(identity)
-        if experiment["protocol"] not in ("random", "order", "interpolation"):
+        if experiment["protocol"] not in ("random", "order", "interpolation", *MATCHED_ARMS):
             raise ValueError("Unknown experiment protocol")
         if experiment.get("k", 3) < 2:
             raise ValueError("k must be at least 2")
@@ -103,7 +110,7 @@ def run_suite(config, data_root: Path, output: Path, device: str):
         dataset = datasets[name]
         write_json(root / name / "audit.json", dataset.audit)
         for experiment in config["experiments"]:
-            active = {**config, **experiment}
+            active = {**config, **config["dataset_overrides"].get(name, {}), **experiment}
             tag = f"{active['protocol']}-k{active.get('k', 3)}"
             if active["protocol"] == "interpolation":
                 tag += "-" + "-".join(map(str, active["interpolation_bounds"]))
@@ -141,12 +148,66 @@ def run_suite(config, data_root: Path, output: Path, device: str):
                     analyze(model, context, protocol, active, seed, model_dir, device)
                     training = {k: v for k, v in training.items() if k != "trials"}
                     write_json(model_dir / "result.json", {
-                        "dataset": name, "protocol": active["protocol"], "k": active.get("k", 3),
+                        "suite": root.name, "dataset": name, "protocol": active["protocol"], "k": active.get("k", 3),
                         "interpolation_bounds": active.get("interpolation_bounds"),
                         "model": model_name, "seed": seed, "split_sha256": protocol.manifest["split_sha256"],
                         "training": training, "evaluation_seconds": elapsed, "evaluation": evaluation})
                     print(f"  complete: test_AP={evaluation['test']['overall']['auprc']:.4f}", flush=True)
     print(f"Report: {report(root).resolve()}", flush=True)
+    return root
+
+
+def tune_suite(config, grid, data_root: Path, output: Path, device: str):
+    """Choose one shared setting per dataset by mean validation AP; test data is never scored."""
+    validate(config)
+    if not grid or set(grid) - set(TUNABLE):
+        raise ValueError(f"Grid must set a subset of {TUNABLE}")
+    torch.set_num_threads(config["threads"])
+    if device == "auto":
+        device = "cuda" if torch.cuda.is_available() else "cpu"
+    settings = [dict(zip(grid, values)) for values in itertools.product(*grid.values())]
+    for setting in settings:
+        validate({**config, **setting})
+    signature = hashlib.sha256(json.dumps({"config": config, "grid": grid}, sort_keys=True).encode()).hexdigest()[:12]
+    root = output / f"tuning-{signature}"
+    write_json(root / "tuning_config.json", {**config, "grid": grid})
+    rows, best = [], {}
+    for name in config["datasets"]:
+        dataset = synthetic_dataset() if name == "synthetic" else load_dataset(name, data_root)
+        scores = {}
+        for index, setting in enumerate(settings):
+            values = []
+            for experiment in config["experiments"]:
+                active = {**config, **setting, **experiment}
+                tag = f"{active['protocol']}-k{active.get('k', 3)}"
+                for seed in config["seeds"]:
+                    protocol = make_protocol(dataset, active, seed)
+                    context = make_context(protocol, device, clique="gcn" in config["models"])
+                    for model_name in config["models"]:
+                        run_dir = root / name / tag / f"setting-{index}" / f"seed-{seed}" / model_name
+                        if (run_dir / "training.json").exists():
+                            training = json.loads((run_dir / "training.json").read_text(encoding="utf-8"))
+                        else:
+                            print(f"Tune {name}/{tag}/{setting}/seed-{seed}/{model_name}", flush=True)
+                            _, training = fit(model_name, protocol, context, active, seed, run_dir, device)
+                        values.append(training["validation_auprc"])
+                        rows.append({"dataset": name, "protocol": active["protocol"], "k": active.get("k", 3),
+                                     "setting": index, **setting, "model": model_name, "seed": seed,
+                                     "validation_auprc": training["validation_auprc"],
+                                     "best_epoch": training["best_epoch"],
+                                     "learning_rate": training["selected_learning_rate"],
+                                     "parameters": training["parameters"],
+                                     "seconds": training["training_seconds_all_trials"]})
+            scores[index] = float(np.mean(values))
+        chosen = max(scores, key=lambda i: (scores[i], -i))
+        best[name] = settings[chosen]
+        print(f"{name}: {settings[chosen]} mean validation AP={scores[chosen]:.4f}", flush=True)
+    with (root / "tuning.csv").open("w", newline="", encoding="utf-8") as stream:
+        writer = csv.DictWriter(stream, fieldnames=list(rows[0]))
+        writer.writeheader()
+        writer.writerows(rows)
+    write_json(root / "best_settings.json", {"dataset_overrides": best})
+    print(f"Best settings: {(root / 'best_settings.json').resolve()}", flush=True)
     return root
 
 
@@ -162,8 +223,17 @@ def main():
     run.add_argument("--data-dir", type=Path, default=Path("data"))
     run.add_argument("--output", type=Path, default=Path("results"))
     run.add_argument("--device", default="cpu", choices=("cpu", "cuda", "auto"))
+    run.add_argument("--overrides", type=Path, help="best_settings.json written by the tune command")
+    tune = sub.add_parser("tune")
+    tune.add_argument("--config", type=Path, default=Path("configs/tune.json"))
+    tune.add_argument("--data-dir", type=Path, default=Path("data"))
+    tune.add_argument("--output", type=Path, default=Path("results"))
+    tune.add_argument("--device", default="cpu", choices=("cpu", "cuda", "auto"))
     command = sub.add_parser("report")
     command.add_argument("path", type=Path)
+    command = sub.add_parser("compare")
+    command.add_argument("suites", type=Path, nargs="+")
+    command.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     if args.command == "download":
         for name in args.datasets:
@@ -178,6 +248,17 @@ def main():
         unknown = set(supplied) - set(DEFAULTS)
         if unknown:
             raise ValueError(f"Unknown config keys: {sorted(unknown)}")
+        if args.overrides:
+            supplied.update(json.loads(args.overrides.read_text(encoding="utf-8")))
         run_suite({**DEFAULTS, **supplied}, args.data_dir, args.output, args.device)
+    elif args.command == "tune":
+        supplied = json.loads(args.config.read_text(encoding="utf-8"))
+        grid = supplied.pop("grid", None)
+        unknown = set(supplied) - set(DEFAULTS)
+        if unknown:
+            raise ValueError(f"Unknown config keys: {sorted(unknown)}")
+        tune_suite({**DEFAULTS, **supplied}, grid, args.data_dir, args.output, args.device)
+    elif args.command == "compare":
+        print(compare(args.suites, args.output).resolve())
     else:
         print(report(args.path).resolve())

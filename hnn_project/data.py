@@ -15,6 +15,7 @@ import torch
 DATASETS = ("email-Enron", "tags-ask-ubuntu")
 DOWNLOAD_IDS = {"email-Enron": "1tTVZkdpgRW47WWmsrdUCukHz0x2M6N77",
                 "tags-ask-ubuntu": "1tb1ZJlXEJnlRkXpTuBZlOqqsFknWCkUV"}
+MATCHED_ARMS = ("matched_unseen", "matched_targets", "matched_all")
 Edge = tuple[int, ...]
 
 
@@ -162,7 +163,70 @@ def sample_negatives(positives: list[Edge], universe: np.ndarray, forbidden: set
                       np.r_[np.ones(len(positives)), np.zeros(len(negatives))].astype(np.float32))
 
 
+def _edges_hash(*parts: list[Edge]) -> str:
+    return hashlib.sha256(json.dumps(parts, separators=(",", ":")).encode()).hexdigest()
+
+
+def _matched_protocol(dataset: Dataset, config: dict, seed: int) -> Protocol:
+    """Arms share validation and test candidates within a seed and differ only in training."""
+    mode, k = config["protocol"], config.get("k", 3)
+    fraction, ratio = config.get("context_fraction", .6), config.get("negative_ratio", 1)
+    hard, minimum = config.get("hard_negative_fraction", .5), config.get("min_partition_positives", 10)
+    rng = np.random.default_rng(seed)
+    pool, val = _partition([e for e in dataset.edges if len(e) <= k], rng, .80)
+    context, train = _partition(pool, rng, fraction)
+    extra, test = _partition([e for e in dataset.edges if len(e) > k], rng, .50)
+    known = set(v for e in context for v in e)
+    universe = np.array(sorted(known))
+    covered = lambda edges, nodes: [e for e in edges if set(e) <= nodes]
+    train_low, val, test = covered(train, known), covered(val, known), covered(test, known)
+    # Separate streams keep evaluation candidates identical whatever each arm samples for training.
+    eval_rng, train_rng = np.random.default_rng([seed, 1]), np.random.default_rng([seed, 2])
+    forbidden = set(dataset.edges)
+    shared = []
+    for positives in (val, test):
+        if len(positives) < minimum:
+            raise ValueError(f"Only {len(positives)} evaluation positives after node-coverage filtering")
+        part = sample_negatives(positives, universe, forbidden, eval_rng, ratio, hard)
+        forbidden.update(e for e, y in zip(part.edges, part.labels) if y == 0)
+        shared.append(part)
+    if mode == "matched_unseen":
+        targets, train_universe = train_low, universe
+    elif mode == "matched_targets":
+        large = covered(extra, known)
+        n_large = min(len(train_low) // 2, len(large))
+        low_ids = train_rng.permutation(len(train_low))[:len(train_low) - n_large]
+        large_ids = train_rng.permutation(len(large))[:n_large]
+        targets = [train_low[i] for i in low_ids] + [large[i] for i in large_ids]
+        train_universe = universe
+    elif mode == "matched_all":
+        context_extra, train_extra = _partition(extra, train_rng, fraction)
+        context = context + context_extra
+        known = known | set(v for e in context_extra for v in e)
+        train_universe = np.array(sorted(known))
+        targets = train_low + covered(train_extra, known)
+    else:
+        raise ValueError(f"Unknown protocol {mode}")
+    if len(targets) < minimum:
+        raise ValueError(f"Only {len(targets)} train positives after node-coverage filtering")
+    candidates = [sample_negatives(targets, train_universe, forbidden, train_rng, ratio, hard), *shared]
+    manifest = {
+        "dataset": dataset.name, "protocol": mode, "k": k, "seed": seed, "context_fraction": fraction,
+        "context_edges": len(context), "context_nodes": len(known),
+        "split_sha256": _edges_hash(context, *[c.edges for c in candidates]),
+        "shared_eval_sha256": _edges_hash(shared[0].edges, shared[1].edges), "source": dataset.audit,
+        "partitions": {n: {"positives": int(c.labels.sum()), "negatives": int((c.labels == 0).sum()),
+                            "positive_cardinalities": dict(sorted(Counter(len(e) for e, y in
+                                zip(c.edges, c.labels) if y == 1).items()))}
+                       for n, c in zip(("train", "val", "test"), candidates)},
+        "scope": "Static, closed-node hyperedge completion; not temporal forecasting or unseen-node induction.",
+    }
+    return Protocol(context, *candidates, dataset.n_nodes, manifest)
+
+
 def make_protocol(dataset: Dataset, config: dict, seed: int) -> Protocol:
+    if config["protocol"] in MATCHED_ARMS:
+        return _matched_protocol(dataset, config, seed)
     rng = np.random.default_rng(seed)
     mode, k = config["protocol"], config.get("k", 3)
     edges = dataset.edges
