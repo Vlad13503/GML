@@ -1,0 +1,11 @@
+* text=auto eol=lf
+*.pt binary
+*.npz binary
+*.gz binary
+*.zip binary
+*.png binary
+*.pdf binary
+
+# Experiment artifacts and embedded source snapshots are byte-hashed provenance.
+# Preserve their original line endings; Windows CRLF is intentional here.
+results/** -text whitespace=cr-at-eol

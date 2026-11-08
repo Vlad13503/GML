@@ -1,0 +1,48 @@
+{
+  "status": "VERIFIED_CURRENT",
+  "suite": "results\\team-procedure-2e33dd3-20261107\\fits\\db95c77a328c",
+  "procedure_commit": "2e33dd39c3bd08561d9533d315472af38eb9272d",
+  "legacy_inputs": false,
+  "models": [
+    "allset_cpa_encoder",
+    "allset_cpa_both"
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "local_sweep": {
+    "multipliers": [
+      1,
+      2,
+      3,
+      4,
+      8,
+      "actual"
+    ],
+    "reference": "m=1 in same layer/edge/control",
+    "controls": [
+      "query residual retained",
+      "query residual removed; attention unchanged"
+    ],
+    "inputs": "normal upstream layer inputs held fixed within local sweep"
+  },
+  "downstream": {
+    "conditions": [
+      "normal",
+      "disabled",
+      "constant3",
+      "shuffled0",
+      "shuffled1",
+      "shuffled2"
+    ],
+    "evaluation": "validation only; no retraining or condition selection",
+    "shuffle_seed": "10000 + 100*split_seed + replicate",
+    "shuffle_scope": "real context edge sizes, same permutation in all layers",
+    "synthetic_singletons": "m=1 throughout",
+    "readout": "unchanged in each model"
+  },
+  "limitations": "interventions on frozen CPA-trained weights are not retrained architectures; validation was used for checkpoint selection",
+  "runner_sha256": "a0776d575581f98a268047fc38dfcd69731496a6579bf65863fae36652c5ecfa"
+}
