@@ -1,0 +1,155 @@
+\documentclass{article}
+\usepackage[preprint]{neurips_2023}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{amsmath,amssymb}
+\usepackage{nicefrac}
+\usepackage{microtype}
+\usepackage{xcolor}
+
+\title{Do Hypergraph Neural Networks Generalize Across Interaction Order?}
+\author{Group 13\\Author names and affiliations to be completed}
+
+\begin{document}
+\maketitle
+\begin{center}\fcolorbox{red}{white}{\parbox{0.91\linewidth}{\textbf{ANTIQUATED / SUPERSEDED RESULTS.} All numerical results and diagnostics in this historical draft use the former procedure. They are not current project findings. A fresh campaign using traian commit 2e33dd3 is in progress; see EXPERIMENT\_STATUS.md.}}\end{center}
+
+
+\begin{abstract}
+Higher-order interactions involve groups whose sizes may differ between training and deployment. We investigate whether preserving cardinality in attention improves prediction of larger interactions. We compare a vanilla AllSetTransformer-based predictor with an encoder variant that multiplies node-to-hyperedge attention aggregates by hyperedge cardinality, without adding parameters. On deduplicated Enron email and AskUbuntu tag interactions, models train on groups of size at most three and are evaluated on larger groups, using identical candidates and validation-selected vanilla hyperparameters. Across three paired seeds, encoder CPA increases mean test AUPRC from 0.7120 to 0.7322 on Enron and from 0.8744 to 0.8787 on AskUbuntu, with positive differences in every seed. AUROC improves on AskUbuntu but decreases on Enron. These initial results support a metric-dependent benefit under the tested configuration, rather than uniformly improved discrimination or established interaction-order robustness. Because LayerNorm follows cardinality scaling, task scores alone do not establish that the introduced signal survives normalization. A subsequent controlled multiplier diagnostic finds that directional changes survive both LayerNorms when the learned query residual is present, while removing only that residual nearly eliminates the response. This establishes local block sensitivity, not an explanation of the predictive gains. A subsequent readout-only placement comparison gives smaller mean AUPRC than encoder CPA on both datasets under the same settings.
+\end{abstract}
+
+\section{Introduction}
+Email conversations and question tags are examples of interactions involving more than two entities. A hypergraph represents each such interaction as a hyperedge containing its participants. A predictor trained on small groups may nevertheless encounter larger groups at test time. We study this interaction-order shift through hyperedge prediction: determining whether a candidate node set corresponds to an observed interaction.
+
+AllSetTransformer learns from the hypergraph incidence structure using attention-based node-to-hyperedge and hyperedge-to-node aggregation \citep{allset}. We use an AllSetTransformer-based predictor as an established baseline, adapting its node representations to candidate scoring. Normalized attention can map different multisets with proportionally repeated features to the same aggregate. CPA addresses this limitation in graph neighborhood aggregation by incorporating cardinality \citep{cpa}.
+
+Our research question is: \emph{Does fixed cardinality scaling in AllSetTransformer's node-to-hyperedge attention improve prediction of larger interactions than those represented in training?} Our contribution is its adaptation and controlled evaluation. The initial comparison finds higher AUPRC on both datasets but mixed AUROC. We do not assume that cardinality sensitivity guarantees extrapolation; a follow-up normalization diagnostic addresses the mechanism separately from the task scores.
+
+\section{Methods}
+\subsection{Task and data representation}
+Let $\mathcal H=(V,\mathcal E)$ be a hypergraph, where each $e\in\mathcal E$ is an unordered set of nodes and $|e|$ is its cardinality. We use Enron emails and AskUbuntu tags from the higher-order network collection associated with \citet{benson}. Nodes represent email addresses or tags; hyperedges represent email participant sets or question tag sets. Identical sets are collapsed before splitting and singletons discarded. Timestamps are not used for forecasting, and the email representation does not distinguish senders, recipients, or CC roles.
+
+The model assigns a logit $s_\theta(e;\mathcal C)$ to a candidate group, given known context hyperedges $\mathcal C$. Observed target hyperedges have label $y_e=1$; sampled unobserved candidates have label $y_e=0$. These negatives are unobserved sets, not confirmed impossible interactions. We train using binary cross-entropy on the logits.
+
+For an interaction-order threshold $k$, context, training targets, and validation positives have size at most $k$, while test positives have size greater than $k$. These sets are mutually disjoint. Candidate nodes must occur in the context, isolating group-size shift from unseen-node prediction. Negatives match positive cardinalities, are shared across models, and exclude known positives. Thus, size alone cannot distinguish positive from negative candidates within a partition. The order gap is $\Delta(e)=|e|-k$.
+
+\subsection{Vanilla AllSetTransformer-based predictor}
+Each node starts with a trainable embedding transformed by an MLP. Encoder layers alternate between pooling node representations within each context hyperedge and pooling incident hyperedge representations back to each node. Context membership is retained explicitly rather than replaced by a clique expansion.
+
+For one node-to-hyperedge attention head, the implementation projects a node representation $x_v$ into a key $k_v$ and value $z_v$. A shared learned query $q$ gives
+\begin{equation}
+ t_{ev}=\operatorname{LeakyReLU}(q^\top k_v),\qquad
+ \alpha_{ev}=\frac{\exp(t_{ev})}{\sum_{u\in e}\exp(t_{eu})},\qquad
+ a_e=\sum_{v\in e}\alpha_{ev}z_v.
+\end{equation}
+Head outputs are concatenated. Writing $a_e$ and $q$ for the concatenated vectors, the pooling block computes
+\begin{equation}
+ u_e=\operatorname{LN}_1(q+a_e),\qquad
+ h_e=\operatorname{LN}_2\bigl(u_e+\operatorname{ReLU}(\operatorname{FF}(u_e))\bigr).
+ \label{eq:block}
+\end{equation}
+The query acts both in attention scoring and as a residual input. Hyperedge-to-node pooling uses an analogous attention block. ReLU and dropout are applied between message-passing stages.
+
+The encoder produces node embeddings from the fixed context. To score a candidate, a separate attention pooling block combines its members' encoded embeddings; an MLP maps the pooled vector to a logit. This readout remains identical in both compared models. The implementation is an adaptation for hyperedge prediction, not a reproduction claim for the original paper's node-classification benchmarks.
+
+\subsection{Proposed modification and hypothesis}
+Our initial CPA variant replaces the node-to-hyperedge aggregate with
+\begin{equation}
+ a_e^{\mathrm{CPA}}=|e|a_e,\qquad
+ u_e^{\mathrm{CPA}}=\operatorname{LN}_1(q+|e|a_e).
+ \label{eq:cpa}
+\end{equation}
+Scaling is applied to every head in every encoder layer, before the query residual and first normalization. It adds no parameters. Attention weights, hyperedge-to-node aggregation, candidate readout, and classifier are otherwise unchanged. This corresponds to comparing \texttt{allset} with \texttt{allset\_cpa\_encoder} in the current scaffold; \texttt{allset\_cpa} instead modifies the readout and is outside this initial comparison.
+
+\paragraph{Hypothesis.}
+Encoding context-interaction cardinality will yield node representations that support better prediction of larger groups. We expect higher held-out AUROC and AUPRC, or less degradation as $\Delta$ increases, relative to vanilla attention under matched conditions. This is an empirical hypothesis, not an implication of CPA's expressivity motivation.
+
+\paragraph{Expected limitations.}
+First, cardinality enters through magnitude. Ignoring numerical $\epsilon$, LayerNorm satisfies $\operatorname{LN}(c a)=\operatorname{LN}(a)$ for positive $c$. The query residual means $q+3a$ and $q+6a$ generally are not scalar multiples, so some signal may survive. Nevertheless, when $q=0$ scaling is essentially removed; as the scaled aggregate dominates $q$, sensitivity may weaken. The second normalization and subsequent message passing can further alter the signal.
+
+Second, the fixed encoder context contains only small interactions even during testing. Larger test candidates are pooled by the unchanged decoder, not inserted into the encoder context. This experiment tests whether cardinality-aware \emph{context encoding} improves larger-group prediction; it does not directly test the modified encoder aggregator on unseen hyperedge sizes.
+
+\subsection{Controlled multiplier diagnostic}
+Following the initial task evaluation, we performed a frozen-checkpoint intervention that holds each attention aggregate $a_e$ fixed and substitutes an artificial multiplier $m\in\{1,2,3,4,8,16,32\}$ for $|e|$. We inspected $m a_e$, $q+m a_e$, the first LayerNorm output, and the full pooling output. Relative L2 distance and cosine similarity to $m=1$ separate magnitude and directional changes. For each of the 12 checkpoints, we sampled 64 context hyperedges of each size (2 and 3), using identical edge IDs for paired models and excluding synthetic singleton self-messages. Edge-level metrics were averaged within each seed before computing means and sample SDs across the three seeds. Vanilla attention, which ignores the multiplier, is an invariance control. A second control zeros only the \emph{query residual}, keeping the original attention weights and aggregate fixed. It tests whether positive scaling is essentially removed by LayerNorm; finite $\epsilon$ and near-constant vectors require numerical care. These are computational interventions, not new interactions or measurements of task accuracy. Downstream encoder effects would require a separate intervention that recomputes node embeddings.
+
+\section{Numerical Experiments and Results}
+\paragraph{Downstream signal-check protocol.}
+After the local multiplier sweep, we evaluated the same frozen encoder-CPA checkpoints on validation candidates with normal actual-size scaling, scaling disabled ($m=1$), and constant scaling ($m=3$) on real context hyperedges. Synthetic singleton self-messages retained multiplier 1 in every condition. We recomputed the entire encoder and recorded covered-node embedding changes, candidate-logit changes, and validation metrics, without retraining or selecting a condition for testing. Normal inference reproduced saved validation logits exactly, including after intervention hooks were removed. These checkpoints were already selected on validation, so this is a dependence diagnostic rather than an independent generalization estimate.
+
+\subsection{Experimental setup}
+Enron contains 143 nodes and 1,457 unique non-singleton interactions after preprocessing; AskUbuntu contains 3,029 nodes and 145,053 such interactions. We fixed $k=3$ after checking cardinality coverage. Within the small-interaction pool, 80\% is assigned to the context/training pool and 20\% to validation; the former is split 60/40 into context and training targets, before closed-node filtering. Each positive receives one unique, size-matched negative. Sampling attempts mix one-member corruption with uniform same-size sets, using corruption probability 0.5 initially and uniform fallback after repeated rejections. Consequently, 0.5 is not a guaranteed fraction of accepted hard negatives. Observed positives and previously sampled negatives are excluded.
+
+For each dataset, 12 vanilla configurations combine learning rates $\{0.0003,0.001,0.003\}$, widths $\{32,64\}$, and layers $\{1,2\}$. Screening uses seed 0; the best two are also trained on seeds 1 and 2, giving 16 fits per dataset. Selection uses mean validation AUPRC across the three seeds. Both datasets select one layer and learning rate 0.003; widths are 32 for Enron and 64 for AskUbuntu. Other settings are four heads, dropout 0.2, AdamW weight decay $10^{-4}$, gradient clipping at norm 5, and a 150-epoch limit. Validation is checked every five epochs, with patience 30. Decoder batches of 2,048 accumulate gradients into one optimizer update per epoch.
+
+CPA is trained end to end from initialization using these same settings and seeds, with identical initial shared weights and parameter counts. Each model independently selects its checkpoint by validation AUPRC. Exact contexts, candidates, source snapshots, and checkpoints are saved under suite \texttt{7d0356f3d97c}; all six split identities are shared. Test candidates are scored only after selection. CUDA PyTorch 2.11.0+cu128 on an RTX 4090 is used. Checkpoint replay reproduces saved logits bit-for-bit for all 32 tuning fits and all six CPA validation/test evaluations. Code: \url{https://github.com/Vlad13503/GML}. A random-split control has not yet been run.
+
+\subsection{Initial encoder-CPA comparison}
+Table~\ref{tab:initial} reports test means and sample standard deviations across three paired split/initialization seeds. The paired difference is CPA minus vanilla within each seed; its SD is computed from those differences, not from independent model variances. These SDs are not confidence intervals.
+
+\begin{table}[t]
+\centering
+\caption{Held-out order-shift results ($k=3$), with 1:1 size-matched negatives. Values are mean $\pm$ sample SD across three seeds.}
+\label{tab:initial}
+\small
+\begin{tabular}{llccc}
+\toprule
+Dataset & Metric & Vanilla AST & Encoder CPA & Paired difference \\
+\midrule
+Enron & AUPRC & $0.7120\pm0.0058$ & $0.7322\pm0.0230$ & $+0.0202\pm0.0172$ \\
+      & AUROC & $0.7439\pm0.0539$ & $0.7307\pm0.0418$ & $-0.0132\pm0.0286$ \\
+AskUbuntu & AUPRC & $0.8744\pm0.0017$ & $0.8787\pm0.0045$ & $+0.0042\pm0.0052$ \\
+          & AUROC & $0.8886\pm0.0006$ & $0.8927\pm0.0020$ & $+0.0041\pm0.0015$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+CPA increases AUPRC in every paired seed on both datasets. Mean gains are 0.0202 on Enron and 0.0042 on AskUbuntu. AUROC improves on AskUbuntu but decreases on Enron, so the benefit is metric-dependent. At cardinalities 4, 5, and 6, Enron's mean AUPRC differences are respectively $+0.0154$, $+0.0344$, and $+0.0400$. Its larger bins have fewer observations and do not show a consistently increasing advantage. AskUbuntu has only two held-out sizes, 4 and 5, with mean differences $+0.0036$ and $+0.0054$. Per-cardinality results flag bins with fewer than 20 positives in any seed. These data do not establish reduced degradation as the order gap grows.
+
+\subsection{Multiplier diagnostic results}
+All invariance controls passed: vanilla and disabled scaling produced exactly zero L2 change, and the raw aggregate remained fixed. With the learned residual present, changing the artificial multiplier from 1 to 3 yielded full-block relative L2 distances of $0.6439\pm0.2367$ on Enron and $0.9577\pm0.1972$ on AskUbuntu (mean and sample SD of seed means). Corresponding mean cosine similarities were 0.7677 and 0.5259, demonstrating directional changes after both LayerNorms. Zeroing only the query residual reduced mean full-block relative distances to $1.44\times10^{-5}$ and $1.12\times10^{-5}$; small remaining differences are compatible with finite normalization epsilon and numerical effects. The response relative to $m=1$ flattened at larger multipliers. These distances are stage-relative measurements, not percentages of cardinality information retained.
+
+\section{Discussion}
+\paragraph{Downstream validation evidence.}
+Mean validation AUPRC for normal, disabled, and constant scaling was respectively 0.6879, 0.6440, and 0.6750 on Enron; corresponding AskUbuntu values were 0.8725, 0.8055, and 0.8703. Disabling scaling changed logits and reduced AUPRC in every seed, demonstrating downstream dependence on the encoder modification. Constant scaling had smaller effects: paired AUPRC changes versus normal were $-0.0129\pm0.0162$ on Enron and $-0.0022\pm0.0037$ on AskUbuntu. Thus, sensitivity to removing scaling is stronger than the evidence that per-edge size values are essential; a constant-scale intervention preserves much of the observed validation performance. Disabled scaling uses CPA-trained weights and is not the separately trained vanilla baseline.
+
+Encoder-only CPA improves AUPRC under the tested conditions, but the AUROC disagreement on Enron prevents a claim of uniformly improved discrimination. This is a fixed-configuration ablation using vanilla-selected hyperparameters, three seeds, and one threshold, rather than a comparison of independently optimized architectures. Small high-cardinality Enron bins and AskUbuntu's limited size range constrain interaction-order conclusions. The closed-node, undirected task also excludes temporal forecasting and role prediction.
+
+The follow-up multiplier sweep rules out complete erasure by LayerNorm in the sampled trained pooling blocks: the learned residual permits multiplier-dependent directional differences to survive. Removing only that residual almost eliminates the response, consistent with positive-scale invariance of idealized LayerNorm. The downstream check confirms that scaling changes can reach predictions, but neither diagnostic establishes globally decodable cardinality or explains the held-out score gains. Subsequent architectural choices must use validation data rather than selecting variants on the already inspected test scores.
+
+\paragraph{Readout-only placement follow-up.}
+We subsequently trained six readout-only CPA runs with both encoder aggregations vanilla, scaling candidate attention by actual candidate size before its residual and LayerNorm. This directly processes larger test groups. Contexts, candidates, initial shared weights, parameter counts, and AST-selected settings matched the initial comparison; each run was trained from initialization and selected by validation AUPRC. All six checkpoints replayed validation and test logits bit-for-bit.
+
+Readout CPA yielded test AUPRC $0.7250\pm0.0240$ on Enron and $0.8731\pm0.0022$ on AskUbuntu. Paired changes from vanilla were respectively $+0.0130\pm0.0182$ and $-0.0013\pm0.0034$; changes from encoder CPA were $-0.0072\pm0.0011$ and $-0.0056\pm0.0063$. Readout AUROC was $0.7334\pm0.0319$ on Enron and $0.8890\pm0.0010$ on AskUbuntu. Thus, directly exposing the candidate readout to size does not produce a consistent advantage over vanilla, and mean AUPRC is lower than encoder CPA on both datasets. These three-seed fixed-setting results do not establish a universally superior placement or a reason for the differences.
+
+\paragraph{Joint encoder/readout follow-up.}
+To test whether the two placements complement one another, we trained six additional models with CPA in both node-to-hyperedge aggregation and candidate readout, leaving hyperedge-to-node pooling unchanged. Both modifications were learned jointly from initialization under the same frozen settings and candidates. Checkpoint replay again reproduced validation and test logits bit-for-bit. Joint CPA yielded test AUPRC $0.7234\pm0.0236$ on Enron and $0.8736\pm0.0010$ on AskUbuntu, below the corresponding encoder-only means 0.7322 and 0.8787. Its AUROC was $0.7187\pm0.0214$ and $0.8907\pm0.0008$, respectively. Thus, stacking the placements does not improve on encoder-only CPA under this fixed-setting comparison. The results do not establish why the placements interact this way, or exclude an advantage under separately tuned settings.
+
+\clearpage
+\section{CRediT author statement}
+To be completed by the team with verified individual contributions, including methodology, implementation, experimentation, and writing. No individual contribution assignments are asserted in this draft.
+
+\clearpage
+\begin{thebibliography}{9}
+\bibitem[Benson et~al.(2018)]{benson}
+A.~R. Benson, R.~Abebe, M.~T. Schaub, A.~Jadbabaie, and J.~Kleinberg.
+Simplicial closure and higher-order link prediction.
+\emph{Proceedings of the National Academy of Sciences}, 115(48):E11221--E11230, 2018.
+\url{https://doi.org/10.1073/pnas.1800683115}.
+
+\bibitem[Chien et~al.(2022)]{allset}
+E.~Chien, C.~Pan, J.~Peng, and O.~Milenkovic.
+You are AllSet: A multiset function framework for hypergraph neural networks.
+\emph{International Conference on Learning Representations}, 2022.
+\url{https://arxiv.org/abs/2106.13264}.
+
+\bibitem[Zhang and Xie(2020)]{cpa}
+S.~Zhang and L.~Xie.
+Improving attention mechanism in graph neural networks via cardinality preservation.
+\emph{Proceedings of IJCAI}, pages 1395--1402, 2020.
+\url{https://doi.org/10.24963/ijcai.2020/194}.
+\end{thebibliography}
+\end{document}

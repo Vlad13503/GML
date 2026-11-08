@@ -15,9 +15,9 @@
 
 \begin{document}
 \maketitle
-
+\begin{center}\textbf{Current shared-procedure campaign: completed and verified (2e33dd3).}\end{center}
 \begin{abstract}
-Higher-order interactions involve groups of entities whose sizes may differ between training and deployment. We investigate whether preserving cardinality in attention improves hyperedge prediction when test interactions contain more members than training interactions. This draft covers one component of the project: a controlled comparison between a vanilla AllSetTransformer-based predictor and a variant with fixed cardinality scaling in node-to-hyperedge attention. Inspired by Cardinality Preserved Attention (CPA), the modification multiplies each normalized attention aggregate by the number of hyperedge members, without introducing additional parameters. We hypothesize that this change can improve representations learned from observed interactions and reduce performance degradation on larger candidate groups. However, the aggregate is subsequently processed by a query residual and LayerNorm, which may weaken the introduced cardinality signal. We therefore distinguish whether the signal survives the pooling block from whether it improves prediction. The planned evaluation uses deduplicated Enron email and AskUbuntu tag interactions, size-matched negatives, shared splits, and validation-only model selection. Predictive performance will be reported by cardinality and interaction-order gap, alongside controlled representation diagnostics. Experiments have not yet established an outcome; results and conclusions will be added after evaluation.
+We investigate cardinality scaling in hyperedge prediction under interaction-order shift. Vanilla AllSetTransformer-based prediction is compared with scaling in encoder node-to-hyperedge attention, candidate readout, or both, using shared architecture settings selected on validation and per-model learning-rate and checkpoint selection. Across three paired seeds, encoder-only scaling consistently improves test AUPRC and AUROC on AskUbuntu, while Enron results remain mixed. AskUbuntu gains occur at both available test sizes but do not increase with order gap. Frozen-checkpoint diagnostics demonstrate that the query residual allows scaling effects to survive LayerNorm. Disabling encoder scaling at inference is disruptive, whereas constant scaling and shuffled context-edge sizes preserve AskUbuntu performance. These interventions distinguish inference-time sensitivity from the unresolved role of correct cardinalities during training: cardinality-aware training may shape useful encoder representations even when inference tolerates approximate scaling. A constant-scaling model trained from initialization is needed to distinguish this explanation from a broader scaling effect. Earlier local campaigns are superseded and supply no numerical evidence here.
 \end{abstract}
 
 \section{Introduction}
@@ -25,11 +25,11 @@ Email conversations and question tags are examples of interactions involving mor
 
 AllSetTransformer learns from the hypergraph incidence structure using attention-based node-to-hyperedge and hyperedge-to-node aggregation \citep{allset}. We use an AllSetTransformer-based predictor as an established baseline, adapting its node representations to candidate scoring. Normalized attention can map different multisets with proportionally repeated features to the same aggregate. CPA addresses this limitation in graph neighborhood aggregation by incorporating cardinality \citep{cpa}.
 
-Our research question is: \emph{Does fixed cardinality scaling in AllSetTransformer's node-to-hyperedge attention improve prediction of larger interactions than those represented in training?} Our contribution is the adaptation and controlled evaluation of this mechanism, including its interaction with normalization. We do not assume that increased sensitivity to cardinality guarantees extrapolation. This initial draft concerns only vanilla versus encoder CPA; additional variants will require separate motivation and evidence.
+Our research question is: \emph{Does cardinality scaling in encoder attention, candidate readout, or both improve hyperedge prediction under interaction-order shift?} We compare vanilla AST and three CPA placements using the shared team procedure. Earlier local experiments are superseded and are not evidence for the current comparison.
 
 \section{Methods}
 \subsection{Task and data representation}
-Let $\mathcal H=(V,\mathcal E)$ be a hypergraph, where each $e\in\mathcal E$ is an unordered set of nodes and $|e|$ is its cardinality. The proposed datasets are Enron emails and AskUbuntu tags from the higher-order network collection associated with \citet{benson}. Nodes represent email addresses or tags; hyperedges represent email participant sets or question tag sets. Identical sets are collapsed before splitting. Timestamps are not used for forecasting, and the email representation does not distinguish senders, recipients, or CC roles.
+Let $\mathcal H=(V,\mathcal E)$ be a hypergraph, where each $e\in\mathcal E$ is an unordered set of nodes and $|e|$ is its cardinality. We use Enron emails and AskUbuntu tags from the higher-order network collection associated with \citet{benson}. Nodes represent email addresses or tags; hyperedges represent email participant sets or question tag sets. Identical sets are collapsed before splitting and singletons discarded. Timestamps are not used for forecasting, and the email representation does not distinguish senders, recipients, or CC roles.
 
 The model assigns a logit $s_\theta(e;\mathcal C)$ to a candidate group, given known context hyperedges $\mathcal C$. Observed target hyperedges have label $y_e=1$; sampled unobserved candidates have label $y_e=0$. These negatives are unobserved sets, not confirmed impossible interactions. We train using binary cross-entropy on the logits.
 
@@ -52,7 +52,7 @@ Head outputs are concatenated. Writing $a_e$ and $q$ for the concatenated vector
 \end{equation}
 The query acts both in attention scoring and as a residual input. Hyperedge-to-node pooling uses an analogous attention block. ReLU and dropout are applied between message-passing stages.
 
-The encoder produces node embeddings from the fixed context. To score a candidate, a separate attention pooling block combines its members' encoded embeddings; an MLP maps the pooled vector to a logit. This readout remains identical in both compared models. The implementation is an adaptation for hyperedge prediction, not a reproduction claim for the original paper's node-classification benchmarks.
+The encoder produces node embeddings from the fixed context. To score a candidate, a separate attention pooling block combines its members' encoded embeddings; an MLP maps the pooled vector to a logit. This readout is identical between vanilla and encoder-only CPA; the readout ablations below change only the specified scaling placement. The implementation is an adaptation for hyperedge prediction, not a reproduction claim for the original paper's node-classification benchmarks.
 
 \subsection{Proposed modification and hypothesis}
 Our initial CPA variant replaces the node-to-hyperedge aggregate with
@@ -61,7 +61,7 @@ Our initial CPA variant replaces the node-to-hyperedge aggregate with
  u_e^{\mathrm{CPA}}=\operatorname{LN}_1(q+|e|a_e).
  \label{eq:cpa}
 \end{equation}
-Scaling is applied to every head in every encoder layer, before the query residual and first normalization. It adds no parameters. Attention weights, hyperedge-to-node aggregation, candidate readout, and classifier are otherwise unchanged. This corresponds to comparing \texttt{allset} with \texttt{allset\_cpa\_encoder} in the current scaffold; \texttt{allset\_cpa} instead modifies the readout and is outside this initial comparison.
+Scaling is applied to every head in every encoder layer, before the query residual and first normalization. It adds no parameters. Attention weights, hyperedge-to-node aggregation, candidate readout, and classifier are otherwise unchanged. This corresponds to comparing \texttt{allset} with \texttt{allset\_cpa\_encoder}; \texttt{allset\_cpa} instead modifies the readout and is included as a placement ablation.
 
 \paragraph{Hypothesis.}
 Encoding context-interaction cardinality will yield node representations that support better prediction of larger groups. We expect higher held-out AUROC and AUPRC, or less degradation as $\Delta$ increases, relative to vanilla attention under matched conditions. This is an empirical hypothesis, not an implication of CPA's expressivity motivation.
@@ -71,20 +71,102 @@ First, cardinality enters through magnitude. Ignoring numerical $\epsilon$, Laye
 
 Second, the fixed encoder context contains only small interactions even during testing. Larger test candidates are pooled by the unchanged decoder, not inserted into the encoder context. This experiment tests whether cardinality-aware \emph{context encoding} improves larger-group prediction; it does not directly test the modified encoder aggregator on unseen hyperedge sizes.
 
-\subsection{Planned mechanism diagnostics}
-Hold an attention aggregate and query fixed, vary only the cardinality multiplier, and compare representations before normalization, after the first LayerNorm, and after the full pooling block. Measure L2 distances and cosine similarity against a reference multiplier across multiple aggregates. Vanilla attention and a zero-query intervention provide controls. These interventions isolate computational sensitivity rather than construct actual new interactions. Encoder-level effects on predictions require recomputing downstream node embeddings. Diagnostic support will need extending beyond the scaffold's current decoder-focused traces. Signal survival and predictive usefulness will be assessed separately.
+\subsection{Placement comparison and fresh diagnostics}
+The main comparison includes vanilla AST, encoder-only CPA (\texttt{allset\_cpa\_encoder}), readout-only CPA (\texttt{allset\_cpa}), and joint CPA (\texttt{allset\_cpa\_both}). Readout CPA scales the candidate attention aggregate by candidate cardinality before its query residual and LayerNorm, leaving encoder pooling vanilla. Joint CPA applies both modifications and is trained end to end from initialization. Hyperedge-to-node pooling is unchanged in every variant; no new parameters are introduced.
+
+Multiplier and downstream-intervention findings from the former campaign are superseded. The diagnostics below use only fresh checkpoints and are reported separately from test performance; no former diagnostic outcome is transferred to these models.
 
 \section{Numerical Experiments and Results}
-\subsection{Planned experimental setup}
-The first comparison will use vanilla and encoder-CPA predictors with identical context, target splits, candidate sets, hidden dimensions, heads, layers, optimization settings, and paired seeds. We will first select the vanilla predictor's hyperparameter configuration using validation data, then hold that configuration fixed while training both variants from initialization. Each variant will select its own checkpoint using the same validation set and criterion. A random-split control will accompany the order-shift experiment. Cardinality thresholds will be chosen after inspecting data coverage and bin counts, without selecting for favorable test performance. Order-shift validation remains within the training size range; test candidates will not be evaluated during tuning.
+\subsection{Shared team procedure}
+The campaign is pinned to \texttt{traian} commit \texttt{2e33dd3}. The dataset inputs are hashed, and the exact source export and run plan are preserved under \texttt{results/team-procedure-2e33dd3-20261107}. Unlike the superseded campaign, tuning averages validation performance across DeepSets, GCN, vanilla AST, readout CPA, and explicit-size AST. It uses eight combinations of width $\{32,64\}$, layers $\{1,2\}$, and dropout $\{0,0.2\}$ on seed 0. Each model-setting fit searches learning rates $\{0.001,0.01\}$. The setting with the highest mean selected validation AUPRC across the five models is shared by all final models for that dataset.
 
-We will report AUROC and AUPRC overall and by test cardinality, positive counts per bin, and paired differences across seeds. Small bins will be flagged and variation across seeds reported. Negative sampling prevalence will be recorded because it affects AUPRC. Final dataset audits, hyperparameters, sampler settings, and run identities remain to be documented. Code: \url{https://github.com/Vlad13503/GML}.
+The final comparison trains vanilla AST and all three CPA placements on seeds 0, 1, and 2. Each model independently selects a learning rate and checkpoint using the same validation candidates and AUPRC criterion. Epoch 0 is evaluated and eligible for selection. The maximum is 150 epochs, validation every five epochs, patience 30, four attention heads, AdamW weight decay $10^{-4}$, gradient clipping at norm 5, and decoder batches of 2,048 accumulated into one optimizer update per epoch. All models train from matched initialization with equal parameter counts.
 
-\subsection{Results pending}
-No measured results are reported in this draft. This section will present the matched baseline comparison and normalization diagnostics after the experiments have been run and verified.
+For order shift at $k=3$, small interactions are split 80/20 into a context/training pool and validation, then the former is split 60/40 into context and training targets. Closed-node filtering is applied before sampling one size-matched negative per positive. Negative generation initially attempts one-member corruption with probability 0.5, otherwise uniform same-size sets, with uniform fallback after repeated rejections. This is not a guaranteed 50/50 mixture of accepted negatives. Observed positives and duplicate negatives are excluded. Test interactions are larger than three; all models share exact context and candidate identities within each seed.
+
+\subsection{Verified current results}
+All 24 comparison fits completed after shared validation tuning. Selected architectural settings are email-Enron: width 32, 2 layer(s), dropout 0.0; tags-ask-ubuntu: width 64, 2 layer(s), dropout 0.0. Learning rate and checkpoint epoch vary by model and seed under the shared selection rule.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Fresh shared-procedure test results at $k=3$: mean $\pm$ sample SD across three paired seeds. Former campaign results are excluded.}
+\label{tab:current}
+\begin{tabular}{llcccc}
+\toprule
+Dataset & Metric & Vanilla AST & Encoder CPA & Readout CPA & Both \\
+\midrule
+Enron & AUPRC & $0.7598\pm0.0530$ & $0.7478\pm0.0073$ & $0.7554\pm0.0215$ & $0.7569\pm0.0154$ \\
+Enron & AUROC & $0.7453\pm0.0624$ & $0.7561\pm0.0188$ & $0.7664\pm0.0182$ & $0.7602\pm0.0310$ \\
+AskUbuntu & AUPRC & $0.8742\pm0.0033$ & $0.8838\pm0.0009$ & $0.8722\pm0.0064$ & $0.8823\pm0.0014$ \\
+AskUbuntu & AUROC & $0.8912\pm0.0036$ & $0.8962\pm0.0011$ & $0.8911\pm0.0028$ & $0.8945\pm0.0013$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Differences against vanilla are paired within seeds; SDs are not confidence intervals. Exact per-seed metrics, selected learning rates, epochs, and per-cardinality results accompany the current campaign. Verification replayed 80 selected tuning checkpoints and all 24 comparison checkpoints, reproducing comparison validation/test logits bit-for-bit. GCN tuning replay permits absolute AP error up to $10^{-6}$ owing to observed CUDA sparse-aggregation variation; AST/CPA replay requires exact equality. Source and data identities, six shared splits, tuning selection, initial shared weights, and parameter counts were checked.
+
+\subsection{Performance by test hyperedge cardinality}
+We recompute test AUPRC and AUROC for every exact hyperedge size from the saved predictions, pairing each CPA variant with vanilla within the same seed. Candidate labels, cardinalities and split identities were checked across all variants; all recomputed metrics exactly match the stored per-size results. No models were retrained or selected using this analysis. Bins with fewer than 20 positives in any seed are flagged as sparse, rather than pooled according to their scores.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Encoder CPA minus vanilla test AUPRC by cardinality, in percentage points: mean $\pm$ sample SD of three paired seed differences. Positive counts are the per-seed range; each bin has an equal number of negatives. This table shows bins with at least 20 positives in every seed; the complete analysis retains all sizes.}
+\label{tab:cardinality}
+\begin{tabular}{lrrr}
+\toprule
+Dataset & Size & Positives & $\Delta$ AUPRC (pp) \\
+\midrule
+Enron & 4 & 137--138 & $-0.54\pm5.75$ \\
+Enron & 5 & 63 & $-0.39\pm4.77$ \\
+Enron & 6 & 43 & $-4.57\pm4.33$ \\
+Enron & 7 & 27 & $+1.73\pm8.86$ \\
+Enron & 8 & 20--22 & $+0.41\pm3.63$ \\
+AskUbuntu & 4 & 38,832--38,858 & $+1.08\pm0.34$ \\
+AskUbuntu & 5 & 25,224--25,236 & $+0.80\pm0.40$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+On AskUbuntu, encoder CPA improves AUPRC at both available test sizes in all three seeds. The mean improvement is smaller at size five than size four; this does not support an increasing benefit with order gap. Readout-only scaling has slightly negative mean AUPRC differences at both sizes, and combined scaling has smaller gains than encoder-only scaling. Enron shows no monotonic encoder-CPA advantage across sizes four through eight; size six has a mean loss of 4.57 percentage points. Beyond size eight, Enron has only one to nine positives per exact size per seed, precluding strong conclusions about the largest orders. SDs describe seed variation, not confidence intervals, and seed target sets overlap. Different sizes contain different candidate populations, so this descriptive analysis does not isolate a causal effect of cardinality.
+
+\subsection{Frozen encoder scaling diagnostics}
+We examine the fresh encoder-only and combined CPA checkpoints on both datasets and all three seeds, without retraining. Local multiplier sweeps hold raw attention and normal upstream inputs fixed within each encoder layer. A control removes only the query residual added after attention, preserving the query used to compute attention weights. Comparing multipliers three and one in encoder-only CPA gives mean relative vector changes after the first LayerNorm of 0.417 and 0.626 in Enron's two layers, and 0.515 and 0.761 in AskUbuntu's. Removing the query residual reduces these changes to between $2.8\times10^{-5}$ and $4.6\times10^{-4}$. Thus scaling survives normalization in this implementation through its interaction with the residual; finite normalization epsilon and floating-point effects prevent exact scale invariance in the zero-residual control.
+
+For downstream interventions, we recompute the full encoder using actual cardinalities, multiplier one, constant multiplier three, or shuffled cardinalities among real context hyperedges. Synthetic singleton self-messages retain multiplier one, and readout and classifier weights remain unchanged. Three deterministic shuffles are averaged within each seed before summarizing across seeds. We score validation candidates only. All 12 checkpoints reproduce saved validation logits bit-for-bit before and after intervention; weights are unchanged.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Validation AP under frozen encoder-only CPA interventions, averaged across three seeds. Shuffled values average three permutations inside each seed. These are computational-dependence diagnostics, not retrained-model comparisons.}
+\label{tab:encoder-interventions}
+\begin{tabular}{lrrrr}
+\toprule
+Dataset & Actual sizes & $m=1$ & Constant $m=3$ & Shuffled sizes \\
+\midrule
+Enron & 0.7109 & 0.6304 & 0.6794 & 0.6866 \\
+AskUbuntu & 0.8833 & 0.4510 & 0.8834 & 0.8831 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+On AskUbuntu, removing encoder scaling is disruptive, but constant scaling and shuffled sizes leave AP nearly unchanged. Shuffling changes approximately 45\% of real edge multipliers. Therefore these checkpoints depend on encoder scaling, while exact per-edge cardinality assignments appear much less consequential under these interventions. Global scale, adaptation during training, and differences between real-edge and singleton self-messages remain possible explanations. Enron's mean AP decreases when sizes are shuffled, despite its mixed test comparison against vanilla. Combined CPA shows the same qualitative contrast: disabling encoder scaling reduces mean validation AP by 11.72 percentage points on Enron and 42.74 on AskUbuntu, while shuffling reduces it by 0.91 and 0.05 points, respectively. Disabling scaling on CPA-trained weights does not recover trained vanilla AST, and intervention-induced distribution shifts limit causal interpretation. Validation was used for checkpoint selection; these diagnostics are not independent generalization estimates, and no intervention is selected for test evaluation.
 
 \section{Discussion}
-Conclusions are pending. The analysis will distinguish a cardinality signal lost during processing from a retained signal that does not improve prediction. An improvement would support this specific adaptation under the tested splits and sampling protocol; a null or negative effect would delimit its usefulness. Follow-up experiments will be motivated by these findings and documented separately, without retrospectively treating them as part of the initial comparison.
+The strongest predictive finding is placement-specific: on AskUbuntu, encoder-only CPA has the highest mean test AUPRC and AUROC among the four compared variants and improves both metrics over vanilla in each seed. Readout-only scaling provides no consistent gain, and combining it with encoder scaling does not improve on encoder-only scaling. This supports modifying context representation learning in this setting, without establishing which learned parameters account for the gain. Improvement at both test sizes supports the tested order shift, while the smaller gain at size five and the absence of larger AskUbuntu targets limit claims about increasing extrapolation distance.
+
+\paragraph{Training-time information versus inference-time sensitivity.}
+The frozen interventions do not determine whether correct cardinalities were needed to learn the encoder. Training with true sizes could shape useful queries, key/value projections and subsequent representations whose predictive benefits persist when inference-time multipliers are approximated. This remains compatible with the near-invariance to constant or shuffled scaling on AskUbuntu. Conversely, a general change in the aggregate--query balance or in the treatment of real context edges relative to singleton self-messages could explain part of the benefit. The present experiments do not distinguish these explanations.
+
+The query residual provides a demonstrated route for scaling to survive normalization, but this is different from showing that the query vector itself stores cardinality information or causes the predictive improvement. Each query is shared across hyperedges within its head and layer; all encoder parameters can adapt during training. Ignoring normalization epsilon, $\operatorname{LN}(ma+q)\approx\operatorname{LN}(a+q/m)$: increasing cardinality changes the balance between the member aggregate and the shared reference, rather than merely changing output magnitude. This local interpretation does not imply a proportional change in final node embeddings or predictions.
+
+\paragraph{Missing training-time control.}
+A direct next experiment is to train constant-$m=3$ encoder scaling from initialization alongside true-cardinality CPA and vanilla, using the same architecture, splits, candidates and validation-selection procedure. Synthetic singleton self-messages should retain $m=1$ in this control. This would test whether the improvement requires true cardinalities during learning or can be reproduced by fixed scaling of real interactions. It would not by itself isolate the query's contribution from that of other trained parameters. The current frozen-$m=1$ intervention is not a trained vanilla model, and its performance drop must not be interpreted as a twofold benefit over the trained baseline. This control is proposed, not completed.
+
+Enron's limited data availability may contribute to the variability of the observed CPA effects, through both less reliable parameter estimation and small evaluation groups. However, the present experiments do not isolate dataset size from other dataset-specific properties. A future training-data learning curve on AskUbuntu, with validation and test candidates held fixed, could test whether the CPA advantage weakens as training data decreases.
+
+The table describes a fixed shared-architecture comparison with per-model learning-rate and checkpoint selection, not independently optimized architectures. Three seeds, one threshold, and sparse high-cardinality bins delimit the conclusions; there is no claim of statistical superiority. Metrics must be interpreted separately. Former multiplier and downstream-intervention outcomes remain superseded; the diagnostics reported here use only fresh checkpoints. The local residual control establishes scale sensitivity, while frozen downstream interventions do not establish that correct per-edge cardinality is responsible for test improvements. Subsequent architecture selection must not use inspected test scores for tuning.
 
 \clearpage
 \section{CRediT author statement}
