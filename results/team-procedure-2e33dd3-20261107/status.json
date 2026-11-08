@@ -1,0 +1,42 @@
+{
+  "campaign": "results/team-procedure-2e33dd3-20261107",
+  "status": "verified_current",
+  "procedure_commit": "2e33dd39c3bd08561d9533d315472af38eb9272d",
+  "superseded_on": "2026-11-07",
+  "superseded_roots": [
+    "results/ast-tuning",
+    "results/ast-tuning-smoke",
+    "results/ast-test",
+    "results/encoder-cpa",
+    "results/readout-cpa",
+    "results/both-cpa",
+    "results/cpa-placement",
+    "results/cpa-placement-both",
+    "results/cardinality-diagnostic",
+    "results/encoder-signal-check"
+  ],
+  "rule": "Only this campaign may supply current findings; legacy results and diagnostics are historical, not current evidence.",
+  "updated_utc": "2026-11-07T16:58:25.129662+00:00",
+  "planned_tuning_fit_calls": 80,
+  "planned_tuning_lr_trials": 160,
+  "planned_comparison_fit_calls": 24,
+  "planned_comparison_lr_trials": 48,
+  "tuning_root": "results\\team-procedure-2e33dd3-20261107\\tuning\\tuning-e30873fd50a2",
+  "shared_settings": {
+    "dataset_overrides": {
+      "email-Enron": {
+        "hidden_dim": 32,
+        "layers": 2,
+        "dropout": 0.0
+      },
+      "tags-ask-ubuntu": {
+        "hidden_dim": 64,
+        "layers": 2,
+        "dropout": 0.0
+      }
+    }
+  },
+  "comparison_suite": "results\\team-procedure-2e33dd3-20261107\\fits\\db95c77a328c",
+  "completed_comparison_fit_calls": 24,
+  "verification": "results\\team-procedure-2e33dd3-20261107\\verification.json"
+}

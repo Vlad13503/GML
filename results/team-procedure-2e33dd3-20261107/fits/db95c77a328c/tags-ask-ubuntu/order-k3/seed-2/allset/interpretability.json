@@ -1,0 +1,6738 @@
+{
+  "probes": {
+    "target": "log(1 + cardinality)",
+    "sampling": "capped equally per available size; positive edges only",
+    "n": {
+      "train": 2000,
+      "val": 2000,
+      "test": 2000
+    },
+    "constant_train_mean_baseline": {
+      "val": {
+        "log_size_mae": 0.1438410362258904,
+        "log_size_r2": 0.0
+      },
+      "test": {
+        "log_size_mae": 0.4581453659370774,
+        "log_size_r2": -25.257510751153674
+      }
+    },
+    "stages": {
+      "attention": {
+        "linear": {
+          "train": {
+            "log_size_mae": 0.11178770278705757,
+            "log_size_r2": 0.2589716241656206
+          },
+          "val": {
+            "log_size_mae": 0.1139468508263474,
+            "log_size_r2": 0.2124515898260496
+          },
+          "test": {
+            "log_size_mae": 0.3721138382034687,
+            "log_size_r2": -17.69441894009624
+          }
+        },
+        "norm_only": {
+          "train": {
+            "log_size_mae": 0.14336026218089984,
+            "log_size_r2": 0.003344062366499756
+          },
+          "val": {
+            "log_size_mae": 0.14325896945152208,
+            "log_size_r2": 0.0046760854285110565
+          },
+          "test": {
+            "log_size_mae": 0.45766221924961853,
+            "log_size_r2": -25.218571519785
+          }
+        },
+        "permuted_target": {
+          "train": {
+            "log_size_mae": 0.14146544780883716,
+            "log_size_r2": 0.015906018246371834
+          },
+          "val": {
+            "log_size_mae": 0.14348467191610262,
+            "log_size_r2": -0.015643734473819615
+          },
+          "test": {
+            "log_size_mae": 0.45350973983944703,
+            "log_size_r2": -24.766591816222114
+          }
+        }
+      },
+      "modified": {
+        "linear": {
+          "train": {
+            "log_size_mae": 0.11178770278705757,
+            "log_size_r2": 0.2589716241656206
+          },
+          "val": {
+            "log_size_mae": 0.1139468508263474,
+            "log_size_r2": 0.2124515898260496
+          },
+          "test": {
+            "log_size_mae": 0.3721138382034687,
+            "log_size_r2": -17.69441894009624
+          }
+        },
+        "norm_only": {
+          "train": {
+            "log_size_mae": 0.14336026218089984,
+            "log_size_r2": 0.003344062366499756
+          },
+          "val": {
+            "log_size_mae": 0.14325896945152208,
+            "log_size_r2": 0.0046760854285110565
+          },
+          "test": {
+            "log_size_mae": 0.45766221924961853,
+            "log_size_r2": -25.218571519785
+          }
+        },
+        "permuted_target": {
+          "train": {
+            "log_size_mae": 0.14385871466550754,
+            "log_size_r2": -0.0156379360303025
+          },
+          "val": {
+            "log_size_mae": 0.14350718530949932,
+            "log_size_r2": -0.018079031686951685
+          },
+          "test": {
+            "log_size_mae": 0.45539379038752364,
+            "log_size_r2": -24.987246352738868
+          }
+        }
+      },
+      "post_norm": {
+        "linear": {
+          "train": {
+            "log_size_mae": 0.11307347753764406,
+            "log_size_r2": 0.24684779609937302
+          },
+          "val": {
+            "log_size_mae": 0.1143518248262392,
+            "log_size_r2": 0.2099432351372249
+          },
+          "test": {
+            "log_size_mae": 0.3761633848028568,
+            "log_size_r2": -17.992864557597134
+          }
+        },
+        "norm_only": {
+          "train": {
+            "log_size_mae": 0.14207424041185304,
+            "log_size_r2": 0.01228912178581587
+          },
+          "val": {
+            "log_size_mae": 0.14236587151441502,
+            "log_size_r2": 0.008094243789299238
+          },
+          "test": {
+            "log_size_mae": 0.4563175679677849,
+            "log_size_r2": -25.06385172895924
+          }
+        },
+        "permuted_target": {
+          "train": {
+            "log_size_mae": 0.1436272252455704,
+            "log_size_r2": -0.012397477162504611
+          },
+          "val": {
+            "log_size_mae": 0.14455493023548052,
+            "log_size_r2": -0.028412674693525153
+          },
+          "test": {
+            "log_size_mae": 0.45787636544646076,
+            "log_size_r2": -25.257717746438757
+          }
+        }
+      },
+      "representation": {
+        "linear": {
+          "train": {
+            "log_size_mae": 0.11218455629067725,
+            "log_size_r2": 0.25186254131500596
+          },
+          "val": {
+            "log_size_mae": 0.11248990788843899,
+            "log_size_r2": 0.23447370190300287
+          },
+          "test": {
+            "log_size_mae": 0.37520046388475375,
+            "log_size_r2": -17.888030680825082
+          }
+        },
+        "norm_only": {
+          "train": {
+            "log_size_mae": 0.14271306201372072,
+            "log_size_r2": 0.00784572418822893
+          },
+          "val": {
+            "log_size_mae": 0.14194037797603534,
+            "log_size_r2": 0.01467356621925242
+          },
+          "test": {
+            "log_size_mae": 0.456959283613575,
+            "log_size_r2": -25.149736014356787
+          }
+        },
+        "permuted_target": {
+          "train": {
+            "log_size_mae": 0.14139266136226042,
+            "log_size_r2": 0.01550166214263693
+          },
+          "val": {
+            "log_size_mae": 0.14231253046944756,
+            "log_size_r2": -0.010027938489837185
+          },
+          "test": {
+            "log_size_mae": 0.45252865090311817,
+            "log_size_r2": -24.7393547475497
+          }
+        }
+      },
+      "decoder_input": {
+        "linear": {
+          "train": {
+            "log_size_mae": 0.11218446795659369,
+            "log_size_r2": 0.2518626526188005
+          },
+          "val": {
+            "log_size_mae": 0.11248974862482815,
+            "log_size_r2": 0.2344748127391345
+          },
+          "test": {
+            "log_size_mae": 0.37519999962417555,
+            "log_size_r2": -17.88799476173943
+          }
+        },
+        "norm_only": {
+          "train": {
+            "log_size_mae": 0.14271306201372072,
+            "log_size_r2": 0.00784572418822893
+          },
+          "val": {
+            "log_size_mae": 0.14194037797603534,
+            "log_size_r2": 0.01467356621925242
+          },
+          "test": {
+            "log_size_mae": 0.456959283613575,
+            "log_size_r2": -25.149736014356787
+          }
+        },
+        "permuted_target": {
+          "train": {
+            "log_size_mae": 0.14197945710573123,
+            "log_size_r2": 0.004593329000509683
+          },
+          "val": {
+            "log_size_mae": 0.14243959924155616,
+            "log_size_r2": -0.010517077154888144
+          },
+          "test": {
+            "log_size_mae": 0.45746591105402756,
+            "log_size_r2": -25.251109064089544
+          }
+        }
+      }
+    },
+    "caveat": "Real-data probes can exploit composition correlated with size; replication is the controlled check."
+  },
+  "replication": {
+    "scope": "Synthetic multiset intervention on frozen node representations; not task accuracy or causal social effects.",
+    "records": [
+      {
+        "base_id": 0,
+        "factor": 1,
+        "stage": "attention",
+        "size": 3,
+        "norm": 3.2200891971588135,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 0,
+        "factor": 1,
+        "stage": "modified",
+        "size": 3,
+        "norm": 3.2200891971588135,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 0,
+        "factor": 1,
+        "stage": "post_norm",
+        "size": 3,
+        "norm": 8.065925598144531,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 0,
+        "factor": 1,
+        "stage": "representation",
+        "size": 3,
+        "norm": 8.305996894836426,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 0,
+        "factor": 1,
+        "stage": "decoder_input",
+        "size": 3,
+        "norm": 8.305996894836426,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 0,
+        "factor": 2,
+        "stage": "attention",
+        "size": 6,
+        "norm": 3.2200891971588135,
+        "l2_from_base": 6.398396124041028e-08,
+        "relative_l2_from_base": 1.987024411675975e-08,
+        "logit_change": 4.76837158203125e-07
+      },
+      {
+        "base_id": 0,
+        "factor": 2,
+        "stage": "modified",
+        "size": 6,
+        "norm": 3.2200891971588135,
+        "l2_from_base": 6.398396124041028e-08,
+        "relative_l2_from_base": 1.987024411675975e-08,
+        "logit_change": 4.76837158203125e-07
+      },
+      {
+        "base_id": 0,
+        "factor": 2,
+        "stage": "post_norm",
+        "size": 6,
+        "norm": 8.065925598144531,
+        "l2_from_base": 1.5273690223693848e-07,
+        "relative_l2_from_base": 1.8936066936703355e-08,
+        "logit_change": 4.76837158203125e-07
+      },
+      {
+        "base_id": 0,
+        "factor": 2,
+        "stage": "representation",
+        "size": 6,
+        "norm": 8.30599594116211,
+        "l2_from_base": 8.948066465563898e-07,
+        "relative_l2_from_base": 1.0773019454290989e-07,
+        "logit_change": 4.76837158203125e-07
+      },
+      {
+        "base_id": 0,
+        "factor": 2,
+        "stage": "decoder_input",
+        "size": 6,
+        "norm": 8.30599594116211,
+        "l2_from_base": 8.948066465563898e-07,
+        "relative_l2_from_base": 1.0773019454290989e-07,
+        "logit_change": 4.76837158203125e-07
+      },
+      {
+        "base_id": 0,
+        "factor": 4,
+        "stage": "attention",
+        "size": 12,
+        "norm": 3.2200891971588135,
+        "l2_from_base": 2.9761548603346455e-07,
+        "relative_l2_from_base": 9.24246066347223e-08,
+        "logit_change": 4.76837158203125e-07
+      },
+      {
+        "base_id": 0,
+        "factor": 4,
+        "stage": "modified",
+        "size": 12,
+        "norm": 3.2200891971588135,
+        "l2_from_base": 2.9761548603346455e-07,
+        "relative_l2_from_base": 9.24246066347223e-08,
+        "logit_change": 4.76837158203125e-07
+      },
+      {
+        "base_id": 0,
+        "factor": 4,
+        "stage": "post_norm",
+        "size": 12,
+        "norm": 8.065924644470215,
+        "l2_from_base": 1.0468165783095174e-06,
+        "relative_l2_from_base": 1.2978257757367828e-07,
+        "logit_change": 4.76837158203125e-07
+      },
+      {
+        "base_id": 0,
+        "factor": 4,
+        "stage": "representation",
+        "size": 12,
+        "norm": 8.30599594116211,
+        "l2_from_base": 1.1891512485817657e-06,
+        "relative_l2_from_base": 1.4316779584078176e-07,
+        "logit_change": 4.76837158203125e-07
+      },
+      {
+        "base_id": 0,
+        "factor": 4,
+        "stage": "decoder_input",
+        "size": 12,
+        "norm": 8.30599594116211,
+        "l2_from_base": 1.1891512485817657e-06,
+        "relative_l2_from_base": 1.4316779584078176e-07,
+        "logit_change": 4.76837158203125e-07
+      },
+      {
+        "base_id": 0,
+        "factor": 8,
+        "stage": "attention",
+        "size": 24,
+        "norm": 3.2200891971588135,
+        "l2_from_base": 6.119129238868481e-07,
+        "relative_l2_from_base": 1.900298087775809e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 0,
+        "factor": 8,
+        "stage": "modified",
+        "size": 24,
+        "norm": 3.2200891971588135,
+        "l2_from_base": 6.119129238868481e-07,
+        "relative_l2_from_base": 1.900298087775809e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 0,
+        "factor": 8,
+        "stage": "post_norm",
+        "size": 24,
+        "norm": 8.065924644470215,
+        "l2_from_base": 1.7471554656367516e-06,
+        "relative_l2_from_base": 2.1660942195467214e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 0,
+        "factor": 8,
+        "stage": "representation",
+        "size": 24,
+        "norm": 8.30599594116211,
+        "l2_from_base": 1.834806653278065e-06,
+        "relative_l2_from_base": 2.2090144113917631e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 0,
+        "factor": 8,
+        "stage": "decoder_input",
+        "size": 24,
+        "norm": 8.30599594116211,
+        "l2_from_base": 1.834806653278065e-06,
+        "relative_l2_from_base": 2.2090144113917631e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 1,
+        "factor": 1,
+        "stage": "attention",
+        "size": 3,
+        "norm": 3.2289950847625732,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 1,
+        "factor": 1,
+        "stage": "modified",
+        "size": 3,
+        "norm": 3.2289950847625732,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 1,
+        "factor": 1,
+        "stage": "post_norm",
+        "size": 3,
+        "norm": 8.081307411193848,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 1,
+        "factor": 1,
+        "stage": "representation",
+        "size": 3,
+        "norm": 8.268566131591797,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 1,
+        "factor": 1,
+        "stage": "decoder_input",
+        "size": 3,
+        "norm": 8.268566131591797,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 1,
+        "factor": 2,
+        "stage": "attention",
+        "size": 6,
+        "norm": 3.2289950847625732,
+        "l2_from_base": 2.639194747189322e-07,
+        "relative_l2_from_base": 8.173424248525407e-08,
+        "logit_change": -1.7881393432617188e-07
+      },
+      {
+        "base_id": 1,
+        "factor": 2,
+        "stage": "modified",
+        "size": 6,
+        "norm": 3.2289950847625732,
+        "l2_from_base": 2.639194747189322e-07,
+        "relative_l2_from_base": 8.173424248525407e-08,
+        "logit_change": -1.7881393432617188e-07
+      },
+      {
+        "base_id": 1,
+        "factor": 2,
+        "stage": "post_norm",
+        "size": 6,
+        "norm": 8.081308364868164,
+        "l2_from_base": 7.982298484421335e-07,
+        "relative_l2_from_base": 9.877484075104803e-08,
+        "logit_change": -1.7881393432617188e-07
+      },
+      {
+        "base_id": 1,
+        "factor": 2,
+        "stage": "representation",
+        "size": 6,
+        "norm": 8.268566131591797,
+        "l2_from_base": 9.523210451334307e-07,
+        "relative_l2_from_base": 1.1517366260704875e-07,
+        "logit_change": -1.7881393432617188e-07
+      },
+      {
+        "base_id": 1,
+        "factor": 2,
+        "stage": "decoder_input",
+        "size": 6,
+        "norm": 8.268566131591797,
+        "l2_from_base": 9.523210451334307e-07,
+        "relative_l2_from_base": 1.1517366260704875e-07,
+        "logit_change": -1.7881393432617188e-07
+      },
+      {
+        "base_id": 1,
+        "factor": 4,
+        "stage": "attention",
+        "size": 12,
+        "norm": 3.2289953231811523,
+        "l2_from_base": 2.4434220335933787e-07,
+        "relative_l2_from_base": 7.567128079699614e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 1,
+        "factor": 4,
+        "stage": "modified",
+        "size": 12,
+        "norm": 3.2289953231811523,
+        "l2_from_base": 2.4434220335933787e-07,
+        "relative_l2_from_base": 7.567128079699614e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 1,
+        "factor": 4,
+        "stage": "post_norm",
+        "size": 12,
+        "norm": 8.081308364868164,
+        "l2_from_base": 7.670299169149075e-07,
+        "relative_l2_from_base": 9.491408548001345e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 1,
+        "factor": 4,
+        "stage": "representation",
+        "size": 12,
+        "norm": 8.268566131591797,
+        "l2_from_base": 8.685885291015438e-07,
+        "relative_l2_from_base": 1.0504705727498731e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 1,
+        "factor": 4,
+        "stage": "decoder_input",
+        "size": 12,
+        "norm": 8.268566131591797,
+        "l2_from_base": 8.685885291015438e-07,
+        "relative_l2_from_base": 1.0504705727498731e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 1,
+        "factor": 8,
+        "stage": "attention",
+        "size": 24,
+        "norm": 3.2289955615997314,
+        "l2_from_base": 6.35601566045807e-07,
+        "relative_l2_from_base": 1.9684190988300543e-07,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 1,
+        "factor": 8,
+        "stage": "modified",
+        "size": 24,
+        "norm": 3.2289955615997314,
+        "l2_from_base": 6.35601566045807e-07,
+        "relative_l2_from_base": 1.9684190988300543e-07,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 1,
+        "factor": 8,
+        "stage": "post_norm",
+        "size": 24,
+        "norm": 8.081307411193848,
+        "l2_from_base": 1.4869135611661477e-06,
+        "relative_l2_from_base": 1.8399418877379503e-07,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 1,
+        "factor": 8,
+        "stage": "representation",
+        "size": 24,
+        "norm": 8.268566131591797,
+        "l2_from_base": 1.6164779026439646e-06,
+        "relative_l2_from_base": 1.9549676721908327e-07,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 1,
+        "factor": 8,
+        "stage": "decoder_input",
+        "size": 24,
+        "norm": 8.268566131591797,
+        "l2_from_base": 1.6164779026439646e-06,
+        "relative_l2_from_base": 1.9549676721908327e-07,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 2,
+        "factor": 1,
+        "stage": "attention",
+        "size": 3,
+        "norm": 3.241015672683716,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 2,
+        "factor": 1,
+        "stage": "modified",
+        "size": 3,
+        "norm": 3.241015672683716,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 2,
+        "factor": 1,
+        "stage": "post_norm",
+        "size": 3,
+        "norm": 8.077207565307617,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 2,
+        "factor": 1,
+        "stage": "representation",
+        "size": 3,
+        "norm": 8.25900650024414,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 2,
+        "factor": 1,
+        "stage": "decoder_input",
+        "size": 3,
+        "norm": 8.25900650024414,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 2,
+        "factor": 2,
+        "stage": "attention",
+        "size": 6,
+        "norm": 3.2410154342651367,
+        "l2_from_base": 1.853144766528203e-07,
+        "relative_l2_from_base": 5.71779033009534e-08,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 2,
+        "factor": 2,
+        "stage": "modified",
+        "size": 6,
+        "norm": 3.2410154342651367,
+        "l2_from_base": 1.853144766528203e-07,
+        "relative_l2_from_base": 5.71779033009534e-08,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 2,
+        "factor": 2,
+        "stage": "post_norm",
+        "size": 6,
+        "norm": 8.0772066116333,
+        "l2_from_base": 6.340986828945461e-07,
+        "relative_l2_from_base": 7.850469074810462e-08,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 2,
+        "factor": 2,
+        "stage": "representation",
+        "size": 6,
+        "norm": 8.25900650024414,
+        "l2_from_base": 8.620920084467798e-07,
+        "relative_l2_from_base": 1.0438204611773472e-07,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 2,
+        "factor": 2,
+        "stage": "decoder_input",
+        "size": 6,
+        "norm": 8.25900650024414,
+        "l2_from_base": 8.620920084467798e-07,
+        "relative_l2_from_base": 1.0438204611773472e-07,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 2,
+        "factor": 4,
+        "stage": "attention",
+        "size": 12,
+        "norm": 3.241015672683716,
+        "l2_from_base": 1.9905536419173586e-07,
+        "relative_l2_from_base": 6.141758746025516e-08,
+        "logit_change": -1.7881393432617188e-07
+      },
+      {
+        "base_id": 2,
+        "factor": 4,
+        "stage": "modified",
+        "size": 12,
+        "norm": 3.241015672683716,
+        "l2_from_base": 1.9905536419173586e-07,
+        "relative_l2_from_base": 6.141758746025516e-08,
+        "logit_change": -1.7881393432617188e-07
+      },
+      {
+        "base_id": 2,
+        "factor": 4,
+        "stage": "post_norm",
+        "size": 12,
+        "norm": 8.077207565307617,
+        "l2_from_base": 5.662441253662109e-07,
+        "relative_l2_from_base": 7.010394398321296e-08,
+        "logit_change": -1.7881393432617188e-07
+      },
+      {
+        "base_id": 2,
+        "factor": 4,
+        "stage": "representation",
+        "size": 12,
+        "norm": 8.25900650024414,
+        "l2_from_base": 8.98943028460053e-07,
+        "relative_l2_from_base": 1.0884396317578648e-07,
+        "logit_change": -1.7881393432617188e-07
+      },
+      {
+        "base_id": 2,
+        "factor": 4,
+        "stage": "decoder_input",
+        "size": 12,
+        "norm": 8.25900650024414,
+        "l2_from_base": 8.98943028460053e-07,
+        "relative_l2_from_base": 1.0884396317578648e-07,
+        "logit_change": -1.7881393432617188e-07
+      },
+      {
+        "base_id": 2,
+        "factor": 8,
+        "stage": "attention",
+        "size": 24,
+        "norm": 3.2410154342651367,
+        "l2_from_base": 6.145656357148255e-07,
+        "relative_l2_from_base": 1.8962130354793771e-07,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 2,
+        "factor": 8,
+        "stage": "modified",
+        "size": 24,
+        "norm": 3.2410154342651367,
+        "l2_from_base": 6.145656357148255e-07,
+        "relative_l2_from_base": 1.8962130354793771e-07,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 2,
+        "factor": 8,
+        "stage": "post_norm",
+        "size": 24,
+        "norm": 8.077207565307617,
+        "l2_from_base": 1.4568270216841483e-06,
+        "relative_l2_from_base": 1.8036270432730817e-07,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 2,
+        "factor": 8,
+        "stage": "representation",
+        "size": 24,
+        "norm": 8.25900650024414,
+        "l2_from_base": 1.4636966625403147e-06,
+        "relative_l2_from_base": 1.7722430811772938e-07,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 2,
+        "factor": 8,
+        "stage": "decoder_input",
+        "size": 24,
+        "norm": 8.25900650024414,
+        "l2_from_base": 1.4636966625403147e-06,
+        "relative_l2_from_base": 1.7722430811772938e-07,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 3,
+        "factor": 1,
+        "stage": "attention",
+        "size": 3,
+        "norm": 3.1575918197631836,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 3,
+        "factor": 1,
+        "stage": "modified",
+        "size": 3,
+        "norm": 3.1575918197631836,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 3,
+        "factor": 1,
+        "stage": "post_norm",
+        "size": 3,
+        "norm": 8.070099830627441,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 3,
+        "factor": 1,
+        "stage": "representation",
+        "size": 3,
+        "norm": 8.282150268554688,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 3,
+        "factor": 1,
+        "stage": "decoder_input",
+        "size": 3,
+        "norm": 8.282150268554688,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 3,
+        "factor": 2,
+        "stage": "attention",
+        "size": 6,
+        "norm": 3.1575915813446045,
+        "l2_from_base": 1.5862039504099812e-07,
+        "relative_l2_from_base": 5.023461113751182e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 3,
+        "factor": 2,
+        "stage": "modified",
+        "size": 6,
+        "norm": 3.1575915813446045,
+        "l2_from_base": 1.5862039504099812e-07,
+        "relative_l2_from_base": 5.023461113751182e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 3,
+        "factor": 2,
+        "stage": "post_norm",
+        "size": 6,
+        "norm": 8.070099830627441,
+        "l2_from_base": 3.500980199078185e-07,
+        "relative_l2_from_base": 4.338211923027302e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 3,
+        "factor": 2,
+        "stage": "representation",
+        "size": 6,
+        "norm": 8.282150268554688,
+        "l2_from_base": 7.713240393059095e-07,
+        "relative_l2_from_base": 9.313089321949519e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 3,
+        "factor": 2,
+        "stage": "decoder_input",
+        "size": 6,
+        "norm": 8.282150268554688,
+        "l2_from_base": 7.713240393059095e-07,
+        "relative_l2_from_base": 9.313089321949519e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 3,
+        "factor": 4,
+        "stage": "attention",
+        "size": 12,
+        "norm": 3.1575915813446045,
+        "l2_from_base": 2.2852917425097985e-07,
+        "relative_l2_from_base": 7.237451171704379e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 3,
+        "factor": 4,
+        "stage": "modified",
+        "size": 12,
+        "norm": 3.1575915813446045,
+        "l2_from_base": 2.2852917425097985e-07,
+        "relative_l2_from_base": 7.237451171704379e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 3,
+        "factor": 4,
+        "stage": "post_norm",
+        "size": 12,
+        "norm": 8.070098876953125,
+        "l2_from_base": 6.646422434641863e-07,
+        "relative_l2_from_base": 8.235861770344854e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 3,
+        "factor": 4,
+        "stage": "representation",
+        "size": 12,
+        "norm": 8.282151222229004,
+        "l2_from_base": 1.1483218713692622e-06,
+        "relative_l2_from_base": 1.386502077593832e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 3,
+        "factor": 4,
+        "stage": "decoder_input",
+        "size": 12,
+        "norm": 8.282151222229004,
+        "l2_from_base": 1.1483218713692622e-06,
+        "relative_l2_from_base": 1.386502077593832e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 3,
+        "factor": 8,
+        "stage": "attention",
+        "size": 24,
+        "norm": 3.1575918197631836,
+        "l2_from_base": 5.537916649700492e-07,
+        "relative_l2_from_base": 1.7538418717322202e-07,
+        "logit_change": -1.1920928955078125e-07
+      },
+      {
+        "base_id": 3,
+        "factor": 8,
+        "stage": "modified",
+        "size": 24,
+        "norm": 3.1575918197631836,
+        "l2_from_base": 5.537916649700492e-07,
+        "relative_l2_from_base": 1.7538418717322202e-07,
+        "logit_change": -1.1920928955078125e-07
+      },
+      {
+        "base_id": 3,
+        "factor": 8,
+        "stage": "post_norm",
+        "size": 24,
+        "norm": 8.070098876953125,
+        "l2_from_base": 1.618204350961605e-06,
+        "relative_l2_from_base": 2.0051849958235834e-07,
+        "logit_change": -1.1920928955078125e-07
+      },
+      {
+        "base_id": 3,
+        "factor": 8,
+        "stage": "representation",
+        "size": 24,
+        "norm": 8.282150268554688,
+        "l2_from_base": 1.6418939594586845e-06,
+        "relative_l2_from_base": 1.9824489072561846e-07,
+        "logit_change": -1.1920928955078125e-07
+      },
+      {
+        "base_id": 3,
+        "factor": 8,
+        "stage": "decoder_input",
+        "size": 24,
+        "norm": 8.282150268554688,
+        "l2_from_base": 1.6418939594586845e-06,
+        "relative_l2_from_base": 1.9824489072561846e-07,
+        "logit_change": -1.1920928955078125e-07
+      },
+      {
+        "base_id": 4,
+        "factor": 1,
+        "stage": "attention",
+        "size": 3,
+        "norm": 3.2980880737304688,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 4,
+        "factor": 1,
+        "stage": "modified",
+        "size": 3,
+        "norm": 3.2980880737304688,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 4,
+        "factor": 1,
+        "stage": "post_norm",
+        "size": 3,
+        "norm": 8.06153392791748,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 4,
+        "factor": 1,
+        "stage": "representation",
+        "size": 3,
+        "norm": 8.31090259552002,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 4,
+        "factor": 1,
+        "stage": "decoder_input",
+        "size": 3,
+        "norm": 8.31090259552002,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 4,
+        "factor": 2,
+        "stage": "attention",
+        "size": 6,
+        "norm": 3.2980880737304688,
+        "l2_from_base": 1.5553924015421217e-07,
+        "relative_l2_from_base": 4.7160426674963674e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 4,
+        "factor": 2,
+        "stage": "modified",
+        "size": 6,
+        "norm": 3.2980880737304688,
+        "l2_from_base": 1.5553924015421217e-07,
+        "relative_l2_from_base": 4.7160426674963674e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 4,
+        "factor": 2,
+        "stage": "post_norm",
+        "size": 6,
+        "norm": 8.06153392791748,
+        "l2_from_base": 8.1088865044876e-07,
+        "relative_l2_from_base": 1.005873926374079e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 4,
+        "factor": 2,
+        "stage": "representation",
+        "size": 6,
+        "norm": 8.31090259552002,
+        "l2_from_base": 8.546558092348278e-07,
+        "relative_l2_from_base": 1.0283550011536136e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 4,
+        "factor": 2,
+        "stage": "decoder_input",
+        "size": 6,
+        "norm": 8.31090259552002,
+        "l2_from_base": 8.546558092348278e-07,
+        "relative_l2_from_base": 1.0283550011536136e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 4,
+        "factor": 4,
+        "stage": "attention",
+        "size": 12,
+        "norm": 3.2980880737304688,
+        "l2_from_base": 2.4232289774772653e-07,
+        "relative_l2_from_base": 7.347374975097409e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 4,
+        "factor": 4,
+        "stage": "modified",
+        "size": 12,
+        "norm": 3.2980880737304688,
+        "l2_from_base": 2.4232289774772653e-07,
+        "relative_l2_from_base": 7.347374975097409e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 4,
+        "factor": 4,
+        "stage": "post_norm",
+        "size": 12,
+        "norm": 8.06153392791748,
+        "l2_from_base": 5.761042984886444e-07,
+        "relative_l2_from_base": 7.146336145069654e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 4,
+        "factor": 4,
+        "stage": "representation",
+        "size": 12,
+        "norm": 8.310903549194336,
+        "l2_from_base": 7.784881859151938e-07,
+        "relative_l2_from_base": 9.367071385213421e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 4,
+        "factor": 4,
+        "stage": "decoder_input",
+        "size": 12,
+        "norm": 8.310903549194336,
+        "l2_from_base": 7.784881859151938e-07,
+        "relative_l2_from_base": 9.367071385213421e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 4,
+        "factor": 8,
+        "stage": "attention",
+        "size": 24,
+        "norm": 3.2980880737304688,
+        "l2_from_base": 5.414125325842178e-07,
+        "relative_l2_from_base": 1.6415951620274427e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 4,
+        "factor": 8,
+        "stage": "modified",
+        "size": 24,
+        "norm": 3.2980880737304688,
+        "l2_from_base": 5.414125325842178e-07,
+        "relative_l2_from_base": 1.6415951620274427e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 4,
+        "factor": 8,
+        "stage": "post_norm",
+        "size": 24,
+        "norm": 8.06153392791748,
+        "l2_from_base": 1.3016722277825465e-06,
+        "relative_l2_from_base": 1.6146707082498324e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 4,
+        "factor": 8,
+        "stage": "representation",
+        "size": 24,
+        "norm": 8.310903549194336,
+        "l2_from_base": 1.4796277127970825e-06,
+        "relative_l2_from_base": 1.7803453999931662e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 4,
+        "factor": 8,
+        "stage": "decoder_input",
+        "size": 24,
+        "norm": 8.310903549194336,
+        "l2_from_base": 1.4796277127970825e-06,
+        "relative_l2_from_base": 1.7803453999931662e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 5,
+        "factor": 1,
+        "stage": "attention",
+        "size": 3,
+        "norm": 3.286644220352173,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 5,
+        "factor": 1,
+        "stage": "modified",
+        "size": 3,
+        "norm": 3.286644220352173,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 5,
+        "factor": 1,
+        "stage": "post_norm",
+        "size": 3,
+        "norm": 8.060443878173828,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 5,
+        "factor": 1,
+        "stage": "representation",
+        "size": 3,
+        "norm": 8.290339469909668,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 5,
+        "factor": 1,
+        "stage": "decoder_input",
+        "size": 3,
+        "norm": 8.290339469909668,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 5,
+        "factor": 2,
+        "stage": "attention",
+        "size": 6,
+        "norm": 3.286644220352173,
+        "l2_from_base": 1.5377824524875905e-07,
+        "relative_l2_from_base": 4.6788830587729535e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 5,
+        "factor": 2,
+        "stage": "modified",
+        "size": 6,
+        "norm": 3.286644220352173,
+        "l2_from_base": 1.5377824524875905e-07,
+        "relative_l2_from_base": 4.6788830587729535e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 5,
+        "factor": 2,
+        "stage": "post_norm",
+        "size": 6,
+        "norm": 8.060443878173828,
+        "l2_from_base": 3.0085035973570484e-07,
+        "relative_l2_from_base": 3.732429121328096e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 5,
+        "factor": 2,
+        "stage": "representation",
+        "size": 6,
+        "norm": 8.290339469909668,
+        "l2_from_base": 7.792382348270621e-07,
+        "relative_l2_from_base": 9.399352762784474e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 5,
+        "factor": 2,
+        "stage": "decoder_input",
+        "size": 6,
+        "norm": 8.290339469909668,
+        "l2_from_base": 7.792382348270621e-07,
+        "relative_l2_from_base": 9.399352762784474e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 5,
+        "factor": 4,
+        "stage": "attention",
+        "size": 12,
+        "norm": 3.286644220352173,
+        "l2_from_base": 1.9278152763035905e-07,
+        "relative_l2_from_base": 5.865603824872778e-08,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 5,
+        "factor": 4,
+        "stage": "modified",
+        "size": 12,
+        "norm": 3.286644220352173,
+        "l2_from_base": 1.9278152763035905e-07,
+        "relative_l2_from_base": 5.865603824872778e-08,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 5,
+        "factor": 4,
+        "stage": "post_norm",
+        "size": 12,
+        "norm": 8.060443878173828,
+        "l2_from_base": 4.0706362369746785e-07,
+        "relative_l2_from_base": 5.050139151308031e-08,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 5,
+        "factor": 4,
+        "stage": "representation",
+        "size": 12,
+        "norm": 8.290339469909668,
+        "l2_from_base": 6.393846661012503e-07,
+        "relative_l2_from_base": 7.71240635799586e-08,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 5,
+        "factor": 4,
+        "stage": "decoder_input",
+        "size": 12,
+        "norm": 8.290339469909668,
+        "l2_from_base": 6.393846661012503e-07,
+        "relative_l2_from_base": 7.71240635799586e-08,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 5,
+        "factor": 8,
+        "stage": "attention",
+        "size": 24,
+        "norm": 3.286644458770752,
+        "l2_from_base": 5.711825110665814e-07,
+        "relative_l2_from_base": 1.7378897609887645e-07,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 5,
+        "factor": 8,
+        "stage": "modified",
+        "size": 24,
+        "norm": 3.286644458770752,
+        "l2_from_base": 5.711825110665814e-07,
+        "relative_l2_from_base": 1.7378897609887645e-07,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 5,
+        "factor": 8,
+        "stage": "post_norm",
+        "size": 24,
+        "norm": 8.060443878173828,
+        "l2_from_base": 1.3785549981548684e-06,
+        "relative_l2_from_base": 1.7102718175010523e-07,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 5,
+        "factor": 8,
+        "stage": "representation",
+        "size": 24,
+        "norm": 8.290339469909668,
+        "l2_from_base": 1.4843355984339723e-06,
+        "relative_l2_from_base": 1.79044008064011e-07,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 5,
+        "factor": 8,
+        "stage": "decoder_input",
+        "size": 24,
+        "norm": 8.290339469909668,
+        "l2_from_base": 1.4843355984339723e-06,
+        "relative_l2_from_base": 1.79044008064011e-07,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 6,
+        "factor": 1,
+        "stage": "attention",
+        "size": 3,
+        "norm": 3.523155927658081,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 6,
+        "factor": 1,
+        "stage": "modified",
+        "size": 3,
+        "norm": 3.523155927658081,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 6,
+        "factor": 1,
+        "stage": "post_norm",
+        "size": 3,
+        "norm": 8.074199676513672,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 6,
+        "factor": 1,
+        "stage": "representation",
+        "size": 3,
+        "norm": 8.273653984069824,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 6,
+        "factor": 1,
+        "stage": "decoder_input",
+        "size": 3,
+        "norm": 8.273653984069824,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 6,
+        "factor": 2,
+        "stage": "attention",
+        "size": 6,
+        "norm": 3.523155927658081,
+        "l2_from_base": 2.6207797532151744e-07,
+        "relative_l2_from_base": 7.438728033548614e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 6,
+        "factor": 2,
+        "stage": "modified",
+        "size": 6,
+        "norm": 3.523155927658081,
+        "l2_from_base": 2.6207797532151744e-07,
+        "relative_l2_from_base": 7.438728033548614e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 6,
+        "factor": 2,
+        "stage": "post_norm",
+        "size": 6,
+        "norm": 8.074200630187988,
+        "l2_from_base": 7.746454571133654e-07,
+        "relative_l2_from_base": 9.594083394404151e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 6,
+        "factor": 2,
+        "stage": "representation",
+        "size": 6,
+        "norm": 8.273653984069824,
+        "l2_from_base": 8.750155870984599e-07,
+        "relative_l2_from_base": 1.0575926978617645e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 6,
+        "factor": 2,
+        "stage": "decoder_input",
+        "size": 6,
+        "norm": 8.273653984069824,
+        "l2_from_base": 8.750155870984599e-07,
+        "relative_l2_from_base": 1.0575926978617645e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 6,
+        "factor": 4,
+        "stage": "attention",
+        "size": 12,
+        "norm": 3.523155927658081,
+        "l2_from_base": 2.94287616497968e-07,
+        "relative_l2_from_base": 8.352954949941704e-08,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 6,
+        "factor": 4,
+        "stage": "modified",
+        "size": 12,
+        "norm": 3.523155927658081,
+        "l2_from_base": 2.94287616497968e-07,
+        "relative_l2_from_base": 8.352954949941704e-08,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 6,
+        "factor": 4,
+        "stage": "post_norm",
+        "size": 12,
+        "norm": 8.074200630187988,
+        "l2_from_base": 7.72321925524011e-07,
+        "relative_l2_from_base": 9.565306413605867e-08,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 6,
+        "factor": 4,
+        "stage": "representation",
+        "size": 12,
+        "norm": 8.273653984069824,
+        "l2_from_base": 9.059121452992258e-07,
+        "relative_l2_from_base": 1.0949359818823723e-07,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 6,
+        "factor": 4,
+        "stage": "decoder_input",
+        "size": 12,
+        "norm": 8.273653984069824,
+        "l2_from_base": 9.059121452992258e-07,
+        "relative_l2_from_base": 1.0949359818823723e-07,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 6,
+        "factor": 8,
+        "stage": "attention",
+        "size": 24,
+        "norm": 3.523155927658081,
+        "l2_from_base": 6.436682724597631e-07,
+        "relative_l2_from_base": 1.8269651036462164e-07,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 6,
+        "factor": 8,
+        "stage": "modified",
+        "size": 24,
+        "norm": 3.523155927658081,
+        "l2_from_base": 6.436682724597631e-07,
+        "relative_l2_from_base": 1.8269651036462164e-07,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 6,
+        "factor": 8,
+        "stage": "post_norm",
+        "size": 24,
+        "norm": 8.074199676513672,
+        "l2_from_base": 1.4960461385271628e-06,
+        "relative_l2_from_base": 1.8528723444433126e-07,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 6,
+        "factor": 8,
+        "stage": "representation",
+        "size": 24,
+        "norm": 8.273653030395508,
+        "l2_from_base": 1.711312052066205e-06,
+        "relative_l2_from_base": 2.0683872037352558e-07,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 6,
+        "factor": 8,
+        "stage": "decoder_input",
+        "size": 24,
+        "norm": 8.273653030395508,
+        "l2_from_base": 1.711312052066205e-06,
+        "relative_l2_from_base": 2.0683872037352558e-07,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 7,
+        "factor": 1,
+        "stage": "attention",
+        "size": 3,
+        "norm": 4.49965763092041,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 7,
+        "factor": 1,
+        "stage": "modified",
+        "size": 3,
+        "norm": 4.49965763092041,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 7,
+        "factor": 1,
+        "stage": "post_norm",
+        "size": 3,
+        "norm": 8.066346168518066,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 7,
+        "factor": 1,
+        "stage": "representation",
+        "size": 3,
+        "norm": 8.314630508422852,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 7,
+        "factor": 1,
+        "stage": "decoder_input",
+        "size": 3,
+        "norm": 8.314630508422852,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 7,
+        "factor": 2,
+        "stage": "attention",
+        "size": 6,
+        "norm": 4.49965763092041,
+        "l2_from_base": 5.084816621092614e-07,
+        "relative_l2_from_base": 1.1300452484874768e-07,
+        "logit_change": 9.5367431640625e-07
+      },
+      {
+        "base_id": 7,
+        "factor": 2,
+        "stage": "modified",
+        "size": 6,
+        "norm": 4.49965763092041,
+        "l2_from_base": 5.084816621092614e-07,
+        "relative_l2_from_base": 1.1300452484874768e-07,
+        "logit_change": 9.5367431640625e-07
+      },
+      {
+        "base_id": 7,
+        "factor": 2,
+        "stage": "post_norm",
+        "size": 6,
+        "norm": 8.066346168518066,
+        "l2_from_base": 1.0097809308717842e-06,
+        "relative_l2_from_base": 1.2518442815689923e-07,
+        "logit_change": 9.5367431640625e-07
+      },
+      {
+        "base_id": 7,
+        "factor": 2,
+        "stage": "representation",
+        "size": 6,
+        "norm": 8.314629554748535,
+        "l2_from_base": 1.2487581670939107e-06,
+        "relative_l2_from_base": 1.5018805754607456e-07,
+        "logit_change": 9.5367431640625e-07
+      },
+      {
+        "base_id": 7,
+        "factor": 2,
+        "stage": "decoder_input",
+        "size": 6,
+        "norm": 8.314629554748535,
+        "l2_from_base": 1.2487581670939107e-06,
+        "relative_l2_from_base": 1.5018805754607456e-07,
+        "logit_change": 9.5367431640625e-07
+      },
+      {
+        "base_id": 7,
+        "factor": 4,
+        "stage": "attention",
+        "size": 12,
+        "norm": 4.499658107757568,
+        "l2_from_base": 7.19682816452405e-07,
+        "relative_l2_from_base": 1.5994167767985346e-07,
+        "logit_change": 9.5367431640625e-07
+      },
+      {
+        "base_id": 7,
+        "factor": 4,
+        "stage": "modified",
+        "size": 12,
+        "norm": 4.499658107757568,
+        "l2_from_base": 7.19682816452405e-07,
+        "relative_l2_from_base": 1.5994167767985346e-07,
+        "logit_change": 9.5367431640625e-07
+      },
+      {
+        "base_id": 7,
+        "factor": 4,
+        "stage": "post_norm",
+        "size": 12,
+        "norm": 8.066346168518066,
+        "l2_from_base": 1.3430436638373067e-06,
+        "relative_l2_from_base": 1.664996318595513e-07,
+        "logit_change": 9.5367431640625e-07
+      },
+      {
+        "base_id": 7,
+        "factor": 4,
+        "stage": "representation",
+        "size": 12,
+        "norm": 8.314630508422852,
+        "l2_from_base": 1.3101687272865092e-06,
+        "relative_l2_from_base": 1.5757389348891593e-07,
+        "logit_change": 9.5367431640625e-07
+      },
+      {
+        "base_id": 7,
+        "factor": 4,
+        "stage": "decoder_input",
+        "size": 12,
+        "norm": 8.314630508422852,
+        "l2_from_base": 1.3101687272865092e-06,
+        "relative_l2_from_base": 1.5757389348891593e-07,
+        "logit_change": 9.5367431640625e-07
+      },
+      {
+        "base_id": 7,
+        "factor": 8,
+        "stage": "attention",
+        "size": 24,
+        "norm": 4.499658107757568,
+        "l2_from_base": 1.2955885040355497e-06,
+        "relative_l2_from_base": 2.8793047590625065e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 7,
+        "factor": 8,
+        "stage": "modified",
+        "size": 24,
+        "norm": 4.499658107757568,
+        "l2_from_base": 1.2955885040355497e-06,
+        "relative_l2_from_base": 2.8793047590625065e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 7,
+        "factor": 8,
+        "stage": "post_norm",
+        "size": 24,
+        "norm": 8.066346168518066,
+        "l2_from_base": 2.296875891261152e-06,
+        "relative_l2_from_base": 2.847479834144906e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 7,
+        "factor": 8,
+        "stage": "representation",
+        "size": 24,
+        "norm": 8.314630508422852,
+        "l2_from_base": 2.091914211632684e-06,
+        "relative_l2_from_base": 2.5159437200272805e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 7,
+        "factor": 8,
+        "stage": "decoder_input",
+        "size": 24,
+        "norm": 8.314630508422852,
+        "l2_from_base": 2.091914211632684e-06,
+        "relative_l2_from_base": 2.5159437200272805e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 8,
+        "factor": 1,
+        "stage": "attention",
+        "size": 3,
+        "norm": 3.7407357692718506,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 8,
+        "factor": 1,
+        "stage": "modified",
+        "size": 3,
+        "norm": 3.7407357692718506,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 8,
+        "factor": 1,
+        "stage": "post_norm",
+        "size": 3,
+        "norm": 8.045297622680664,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 8,
+        "factor": 1,
+        "stage": "representation",
+        "size": 3,
+        "norm": 8.318902015686035,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 8,
+        "factor": 1,
+        "stage": "decoder_input",
+        "size": 3,
+        "norm": 8.318902015686035,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 8,
+        "factor": 2,
+        "stage": "attention",
+        "size": 6,
+        "norm": 3.7407357692718506,
+        "l2_from_base": 1.50874981841298e-07,
+        "relative_l2_from_base": 4.033297074101938e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 8,
+        "factor": 2,
+        "stage": "modified",
+        "size": 6,
+        "norm": 3.7407357692718506,
+        "l2_from_base": 1.50874981841298e-07,
+        "relative_l2_from_base": 4.033297074101938e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 8,
+        "factor": 2,
+        "stage": "post_norm",
+        "size": 6,
+        "norm": 8.045297622680664,
+        "l2_from_base": 4.203815251457854e-07,
+        "relative_l2_from_base": 5.225183130619371e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 8,
+        "factor": 2,
+        "stage": "representation",
+        "size": 6,
+        "norm": 8.318902015686035,
+        "l2_from_base": 5.962908744550077e-07,
+        "relative_l2_from_base": 7.16790324872818e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 8,
+        "factor": 2,
+        "stage": "decoder_input",
+        "size": 6,
+        "norm": 8.318902015686035,
+        "l2_from_base": 5.962908744550077e-07,
+        "relative_l2_from_base": 7.16790324872818e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 8,
+        "factor": 4,
+        "stage": "attention",
+        "size": 12,
+        "norm": 3.7407357692718506,
+        "l2_from_base": 1.934843680828635e-07,
+        "relative_l2_from_base": 5.172361383642965e-08,
+        "logit_change": -4.76837158203125e-07
+      },
+      {
+        "base_id": 8,
+        "factor": 4,
+        "stage": "modified",
+        "size": 12,
+        "norm": 3.7407357692718506,
+        "l2_from_base": 1.934843680828635e-07,
+        "relative_l2_from_base": 5.172361383642965e-08,
+        "logit_change": -4.76837158203125e-07
+      },
+      {
+        "base_id": 8,
+        "factor": 4,
+        "stage": "post_norm",
+        "size": 12,
+        "norm": 8.045297622680664,
+        "l2_from_base": 5.087001682113623e-07,
+        "relative_l2_from_base": 6.322949985815285e-08,
+        "logit_change": -4.76837158203125e-07
+      },
+      {
+        "base_id": 8,
+        "factor": 4,
+        "stage": "representation",
+        "size": 12,
+        "norm": 8.318902015686035,
+        "l2_from_base": 6.051160426068236e-07,
+        "relative_l2_from_base": 7.27398941080537e-08,
+        "logit_change": -4.76837158203125e-07
+      },
+      {
+        "base_id": 8,
+        "factor": 4,
+        "stage": "decoder_input",
+        "size": 12,
+        "norm": 8.318902015686035,
+        "l2_from_base": 6.051160426068236e-07,
+        "relative_l2_from_base": 7.27398941080537e-08,
+        "logit_change": -4.76837158203125e-07
+      },
+      {
+        "base_id": 8,
+        "factor": 8,
+        "stage": "attention",
+        "size": 24,
+        "norm": 3.740736246109009,
+        "l2_from_base": 5.726815857087786e-07,
+        "relative_l2_from_base": 1.5309329626234103e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 8,
+        "factor": 8,
+        "stage": "modified",
+        "size": 24,
+        "norm": 3.740736246109009,
+        "l2_from_base": 5.726815857087786e-07,
+        "relative_l2_from_base": 1.5309329626234103e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 8,
+        "factor": 8,
+        "stage": "post_norm",
+        "size": 24,
+        "norm": 8.04529857635498,
+        "l2_from_base": 1.2585476270032814e-06,
+        "relative_l2_from_base": 1.5643270501186635e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 8,
+        "factor": 8,
+        "stage": "representation",
+        "size": 24,
+        "norm": 8.318902015686035,
+        "l2_from_base": 1.3021954146097414e-06,
+        "relative_l2_from_base": 1.5653452578590077e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 8,
+        "factor": 8,
+        "stage": "decoder_input",
+        "size": 24,
+        "norm": 8.318902015686035,
+        "l2_from_base": 1.3021954146097414e-06,
+        "relative_l2_from_base": 1.5653452578590077e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 9,
+        "factor": 1,
+        "stage": "attention",
+        "size": 3,
+        "norm": 3.29295015335083,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 9,
+        "factor": 1,
+        "stage": "modified",
+        "size": 3,
+        "norm": 3.29295015335083,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 9,
+        "factor": 1,
+        "stage": "post_norm",
+        "size": 3,
+        "norm": 8.091012001037598,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 9,
+        "factor": 1,
+        "stage": "representation",
+        "size": 3,
+        "norm": 8.264941215515137,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 9,
+        "factor": 1,
+        "stage": "decoder_input",
+        "size": 3,
+        "norm": 8.264941215515137,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 9,
+        "factor": 2,
+        "stage": "attention",
+        "size": 6,
+        "norm": 3.292950391769409,
+        "l2_from_base": 1.9648754800982715e-07,
+        "relative_l2_from_base": 5.966915495037028e-08,
+        "logit_change": -8.940696716308594e-08
+      },
+      {
+        "base_id": 9,
+        "factor": 2,
+        "stage": "modified",
+        "size": 6,
+        "norm": 3.292950391769409,
+        "l2_from_base": 1.9648754800982715e-07,
+        "relative_l2_from_base": 5.966915495037028e-08,
+        "logit_change": -8.940696716308594e-08
+      },
+      {
+        "base_id": 9,
+        "factor": 2,
+        "stage": "post_norm",
+        "size": 6,
+        "norm": 8.091012954711914,
+        "l2_from_base": 5.319213869370287e-07,
+        "relative_l2_from_base": 6.574225608346751e-08,
+        "logit_change": -8.940696716308594e-08
+      },
+      {
+        "base_id": 9,
+        "factor": 2,
+        "stage": "representation",
+        "size": 6,
+        "norm": 8.264941215515137,
+        "l2_from_base": 5.593489618149761e-07,
+        "relative_l2_from_base": 6.767730553747242e-08,
+        "logit_change": -8.940696716308594e-08
+      },
+      {
+        "base_id": 9,
+        "factor": 2,
+        "stage": "decoder_input",
+        "size": 6,
+        "norm": 8.264941215515137,
+        "l2_from_base": 5.593489618149761e-07,
+        "relative_l2_from_base": 6.767730553747242e-08,
+        "logit_change": -8.940696716308594e-08
+      },
+      {
+        "base_id": 9,
+        "factor": 4,
+        "stage": "attention",
+        "size": 12,
+        "norm": 3.29295015335083,
+        "l2_from_base": 1.9778494220190623e-07,
+        "relative_l2_from_base": 6.00631437919219e-08,
+        "logit_change": -5.960464477539063e-08
+      },
+      {
+        "base_id": 9,
+        "factor": 4,
+        "stage": "modified",
+        "size": 12,
+        "norm": 3.29295015335083,
+        "l2_from_base": 1.9778494220190623e-07,
+        "relative_l2_from_base": 6.00631437919219e-08,
+        "logit_change": -5.960464477539063e-08
+      },
+      {
+        "base_id": 9,
+        "factor": 4,
+        "stage": "post_norm",
+        "size": 12,
+        "norm": 8.091012001037598,
+        "l2_from_base": 5.620807428385888e-07,
+        "relative_l2_from_base": 6.946977038069235e-08,
+        "logit_change": -5.960464477539063e-08
+      },
+      {
+        "base_id": 9,
+        "factor": 4,
+        "stage": "representation",
+        "size": 12,
+        "norm": 8.264941215515137,
+        "l2_from_base": 8.171754757313465e-07,
+        "relative_l2_from_base": 9.887251195550562e-08,
+        "logit_change": -5.960464477539063e-08
+      },
+      {
+        "base_id": 9,
+        "factor": 4,
+        "stage": "decoder_input",
+        "size": 12,
+        "norm": 8.264941215515137,
+        "l2_from_base": 8.171754757313465e-07,
+        "relative_l2_from_base": 9.887251195550562e-08,
+        "logit_change": -5.960464477539063e-08
+      },
+      {
+        "base_id": 9,
+        "factor": 8,
+        "stage": "attention",
+        "size": 24,
+        "norm": 3.29295015335083,
+        "l2_from_base": 4.884509507974144e-07,
+        "relative_l2_from_base": 1.483323188722352e-07,
+        "logit_change": -1.7881393432617188e-07
+      },
+      {
+        "base_id": 9,
+        "factor": 8,
+        "stage": "modified",
+        "size": 24,
+        "norm": 3.29295015335083,
+        "l2_from_base": 4.884509507974144e-07,
+        "relative_l2_from_base": 1.483323188722352e-07,
+        "logit_change": -1.7881393432617188e-07
+      },
+      {
+        "base_id": 9,
+        "factor": 8,
+        "stage": "post_norm",
+        "size": 24,
+        "norm": 8.091012001037598,
+        "l2_from_base": 1.2182126738480292e-06,
+        "relative_l2_from_base": 1.505636930687615e-07,
+        "logit_change": -1.7881393432617188e-07
+      },
+      {
+        "base_id": 9,
+        "factor": 8,
+        "stage": "representation",
+        "size": 24,
+        "norm": 8.264941215515137,
+        "l2_from_base": 1.422879222445772e-06,
+        "relative_l2_from_base": 1.7215842262885417e-07,
+        "logit_change": -1.7881393432617188e-07
+      },
+      {
+        "base_id": 9,
+        "factor": 8,
+        "stage": "decoder_input",
+        "size": 24,
+        "norm": 8.264941215515137,
+        "l2_from_base": 1.422879222445772e-06,
+        "relative_l2_from_base": 1.7215842262885417e-07,
+        "logit_change": -1.7881393432617188e-07
+      },
+      {
+        "base_id": 10,
+        "factor": 1,
+        "stage": "attention",
+        "size": 3,
+        "norm": 3.1115012168884277,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 10,
+        "factor": 1,
+        "stage": "modified",
+        "size": 3,
+        "norm": 3.1115012168884277,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 10,
+        "factor": 1,
+        "stage": "post_norm",
+        "size": 3,
+        "norm": 8.059307098388672,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 10,
+        "factor": 1,
+        "stage": "representation",
+        "size": 3,
+        "norm": 8.296467781066895,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 10,
+        "factor": 1,
+        "stage": "decoder_input",
+        "size": 3,
+        "norm": 8.296467781066895,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 10,
+        "factor": 2,
+        "stage": "attention",
+        "size": 6,
+        "norm": 3.111501455307007,
+        "l2_from_base": 2.0306517001245084e-07,
+        "relative_l2_from_base": 6.526276763452188e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 10,
+        "factor": 2,
+        "stage": "modified",
+        "size": 6,
+        "norm": 3.111501455307007,
+        "l2_from_base": 2.0306517001245084e-07,
+        "relative_l2_from_base": 6.526276763452188e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 10,
+        "factor": 2,
+        "stage": "post_norm",
+        "size": 6,
+        "norm": 8.059306144714355,
+        "l2_from_base": 7.914398452157911e-07,
+        "relative_l2_from_base": 9.820197277576881e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 10,
+        "factor": 2,
+        "stage": "representation",
+        "size": 6,
+        "norm": 8.296467781066895,
+        "l2_from_base": 1.1327180118314573e-06,
+        "relative_l2_from_base": 1.3653014718784107e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 10,
+        "factor": 2,
+        "stage": "decoder_input",
+        "size": 6,
+        "norm": 8.296467781066895,
+        "l2_from_base": 1.1327180118314573e-06,
+        "relative_l2_from_base": 1.3653014718784107e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 10,
+        "factor": 4,
+        "stage": "attention",
+        "size": 12,
+        "norm": 3.111501693725586,
+        "l2_from_base": 3.5314690194354625e-07,
+        "relative_l2_from_base": 1.1349727202514259e-07,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 10,
+        "factor": 4,
+        "stage": "modified",
+        "size": 12,
+        "norm": 3.111501693725586,
+        "l2_from_base": 3.5314690194354625e-07,
+        "relative_l2_from_base": 1.1349727202514259e-07,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 10,
+        "factor": 4,
+        "stage": "post_norm",
+        "size": 12,
+        "norm": 8.059306144714355,
+        "l2_from_base": 9.202232718052983e-07,
+        "relative_l2_from_base": 1.1418143941455128e-07,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 10,
+        "factor": 4,
+        "stage": "representation",
+        "size": 12,
+        "norm": 8.296467781066895,
+        "l2_from_base": 1.212875190503837e-06,
+        "relative_l2_from_base": 1.4619175203733903e-07,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 10,
+        "factor": 4,
+        "stage": "decoder_input",
+        "size": 12,
+        "norm": 8.296467781066895,
+        "l2_from_base": 1.212875190503837e-06,
+        "relative_l2_from_base": 1.4619175203733903e-07,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 10,
+        "factor": 8,
+        "stage": "attention",
+        "size": 24,
+        "norm": 3.1115012168884277,
+        "l2_from_base": 6.972541655159148e-07,
+        "relative_l2_from_base": 2.2408930533401872e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 10,
+        "factor": 8,
+        "stage": "modified",
+        "size": 24,
+        "norm": 3.1115012168884277,
+        "l2_from_base": 6.972541655159148e-07,
+        "relative_l2_from_base": 2.2408930533401872e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 10,
+        "factor": 8,
+        "stage": "post_norm",
+        "size": 24,
+        "norm": 8.059306144714355,
+        "l2_from_base": 1.9969015738752205e-06,
+        "relative_l2_from_base": 2.47775830075625e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 10,
+        "factor": 8,
+        "stage": "representation",
+        "size": 24,
+        "norm": 8.296467781066895,
+        "l2_from_base": 2.245410087198252e-06,
+        "relative_l2_from_base": 2.706465238588862e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 10,
+        "factor": 8,
+        "stage": "decoder_input",
+        "size": 24,
+        "norm": 8.296467781066895,
+        "l2_from_base": 2.245410087198252e-06,
+        "relative_l2_from_base": 2.706465238588862e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 11,
+        "factor": 1,
+        "stage": "attention",
+        "size": 3,
+        "norm": 4.6025238037109375,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 11,
+        "factor": 1,
+        "stage": "modified",
+        "size": 3,
+        "norm": 4.6025238037109375,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 11,
+        "factor": 1,
+        "stage": "post_norm",
+        "size": 3,
+        "norm": 8.064571380615234,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 11,
+        "factor": 1,
+        "stage": "representation",
+        "size": 3,
+        "norm": 8.315486907958984,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 11,
+        "factor": 1,
+        "stage": "decoder_input",
+        "size": 3,
+        "norm": 8.315486907958984,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 11,
+        "factor": 2,
+        "stage": "attention",
+        "size": 6,
+        "norm": 4.6025238037109375,
+        "l2_from_base": 1.2310378849633707e-07,
+        "relative_l2_from_base": 2.674701882199315e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 11,
+        "factor": 2,
+        "stage": "modified",
+        "size": 6,
+        "norm": 4.6025238037109375,
+        "l2_from_base": 1.2310378849633707e-07,
+        "relative_l2_from_base": 2.674701882199315e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 11,
+        "factor": 2,
+        "stage": "post_norm",
+        "size": 6,
+        "norm": 8.064571380615234,
+        "l2_from_base": 2.9540402124439424e-07,
+        "relative_l2_from_base": 3.662984937591318e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 11,
+        "factor": 2,
+        "stage": "representation",
+        "size": 6,
+        "norm": 8.315486907958984,
+        "l2_from_base": 2.8892623049614485e-07,
+        "relative_l2_from_base": 3.474555754223729e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 11,
+        "factor": 2,
+        "stage": "decoder_input",
+        "size": 6,
+        "norm": 8.315486907958984,
+        "l2_from_base": 2.8892623049614485e-07,
+        "relative_l2_from_base": 3.474555754223729e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 11,
+        "factor": 4,
+        "stage": "attention",
+        "size": 12,
+        "norm": 4.6025238037109375,
+        "l2_from_base": 4.357365526175272e-07,
+        "relative_l2_from_base": 9.467339623370208e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 11,
+        "factor": 4,
+        "stage": "modified",
+        "size": 12,
+        "norm": 4.6025238037109375,
+        "l2_from_base": 4.357365526175272e-07,
+        "relative_l2_from_base": 9.467339623370208e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 11,
+        "factor": 4,
+        "stage": "post_norm",
+        "size": 12,
+        "norm": 8.064571380615234,
+        "l2_from_base": 8.256457135757955e-07,
+        "relative_l2_from_base": 1.0237936720614016e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 11,
+        "factor": 4,
+        "stage": "representation",
+        "size": 12,
+        "norm": 8.315486907958984,
+        "l2_from_base": 9.61041109803773e-07,
+        "relative_l2_from_base": 1.155724405066394e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 11,
+        "factor": 4,
+        "stage": "decoder_input",
+        "size": 12,
+        "norm": 8.315486907958984,
+        "l2_from_base": 9.61041109803773e-07,
+        "relative_l2_from_base": 1.155724405066394e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 11,
+        "factor": 8,
+        "stage": "attention",
+        "size": 24,
+        "norm": 4.6025238037109375,
+        "l2_from_base": 7.70212238876411e-07,
+        "relative_l2_from_base": 1.673456324624567e-07,
+        "logit_change": 4.76837158203125e-07
+      },
+      {
+        "base_id": 11,
+        "factor": 8,
+        "stage": "modified",
+        "size": 24,
+        "norm": 4.6025238037109375,
+        "l2_from_base": 7.70212238876411e-07,
+        "relative_l2_from_base": 1.673456324624567e-07,
+        "logit_change": 4.76837158203125e-07
+      },
+      {
+        "base_id": 11,
+        "factor": 8,
+        "stage": "post_norm",
+        "size": 24,
+        "norm": 8.064571380615234,
+        "l2_from_base": 1.417970906913979e-06,
+        "relative_l2_from_base": 1.75827182147259e-07,
+        "logit_change": 4.76837158203125e-07
+      },
+      {
+        "base_id": 11,
+        "factor": 8,
+        "stage": "representation",
+        "size": 24,
+        "norm": 8.315485954284668,
+        "l2_from_base": 1.4208612810762133e-06,
+        "relative_l2_from_base": 1.7086928494336462e-07,
+        "logit_change": 4.76837158203125e-07
+      },
+      {
+        "base_id": 11,
+        "factor": 8,
+        "stage": "decoder_input",
+        "size": 24,
+        "norm": 8.315485954284668,
+        "l2_from_base": 1.4208612810762133e-06,
+        "relative_l2_from_base": 1.7086928494336462e-07,
+        "logit_change": 4.76837158203125e-07
+      },
+      {
+        "base_id": 12,
+        "factor": 1,
+        "stage": "attention",
+        "size": 3,
+        "norm": 3.578115224838257,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 12,
+        "factor": 1,
+        "stage": "modified",
+        "size": 3,
+        "norm": 3.578115224838257,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 12,
+        "factor": 1,
+        "stage": "post_norm",
+        "size": 3,
+        "norm": 8.06399917602539,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 12,
+        "factor": 1,
+        "stage": "representation",
+        "size": 3,
+        "norm": 8.281245231628418,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 12,
+        "factor": 1,
+        "stage": "decoder_input",
+        "size": 3,
+        "norm": 8.281245231628418,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 12,
+        "factor": 2,
+        "stage": "attention",
+        "size": 6,
+        "norm": 3.578115224838257,
+        "l2_from_base": 1.0106459313874439e-07,
+        "relative_l2_from_base": 2.824520350941384e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 12,
+        "factor": 2,
+        "stage": "modified",
+        "size": 6,
+        "norm": 3.578115224838257,
+        "l2_from_base": 1.0106459313874439e-07,
+        "relative_l2_from_base": 2.824520350941384e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 12,
+        "factor": 2,
+        "stage": "post_norm",
+        "size": 6,
+        "norm": 8.06399917602539,
+        "l2_from_base": 2.5552884608259774e-07,
+        "relative_l2_from_base": 3.1687608981201265e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 12,
+        "factor": 2,
+        "stage": "representation",
+        "size": 6,
+        "norm": 8.281245231628418,
+        "l2_from_base": 6.752551371391746e-07,
+        "relative_l2_from_base": 8.1540292740101e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 12,
+        "factor": 2,
+        "stage": "decoder_input",
+        "size": 6,
+        "norm": 8.281245231628418,
+        "l2_from_base": 6.752551371391746e-07,
+        "relative_l2_from_base": 8.1540292740101e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 12,
+        "factor": 4,
+        "stage": "attention",
+        "size": 12,
+        "norm": 3.5781149864196777,
+        "l2_from_base": 4.28003517072284e-07,
+        "relative_l2_from_base": 1.1961702739426983e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 12,
+        "factor": 4,
+        "stage": "modified",
+        "size": 12,
+        "norm": 3.5781149864196777,
+        "l2_from_base": 4.28003517072284e-07,
+        "relative_l2_from_base": 1.1961702739426983e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 12,
+        "factor": 4,
+        "stage": "post_norm",
+        "size": 12,
+        "norm": 8.06399917602539,
+        "l2_from_base": 1.0737305728980573e-06,
+        "relative_l2_from_base": 1.3315113278622448e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 12,
+        "factor": 4,
+        "stage": "representation",
+        "size": 12,
+        "norm": 8.281245231628418,
+        "l2_from_base": 1.097981566999806e-06,
+        "relative_l2_from_base": 1.325865355283895e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 12,
+        "factor": 4,
+        "stage": "decoder_input",
+        "size": 12,
+        "norm": 8.281245231628418,
+        "l2_from_base": 1.097981566999806e-06,
+        "relative_l2_from_base": 1.325865355283895e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 12,
+        "factor": 8,
+        "stage": "attention",
+        "size": 24,
+        "norm": 3.578115224838257,
+        "l2_from_base": 4.853309860664012e-07,
+        "relative_l2_from_base": 1.3563872869326588e-07,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 12,
+        "factor": 8,
+        "stage": "modified",
+        "size": 24,
+        "norm": 3.578115224838257,
+        "l2_from_base": 4.853309860664012e-07,
+        "relative_l2_from_base": 1.3563872869326588e-07,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 12,
+        "factor": 8,
+        "stage": "post_norm",
+        "size": 24,
+        "norm": 8.064000129699707,
+        "l2_from_base": 1.0748478871391853e-06,
+        "relative_l2_from_base": 1.332896886196977e-07,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 12,
+        "factor": 8,
+        "stage": "representation",
+        "size": 24,
+        "norm": 8.281245231628418,
+        "l2_from_base": 1.1684505807352252e-06,
+        "relative_l2_from_base": 1.4109599533185246e-07,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 12,
+        "factor": 8,
+        "stage": "decoder_input",
+        "size": 24,
+        "norm": 8.281245231628418,
+        "l2_from_base": 1.1684505807352252e-06,
+        "relative_l2_from_base": 1.4109599533185246e-07,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 13,
+        "factor": 1,
+        "stage": "attention",
+        "size": 3,
+        "norm": 3.1982388496398926,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 13,
+        "factor": 1,
+        "stage": "modified",
+        "size": 3,
+        "norm": 3.1982388496398926,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 13,
+        "factor": 1,
+        "stage": "post_norm",
+        "size": 3,
+        "norm": 8.071500778198242,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 13,
+        "factor": 1,
+        "stage": "representation",
+        "size": 3,
+        "norm": 8.2651948928833,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 13,
+        "factor": 1,
+        "stage": "decoder_input",
+        "size": 3,
+        "norm": 8.2651948928833,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 13,
+        "factor": 2,
+        "stage": "attention",
+        "size": 6,
+        "norm": 3.1982388496398926,
+        "l2_from_base": 9.322534566535978e-08,
+        "relative_l2_from_base": 2.9148962354952346e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 13,
+        "factor": 2,
+        "stage": "modified",
+        "size": 6,
+        "norm": 3.1982388496398926,
+        "l2_from_base": 9.322534566535978e-08,
+        "relative_l2_from_base": 2.9148962354952346e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 13,
+        "factor": 2,
+        "stage": "post_norm",
+        "size": 6,
+        "norm": 8.071500778198242,
+        "l2_from_base": 4.707741254605935e-07,
+        "relative_l2_from_base": 5.832547600448379e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 13,
+        "factor": 2,
+        "stage": "representation",
+        "size": 6,
+        "norm": 8.265193939208984,
+        "l2_from_base": 6.695062779726868e-07,
+        "relative_l2_from_base": 8.100308690472957e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 13,
+        "factor": 2,
+        "stage": "decoder_input",
+        "size": 6,
+        "norm": 8.265193939208984,
+        "l2_from_base": 6.695062779726868e-07,
+        "relative_l2_from_base": 8.100308690472957e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 13,
+        "factor": 4,
+        "stage": "attention",
+        "size": 12,
+        "norm": 3.1982388496398926,
+        "l2_from_base": 2.0329515848516166e-07,
+        "relative_l2_from_base": 6.356471971002975e-08,
+        "logit_change": 1.1920928955078125e-07
+      },
+      {
+        "base_id": 13,
+        "factor": 4,
+        "stage": "modified",
+        "size": 12,
+        "norm": 3.1982388496398926,
+        "l2_from_base": 2.0329515848516166e-07,
+        "relative_l2_from_base": 6.356471971002975e-08,
+        "logit_change": 1.1920928955078125e-07
+      },
+      {
+        "base_id": 13,
+        "factor": 4,
+        "stage": "post_norm",
+        "size": 12,
+        "norm": 8.071501731872559,
+        "l2_from_base": 6.551534852405894e-07,
+        "relative_l2_from_base": 8.116873573271732e-08,
+        "logit_change": 1.1920928955078125e-07
+      },
+      {
+        "base_id": 13,
+        "factor": 4,
+        "stage": "representation",
+        "size": 12,
+        "norm": 8.265193939208984,
+        "l2_from_base": 5.418729074335715e-07,
+        "relative_l2_from_base": 6.556081189046381e-08,
+        "logit_change": 1.1920928955078125e-07
+      },
+      {
+        "base_id": 13,
+        "factor": 4,
+        "stage": "decoder_input",
+        "size": 12,
+        "norm": 8.265193939208984,
+        "l2_from_base": 5.418729074335715e-07,
+        "relative_l2_from_base": 6.556081189046381e-08,
+        "logit_change": 1.1920928955078125e-07
+      },
+      {
+        "base_id": 13,
+        "factor": 8,
+        "stage": "attention",
+        "size": 24,
+        "norm": 3.1982388496398926,
+        "l2_from_base": 5.823017659167817e-07,
+        "relative_l2_from_base": 1.820694990328775e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 13,
+        "factor": 8,
+        "stage": "modified",
+        "size": 24,
+        "norm": 3.1982388496398926,
+        "l2_from_base": 5.823017659167817e-07,
+        "relative_l2_from_base": 1.820694990328775e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 13,
+        "factor": 8,
+        "stage": "post_norm",
+        "size": 24,
+        "norm": 8.071501731872559,
+        "l2_from_base": 1.6726843341530184e-06,
+        "relative_l2_from_base": 2.0723337001982145e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 13,
+        "factor": 8,
+        "stage": "representation",
+        "size": 24,
+        "norm": 8.2651948928833,
+        "l2_from_base": 1.6093340491352137e-06,
+        "relative_l2_from_base": 1.9471217171940225e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 13,
+        "factor": 8,
+        "stage": "decoder_input",
+        "size": 24,
+        "norm": 8.2651948928833,
+        "l2_from_base": 1.6093340491352137e-06,
+        "relative_l2_from_base": 1.9471217171940225e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 14,
+        "factor": 1,
+        "stage": "attention",
+        "size": 3,
+        "norm": 3.354149341583252,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 14,
+        "factor": 1,
+        "stage": "modified",
+        "size": 3,
+        "norm": 3.354149341583252,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 14,
+        "factor": 1,
+        "stage": "post_norm",
+        "size": 3,
+        "norm": 8.088574409484863,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 14,
+        "factor": 1,
+        "stage": "representation",
+        "size": 3,
+        "norm": 8.261791229248047,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 14,
+        "factor": 1,
+        "stage": "decoder_input",
+        "size": 3,
+        "norm": 8.261791229248047,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 14,
+        "factor": 2,
+        "stage": "attention",
+        "size": 6,
+        "norm": 3.354149341583252,
+        "l2_from_base": 1.903273414427531e-07,
+        "relative_l2_from_base": 5.674384695453227e-08,
+        "logit_change": -1.1920928955078125e-07
+      },
+      {
+        "base_id": 14,
+        "factor": 2,
+        "stage": "modified",
+        "size": 6,
+        "norm": 3.354149341583252,
+        "l2_from_base": 1.903273414427531e-07,
+        "relative_l2_from_base": 5.674384695453227e-08,
+        "logit_change": -1.1920928955078125e-07
+      },
+      {
+        "base_id": 14,
+        "factor": 2,
+        "stage": "post_norm",
+        "size": 6,
+        "norm": 8.088574409484863,
+        "l2_from_base": 6.295742309703201e-07,
+        "relative_l2_from_base": 7.783500421965073e-08,
+        "logit_change": -1.1920928955078125e-07
+      },
+      {
+        "base_id": 14,
+        "factor": 2,
+        "stage": "representation",
+        "size": 6,
+        "norm": 8.26179027557373,
+        "l2_from_base": 8.458459888061043e-07,
+        "relative_l2_from_base": 1.0238046144195323e-07,
+        "logit_change": -1.1920928955078125e-07
+      },
+      {
+        "base_id": 14,
+        "factor": 2,
+        "stage": "decoder_input",
+        "size": 6,
+        "norm": 8.26179027557373,
+        "l2_from_base": 8.458459888061043e-07,
+        "relative_l2_from_base": 1.0238046144195323e-07,
+        "logit_change": -1.1920928955078125e-07
+      },
+      {
+        "base_id": 14,
+        "factor": 4,
+        "stage": "attention",
+        "size": 12,
+        "norm": 3.354149341583252,
+        "l2_from_base": 3.026038939424325e-07,
+        "relative_l2_from_base": 9.021777458428915e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 14,
+        "factor": 4,
+        "stage": "modified",
+        "size": 12,
+        "norm": 3.354149341583252,
+        "l2_from_base": 3.026038939424325e-07,
+        "relative_l2_from_base": 9.021777458428915e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 14,
+        "factor": 4,
+        "stage": "post_norm",
+        "size": 12,
+        "norm": 8.088574409484863,
+        "l2_from_base": 7.977885729815171e-07,
+        "relative_l2_from_base": 9.863154559752729e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 14,
+        "factor": 4,
+        "stage": "representation",
+        "size": 12,
+        "norm": 8.261791229248047,
+        "l2_from_base": 9.030813430399576e-07,
+        "relative_l2_from_base": 1.0930817495591327e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 14,
+        "factor": 4,
+        "stage": "decoder_input",
+        "size": 12,
+        "norm": 8.261791229248047,
+        "l2_from_base": 9.030813430399576e-07,
+        "relative_l2_from_base": 1.0930817495591327e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 14,
+        "factor": 8,
+        "stage": "attention",
+        "size": 24,
+        "norm": 3.354149341583252,
+        "l2_from_base": 5.253559152151865e-07,
+        "relative_l2_from_base": 1.5662865848753427e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 14,
+        "factor": 8,
+        "stage": "modified",
+        "size": 24,
+        "norm": 3.354149341583252,
+        "l2_from_base": 5.253559152151865e-07,
+        "relative_l2_from_base": 1.5662865848753427e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 14,
+        "factor": 8,
+        "stage": "post_norm",
+        "size": 24,
+        "norm": 8.088574409484863,
+        "l2_from_base": 1.349519607174443e-06,
+        "relative_l2_from_base": 1.66842696103231e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 14,
+        "factor": 8,
+        "stage": "representation",
+        "size": 24,
+        "norm": 8.26179027557373,
+        "l2_from_base": 1.3409854773271945e-06,
+        "relative_l2_from_base": 1.6231170718583599e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 14,
+        "factor": 8,
+        "stage": "decoder_input",
+        "size": 24,
+        "norm": 8.26179027557373,
+        "l2_from_base": 1.3409854773271945e-06,
+        "relative_l2_from_base": 1.6231170718583599e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 15,
+        "factor": 1,
+        "stage": "attention",
+        "size": 3,
+        "norm": 3.3689351081848145,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 15,
+        "factor": 1,
+        "stage": "modified",
+        "size": 3,
+        "norm": 3.3689351081848145,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 15,
+        "factor": 1,
+        "stage": "post_norm",
+        "size": 3,
+        "norm": 8.09026050567627,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 15,
+        "factor": 1,
+        "stage": "representation",
+        "size": 3,
+        "norm": 8.252164840698242,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 15,
+        "factor": 1,
+        "stage": "decoder_input",
+        "size": 3,
+        "norm": 8.252164840698242,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 15,
+        "factor": 2,
+        "stage": "attention",
+        "size": 6,
+        "norm": 3.3689348697662354,
+        "l2_from_base": 1.2157238415966276e-07,
+        "relative_l2_from_base": 3.608629484119774e-08,
+        "logit_change": -2.9802322387695312e-08
+      },
+      {
+        "base_id": 15,
+        "factor": 2,
+        "stage": "modified",
+        "size": 6,
+        "norm": 3.3689348697662354,
+        "l2_from_base": 1.2157238415966276e-07,
+        "relative_l2_from_base": 3.608629484119774e-08,
+        "logit_change": -2.9802322387695312e-08
+      },
+      {
+        "base_id": 15,
+        "factor": 2,
+        "stage": "post_norm",
+        "size": 6,
+        "norm": 8.09026050567627,
+        "l2_from_base": 2.556103027018253e-07,
+        "relative_l2_from_base": 3.1594815652624675e-08,
+        "logit_change": -2.9802322387695312e-08
+      },
+      {
+        "base_id": 15,
+        "factor": 2,
+        "stage": "representation",
+        "size": 6,
+        "norm": 8.252163887023926,
+        "l2_from_base": 3.679478481899423e-07,
+        "relative_l2_from_base": 4.4588038150550346e-08,
+        "logit_change": -2.9802322387695312e-08
+      },
+      {
+        "base_id": 15,
+        "factor": 2,
+        "stage": "decoder_input",
+        "size": 6,
+        "norm": 8.252163887023926,
+        "l2_from_base": 3.679478481899423e-07,
+        "relative_l2_from_base": 4.4588038150550346e-08,
+        "logit_change": -2.9802322387695312e-08
+      },
+      {
+        "base_id": 15,
+        "factor": 4,
+        "stage": "attention",
+        "size": 12,
+        "norm": 3.3689351081848145,
+        "l2_from_base": 2.9606098905787803e-07,
+        "relative_l2_from_base": 8.787969818513375e-08,
+        "logit_change": -1.1920928955078125e-07
+      },
+      {
+        "base_id": 15,
+        "factor": 4,
+        "stage": "modified",
+        "size": 12,
+        "norm": 3.3689351081848145,
+        "l2_from_base": 2.9606098905787803e-07,
+        "relative_l2_from_base": 8.787969818513375e-08,
+        "logit_change": -1.1920928955078125e-07
+      },
+      {
+        "base_id": 15,
+        "factor": 4,
+        "stage": "post_norm",
+        "size": 12,
+        "norm": 8.090259552001953,
+        "l2_from_base": 9.405933951711631e-07,
+        "relative_l2_from_base": 1.1626243434648131e-07,
+        "logit_change": -1.1920928955078125e-07
+      },
+      {
+        "base_id": 15,
+        "factor": 4,
+        "stage": "representation",
+        "size": 12,
+        "norm": 8.252163887023926,
+        "l2_from_base": 9.941047665051883e-07,
+        "relative_l2_from_base": 1.2046594122239185e-07,
+        "logit_change": -1.1920928955078125e-07
+      },
+      {
+        "base_id": 15,
+        "factor": 4,
+        "stage": "decoder_input",
+        "size": 12,
+        "norm": 8.252163887023926,
+        "l2_from_base": 9.941047665051883e-07,
+        "relative_l2_from_base": 1.2046594122239185e-07,
+        "logit_change": -1.1920928955078125e-07
+      },
+      {
+        "base_id": 15,
+        "factor": 8,
+        "stage": "attention",
+        "size": 24,
+        "norm": 3.3689348697662354,
+        "l2_from_base": 4.935625383950537e-07,
+        "relative_l2_from_base": 1.4650402135885088e-07,
+        "logit_change": -2.980232238769531e-07
+      },
+      {
+        "base_id": 15,
+        "factor": 8,
+        "stage": "modified",
+        "size": 24,
+        "norm": 3.3689348697662354,
+        "l2_from_base": 4.935625383950537e-07,
+        "relative_l2_from_base": 1.4650402135885088e-07,
+        "logit_change": -2.980232238769531e-07
+      },
+      {
+        "base_id": 15,
+        "factor": 8,
+        "stage": "post_norm",
+        "size": 24,
+        "norm": 8.090258598327637,
+        "l2_from_base": 1.6401613720518071e-06,
+        "relative_l2_from_base": 2.027328207532264e-07,
+        "logit_change": -2.980232238769531e-07
+      },
+      {
+        "base_id": 15,
+        "factor": 8,
+        "stage": "representation",
+        "size": 24,
+        "norm": 8.252164840698242,
+        "l2_from_base": 1.2412052683430375e-06,
+        "relative_l2_from_base": 1.5040966161450342e-07,
+        "logit_change": -2.980232238769531e-07
+      },
+      {
+        "base_id": 15,
+        "factor": 8,
+        "stage": "decoder_input",
+        "size": 24,
+        "norm": 8.252164840698242,
+        "l2_from_base": 1.2412052683430375e-06,
+        "relative_l2_from_base": 1.5040966161450342e-07,
+        "logit_change": -2.980232238769531e-07
+      },
+      {
+        "base_id": 16,
+        "factor": 1,
+        "stage": "attention",
+        "size": 3,
+        "norm": 4.890520095825195,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 16,
+        "factor": 1,
+        "stage": "modified",
+        "size": 3,
+        "norm": 4.890520095825195,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 16,
+        "factor": 1,
+        "stage": "post_norm",
+        "size": 3,
+        "norm": 8.066258430480957,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 16,
+        "factor": 1,
+        "stage": "representation",
+        "size": 3,
+        "norm": 8.309123992919922,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 16,
+        "factor": 1,
+        "stage": "decoder_input",
+        "size": 3,
+        "norm": 8.309123992919922,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 16,
+        "factor": 2,
+        "stage": "attention",
+        "size": 6,
+        "norm": 4.890520095825195,
+        "l2_from_base": 1.7788016748454538e-07,
+        "relative_l2_from_base": 3.637244461174305e-08,
+        "logit_change": 4.76837158203125e-07
+      },
+      {
+        "base_id": 16,
+        "factor": 2,
+        "stage": "modified",
+        "size": 6,
+        "norm": 4.890520095825195,
+        "l2_from_base": 1.7788016748454538e-07,
+        "relative_l2_from_base": 3.637244461174305e-08,
+        "logit_change": 4.76837158203125e-07
+      },
+      {
+        "base_id": 16,
+        "factor": 2,
+        "stage": "post_norm",
+        "size": 6,
+        "norm": 8.066258430480957,
+        "l2_from_base": 3.436971383052878e-07,
+        "relative_l2_from_base": 4.2609240580304686e-08,
+        "logit_change": 4.76837158203125e-07
+      },
+      {
+        "base_id": 16,
+        "factor": 2,
+        "stage": "representation",
+        "size": 6,
+        "norm": 8.309123992919922,
+        "l2_from_base": 6.916222332620237e-07,
+        "relative_l2_from_base": 8.323647904262543e-08,
+        "logit_change": 4.76837158203125e-07
+      },
+      {
+        "base_id": 16,
+        "factor": 2,
+        "stage": "decoder_input",
+        "size": 6,
+        "norm": 8.309123992919922,
+        "l2_from_base": 6.916222332620237e-07,
+        "relative_l2_from_base": 8.323647904262543e-08,
+        "logit_change": 4.76837158203125e-07
+      },
+      {
+        "base_id": 16,
+        "factor": 4,
+        "stage": "attention",
+        "size": 12,
+        "norm": 4.890519618988037,
+        "l2_from_base": 5.153909228283737e-07,
+        "relative_l2_from_base": 1.0538570904827793e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 16,
+        "factor": 4,
+        "stage": "modified",
+        "size": 12,
+        "norm": 4.890519618988037,
+        "l2_from_base": 5.153909228283737e-07,
+        "relative_l2_from_base": 1.0538570904827793e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 16,
+        "factor": 4,
+        "stage": "post_norm",
+        "size": 12,
+        "norm": 8.066258430480957,
+        "l2_from_base": 9.585872930983896e-07,
+        "relative_l2_from_base": 1.1883914652344174e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 16,
+        "factor": 4,
+        "stage": "representation",
+        "size": 12,
+        "norm": 8.309123992919922,
+        "l2_from_base": 1.0960151257677353e-06,
+        "relative_l2_from_base": 1.3190501135795785e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 16,
+        "factor": 4,
+        "stage": "decoder_input",
+        "size": 12,
+        "norm": 8.309123992919922,
+        "l2_from_base": 1.0960151257677353e-06,
+        "relative_l2_from_base": 1.3190501135795785e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 16,
+        "factor": 8,
+        "stage": "attention",
+        "size": 24,
+        "norm": 4.890519618988037,
+        "l2_from_base": 7.14756083652901e-07,
+        "relative_l2_from_base": 1.461513505773837e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 16,
+        "factor": 8,
+        "stage": "modified",
+        "size": 24,
+        "norm": 4.890519618988037,
+        "l2_from_base": 7.14756083652901e-07,
+        "relative_l2_from_base": 1.461513505773837e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 16,
+        "factor": 8,
+        "stage": "post_norm",
+        "size": 24,
+        "norm": 8.066259384155273,
+        "l2_from_base": 1.413368408975657e-06,
+        "relative_l2_from_base": 1.75219824427586e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 16,
+        "factor": 8,
+        "stage": "representation",
+        "size": 24,
+        "norm": 8.309123992919922,
+        "l2_from_base": 1.3277671087053022e-06,
+        "relative_l2_from_base": 1.5979628642526222e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 16,
+        "factor": 8,
+        "stage": "decoder_input",
+        "size": 24,
+        "norm": 8.309123992919922,
+        "l2_from_base": 1.3277671087053022e-06,
+        "relative_l2_from_base": 1.5979628642526222e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 17,
+        "factor": 1,
+        "stage": "attention",
+        "size": 3,
+        "norm": 4.190433025360107,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 17,
+        "factor": 1,
+        "stage": "modified",
+        "size": 3,
+        "norm": 4.190433025360107,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 17,
+        "factor": 1,
+        "stage": "post_norm",
+        "size": 3,
+        "norm": 8.076601028442383,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 17,
+        "factor": 1,
+        "stage": "representation",
+        "size": 3,
+        "norm": 8.225386619567871,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 17,
+        "factor": 1,
+        "stage": "decoder_input",
+        "size": 3,
+        "norm": 8.225386619567871,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 17,
+        "factor": 2,
+        "stage": "attention",
+        "size": 6,
+        "norm": 4.190432548522949,
+        "l2_from_base": 3.196161060259328e-07,
+        "relative_l2_from_base": 7.627281206623593e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 17,
+        "factor": 2,
+        "stage": "modified",
+        "size": 6,
+        "norm": 4.190432548522949,
+        "l2_from_base": 3.196161060259328e-07,
+        "relative_l2_from_base": 7.627281206623593e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 17,
+        "factor": 2,
+        "stage": "post_norm",
+        "size": 6,
+        "norm": 8.0766019821167,
+        "l2_from_base": 1.1411799505367526e-06,
+        "relative_l2_from_base": 1.412945778156427e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 17,
+        "factor": 2,
+        "stage": "representation",
+        "size": 6,
+        "norm": 8.225386619567871,
+        "l2_from_base": 7.788440825606813e-07,
+        "relative_l2_from_base": 9.468784156752008e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 17,
+        "factor": 2,
+        "stage": "decoder_input",
+        "size": 6,
+        "norm": 8.225386619567871,
+        "l2_from_base": 7.788440825606813e-07,
+        "relative_l2_from_base": 9.468784156752008e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 17,
+        "factor": 4,
+        "stage": "attention",
+        "size": 12,
+        "norm": 4.190433025360107,
+        "l2_from_base": 3.866458371248882e-07,
+        "relative_l2_from_base": 9.226870645306917e-08,
+        "logit_change": 1.1920928955078125e-07
+      },
+      {
+        "base_id": 17,
+        "factor": 4,
+        "stage": "modified",
+        "size": 12,
+        "norm": 4.190433025360107,
+        "l2_from_base": 3.866458371248882e-07,
+        "relative_l2_from_base": 9.226870645306917e-08,
+        "logit_change": 1.1920928955078125e-07
+      },
+      {
+        "base_id": 17,
+        "factor": 4,
+        "stage": "post_norm",
+        "size": 12,
+        "norm": 8.0766019821167,
+        "l2_from_base": 7.92436765095772e-07,
+        "relative_l2_from_base": 9.811513024260421e-08,
+        "logit_change": 1.1920928955078125e-07
+      },
+      {
+        "base_id": 17,
+        "factor": 4,
+        "stage": "representation",
+        "size": 12,
+        "norm": 8.225386619567871,
+        "l2_from_base": 8.202409276236722e-07,
+        "relative_l2_from_base": 9.972065129204566e-08,
+        "logit_change": 1.1920928955078125e-07
+      },
+      {
+        "base_id": 17,
+        "factor": 4,
+        "stage": "decoder_input",
+        "size": 12,
+        "norm": 8.225386619567871,
+        "l2_from_base": 8.202409276236722e-07,
+        "relative_l2_from_base": 9.972065129204566e-08,
+        "logit_change": 1.1920928955078125e-07
+      },
+      {
+        "base_id": 17,
+        "factor": 8,
+        "stage": "attention",
+        "size": 24,
+        "norm": 4.190432548522949,
+        "l2_from_base": 6.544637471961323e-07,
+        "relative_l2_from_base": 1.561804623406715e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 17,
+        "factor": 8,
+        "stage": "modified",
+        "size": 24,
+        "norm": 4.190432548522949,
+        "l2_from_base": 6.544637471961323e-07,
+        "relative_l2_from_base": 1.561804623406715e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 17,
+        "factor": 8,
+        "stage": "post_norm",
+        "size": 24,
+        "norm": 8.0766019821167,
+        "l2_from_base": 1.5717590713393292e-06,
+        "relative_l2_from_base": 1.9460649980374e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 17,
+        "factor": 8,
+        "stage": "representation",
+        "size": 24,
+        "norm": 8.225386619567871,
+        "l2_from_base": 1.4276758975029225e-06,
+        "relative_l2_from_base": 1.7356946102609072e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 17,
+        "factor": 8,
+        "stage": "decoder_input",
+        "size": 24,
+        "norm": 8.225386619567871,
+        "l2_from_base": 1.4276758975029225e-06,
+        "relative_l2_from_base": 1.7356946102609072e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 18,
+        "factor": 1,
+        "stage": "attention",
+        "size": 3,
+        "norm": 3.377002716064453,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 18,
+        "factor": 1,
+        "stage": "modified",
+        "size": 3,
+        "norm": 3.377002716064453,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 18,
+        "factor": 1,
+        "stage": "post_norm",
+        "size": 3,
+        "norm": 8.060158729553223,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 18,
+        "factor": 1,
+        "stage": "representation",
+        "size": 3,
+        "norm": 8.30388069152832,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 18,
+        "factor": 1,
+        "stage": "decoder_input",
+        "size": 3,
+        "norm": 8.30388069152832,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 18,
+        "factor": 2,
+        "stage": "attention",
+        "size": 6,
+        "norm": 3.377002716064453,
+        "l2_from_base": 1.0204359313092937e-07,
+        "relative_l2_from_base": 3.0217208291105635e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 18,
+        "factor": 2,
+        "stage": "modified",
+        "size": 6,
+        "norm": 3.377002716064453,
+        "l2_from_base": 1.0204359313092937e-07,
+        "relative_l2_from_base": 3.0217208291105635e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 18,
+        "factor": 2,
+        "stage": "post_norm",
+        "size": 6,
+        "norm": 8.060158729553223,
+        "l2_from_base": 4.080202700151858e-07,
+        "relative_l2_from_base": 5.062186403392843e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 18,
+        "factor": 2,
+        "stage": "representation",
+        "size": 6,
+        "norm": 8.30388069152832,
+        "l2_from_base": 8.307334837809321e-07,
+        "relative_l2_from_base": 1.0004159634036114e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 18,
+        "factor": 2,
+        "stage": "decoder_input",
+        "size": 6,
+        "norm": 8.30388069152832,
+        "l2_from_base": 8.307334837809321e-07,
+        "relative_l2_from_base": 1.0004159634036114e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 18,
+        "factor": 4,
+        "stage": "attention",
+        "size": 12,
+        "norm": 3.377002716064453,
+        "l2_from_base": 2.4123332309500256e-07,
+        "relative_l2_from_base": 7.143415103882944e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 18,
+        "factor": 4,
+        "stage": "modified",
+        "size": 12,
+        "norm": 3.377002716064453,
+        "l2_from_base": 2.4123332309500256e-07,
+        "relative_l2_from_base": 7.143415103882944e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 18,
+        "factor": 4,
+        "stage": "post_norm",
+        "size": 12,
+        "norm": 8.060158729553223,
+        "l2_from_base": 6.095115168136545e-07,
+        "relative_l2_from_base": 7.562028514485064e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 18,
+        "factor": 4,
+        "stage": "representation",
+        "size": 12,
+        "norm": 8.30388069152832,
+        "l2_from_base": 7.198225944193837e-07,
+        "relative_l2_from_base": 8.668508399978236e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 18,
+        "factor": 4,
+        "stage": "decoder_input",
+        "size": 12,
+        "norm": 8.30388069152832,
+        "l2_from_base": 7.198225944193837e-07,
+        "relative_l2_from_base": 8.668508399978236e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 18,
+        "factor": 8,
+        "stage": "attention",
+        "size": 24,
+        "norm": 3.3770029544830322,
+        "l2_from_base": 6.703239137095807e-07,
+        "relative_l2_from_base": 1.9849670707117184e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 18,
+        "factor": 8,
+        "stage": "modified",
+        "size": 24,
+        "norm": 3.3770029544830322,
+        "l2_from_base": 6.703239137095807e-07,
+        "relative_l2_from_base": 1.9849670707117184e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 18,
+        "factor": 8,
+        "stage": "post_norm",
+        "size": 24,
+        "norm": 8.060158729553223,
+        "l2_from_base": 1.5595652484989841e-06,
+        "relative_l2_from_base": 1.9349063506979292e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 18,
+        "factor": 8,
+        "stage": "representation",
+        "size": 24,
+        "norm": 8.30388069152832,
+        "l2_from_base": 1.8026132693194086e-06,
+        "relative_l2_from_base": 2.1708082442728482e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 18,
+        "factor": 8,
+        "stage": "decoder_input",
+        "size": 24,
+        "norm": 8.30388069152832,
+        "l2_from_base": 1.8026132693194086e-06,
+        "relative_l2_from_base": 2.1708082442728482e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 19,
+        "factor": 1,
+        "stage": "attention",
+        "size": 3,
+        "norm": 3.149172782897949,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 19,
+        "factor": 1,
+        "stage": "modified",
+        "size": 3,
+        "norm": 3.149172782897949,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 19,
+        "factor": 1,
+        "stage": "post_norm",
+        "size": 3,
+        "norm": 8.068303108215332,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 19,
+        "factor": 1,
+        "stage": "representation",
+        "size": 3,
+        "norm": 8.278861045837402,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 19,
+        "factor": 1,
+        "stage": "decoder_input",
+        "size": 3,
+        "norm": 8.278861045837402,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 19,
+        "factor": 2,
+        "stage": "attention",
+        "size": 6,
+        "norm": 3.1491730213165283,
+        "l2_from_base": 1.1938378463582922e-07,
+        "relative_l2_from_base": 3.790956881744023e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 19,
+        "factor": 2,
+        "stage": "modified",
+        "size": 6,
+        "norm": 3.1491730213165283,
+        "l2_from_base": 1.1938378463582922e-07,
+        "relative_l2_from_base": 3.790956881744023e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 19,
+        "factor": 2,
+        "stage": "post_norm",
+        "size": 6,
+        "norm": 8.068303108215332,
+        "l2_from_base": 2.582031868314516e-07,
+        "relative_l2_from_base": 3.200216625032226e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 19,
+        "factor": 2,
+        "stage": "representation",
+        "size": 6,
+        "norm": 8.278861045837402,
+        "l2_from_base": 3.3998247772615287e-07,
+        "relative_l2_from_base": 4.1066336109452095e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 19,
+        "factor": 2,
+        "stage": "decoder_input",
+        "size": 6,
+        "norm": 8.278861045837402,
+        "l2_from_base": 3.3998247772615287e-07,
+        "relative_l2_from_base": 4.1066336109452095e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 19,
+        "factor": 4,
+        "stage": "attention",
+        "size": 12,
+        "norm": 3.1491732597351074,
+        "l2_from_base": 2.4282348931592423e-07,
+        "relative_l2_from_base": 7.710707450314658e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 19,
+        "factor": 4,
+        "stage": "modified",
+        "size": 12,
+        "norm": 3.1491732597351074,
+        "l2_from_base": 2.4282348931592423e-07,
+        "relative_l2_from_base": 7.710707450314658e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 19,
+        "factor": 4,
+        "stage": "post_norm",
+        "size": 12,
+        "norm": 8.068303108215332,
+        "l2_from_base": 8.201837999877171e-07,
+        "relative_l2_from_base": 1.0165505415216103e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 19,
+        "factor": 4,
+        "stage": "representation",
+        "size": 12,
+        "norm": 8.278861045837402,
+        "l2_from_base": 9.15059388262307e-07,
+        "relative_l2_from_base": 1.1052961923496696e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 19,
+        "factor": 4,
+        "stage": "decoder_input",
+        "size": 12,
+        "norm": 8.278861045837402,
+        "l2_from_base": 9.15059388262307e-07,
+        "relative_l2_from_base": 1.1052961923496696e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 19,
+        "factor": 8,
+        "stage": "attention",
+        "size": 24,
+        "norm": 3.1491730213165283,
+        "l2_from_base": 5.43407395525719e-07,
+        "relative_l2_from_base": 1.7255560180728935e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 19,
+        "factor": 8,
+        "stage": "modified",
+        "size": 24,
+        "norm": 3.1491730213165283,
+        "l2_from_base": 5.43407395525719e-07,
+        "relative_l2_from_base": 1.7255560180728935e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 19,
+        "factor": 8,
+        "stage": "post_norm",
+        "size": 24,
+        "norm": 8.068303108215332,
+        "l2_from_base": 1.3898777524445904e-06,
+        "relative_l2_from_base": 1.7226395243596926e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 19,
+        "factor": 8,
+        "stage": "representation",
+        "size": 24,
+        "norm": 8.278861045837402,
+        "l2_from_base": 1.5120514262889628e-06,
+        "relative_l2_from_base": 1.8264003642798343e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 19,
+        "factor": 8,
+        "stage": "decoder_input",
+        "size": 24,
+        "norm": 8.278861045837402,
+        "l2_from_base": 1.5120514262889628e-06,
+        "relative_l2_from_base": 1.8264003642798343e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 20,
+        "factor": 1,
+        "stage": "attention",
+        "size": 3,
+        "norm": 3.232356071472168,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 20,
+        "factor": 1,
+        "stage": "modified",
+        "size": 3,
+        "norm": 3.232356071472168,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 20,
+        "factor": 1,
+        "stage": "post_norm",
+        "size": 3,
+        "norm": 8.046366691589355,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 20,
+        "factor": 1,
+        "stage": "representation",
+        "size": 3,
+        "norm": 8.309043884277344,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 20,
+        "factor": 1,
+        "stage": "decoder_input",
+        "size": 3,
+        "norm": 8.309043884277344,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 20,
+        "factor": 2,
+        "stage": "attention",
+        "size": 6,
+        "norm": 3.232356309890747,
+        "l2_from_base": 1.5188554414180544e-07,
+        "relative_l2_from_base": 4.6989111268658235e-08,
+        "logit_change": -7.152557373046875e-07
+      },
+      {
+        "base_id": 20,
+        "factor": 2,
+        "stage": "modified",
+        "size": 6,
+        "norm": 3.232356309890747,
+        "l2_from_base": 1.5188554414180544e-07,
+        "relative_l2_from_base": 4.6989111268658235e-08,
+        "logit_change": -7.152557373046875e-07
+      },
+      {
+        "base_id": 20,
+        "factor": 2,
+        "stage": "post_norm",
+        "size": 6,
+        "norm": 8.046367645263672,
+        "l2_from_base": 9.298182135353272e-07,
+        "relative_l2_from_base": 1.1555752621461579e-07,
+        "logit_change": -7.152557373046875e-07
+      },
+      {
+        "base_id": 20,
+        "factor": 2,
+        "stage": "representation",
+        "size": 6,
+        "norm": 8.30904483795166,
+        "l2_from_base": 8.817632988211699e-07,
+        "relative_l2_from_base": 1.0612090761696891e-07,
+        "logit_change": -7.152557373046875e-07
+      },
+      {
+        "base_id": 20,
+        "factor": 2,
+        "stage": "decoder_input",
+        "size": 6,
+        "norm": 8.30904483795166,
+        "l2_from_base": 8.817632988211699e-07,
+        "relative_l2_from_base": 1.0612090761696891e-07,
+        "logit_change": -7.152557373046875e-07
+      },
+      {
+        "base_id": 20,
+        "factor": 4,
+        "stage": "attention",
+        "size": 12,
+        "norm": 3.232356071472168,
+        "l2_from_base": 2.2849121705803555e-07,
+        "relative_l2_from_base": 7.068874907645295e-08,
+        "logit_change": -7.152557373046875e-07
+      },
+      {
+        "base_id": 20,
+        "factor": 4,
+        "stage": "modified",
+        "size": 12,
+        "norm": 3.232356071472168,
+        "l2_from_base": 2.2849121705803555e-07,
+        "relative_l2_from_base": 7.068874907645295e-08,
+        "logit_change": -7.152557373046875e-07
+      },
+      {
+        "base_id": 20,
+        "factor": 4,
+        "stage": "post_norm",
+        "size": 12,
+        "norm": 8.046366691589355,
+        "l2_from_base": 9.70194946603442e-07,
+        "relative_l2_from_base": 1.2057553533395549e-07,
+        "logit_change": -7.152557373046875e-07
+      },
+      {
+        "base_id": 20,
+        "factor": 4,
+        "stage": "representation",
+        "size": 12,
+        "norm": 8.30904483795166,
+        "l2_from_base": 1.0810805406435975e-06,
+        "relative_l2_from_base": 1.3010890143050347e-07,
+        "logit_change": -7.152557373046875e-07
+      },
+      {
+        "base_id": 20,
+        "factor": 4,
+        "stage": "decoder_input",
+        "size": 12,
+        "norm": 8.30904483795166,
+        "l2_from_base": 1.0810805406435975e-06,
+        "relative_l2_from_base": 1.3010890143050347e-07,
+        "logit_change": -7.152557373046875e-07
+      },
+      {
+        "base_id": 20,
+        "factor": 8,
+        "stage": "attention",
+        "size": 24,
+        "norm": 3.232356071472168,
+        "l2_from_base": 4.0108443499775603e-07,
+        "relative_l2_from_base": 1.24084237995703e-07,
+        "logit_change": -7.152557373046875e-07
+      },
+      {
+        "base_id": 20,
+        "factor": 8,
+        "stage": "modified",
+        "size": 24,
+        "norm": 3.232356071472168,
+        "l2_from_base": 4.0108443499775603e-07,
+        "relative_l2_from_base": 1.24084237995703e-07,
+        "logit_change": -7.152557373046875e-07
+      },
+      {
+        "base_id": 20,
+        "factor": 8,
+        "stage": "post_norm",
+        "size": 24,
+        "norm": 8.046366691589355,
+        "l2_from_base": 1.1389903420422343e-06,
+        "relative_l2_from_base": 1.4155337169086124e-07,
+        "logit_change": -7.152557373046875e-07
+      },
+      {
+        "base_id": 20,
+        "factor": 8,
+        "stage": "representation",
+        "size": 24,
+        "norm": 8.30904483795166,
+        "l2_from_base": 1.3085104910715017e-06,
+        "relative_l2_from_base": 1.5748027237805218e-07,
+        "logit_change": -7.152557373046875e-07
+      },
+      {
+        "base_id": 20,
+        "factor": 8,
+        "stage": "decoder_input",
+        "size": 24,
+        "norm": 8.30904483795166,
+        "l2_from_base": 1.3085104910715017e-06,
+        "relative_l2_from_base": 1.5748027237805218e-07,
+        "logit_change": -7.152557373046875e-07
+      },
+      {
+        "base_id": 21,
+        "factor": 1,
+        "stage": "attention",
+        "size": 3,
+        "norm": 4.73363733291626,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 21,
+        "factor": 1,
+        "stage": "modified",
+        "size": 3,
+        "norm": 4.73363733291626,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 21,
+        "factor": 1,
+        "stage": "post_norm",
+        "size": 3,
+        "norm": 8.065067291259766,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 21,
+        "factor": 1,
+        "stage": "representation",
+        "size": 3,
+        "norm": 8.316082000732422,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 21,
+        "factor": 1,
+        "stage": "decoder_input",
+        "size": 3,
+        "norm": 8.316082000732422,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 21,
+        "factor": 2,
+        "stage": "attention",
+        "size": 6,
+        "norm": 4.733636856079102,
+        "l2_from_base": 1.4548021454174886e-07,
+        "relative_l2_from_base": 3.0733282585515553e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 21,
+        "factor": 2,
+        "stage": "modified",
+        "size": 6,
+        "norm": 4.733636856079102,
+        "l2_from_base": 1.4548021454174886e-07,
+        "relative_l2_from_base": 3.0733282585515553e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 21,
+        "factor": 2,
+        "stage": "post_norm",
+        "size": 6,
+        "norm": 8.065067291259766,
+        "l2_from_base": 2.951455257971247e-07,
+        "relative_l2_from_base": 3.6595544372630684e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 21,
+        "factor": 2,
+        "stage": "representation",
+        "size": 6,
+        "norm": 8.316082000732422,
+        "l2_from_base": 4.5541528947978804e-07,
+        "relative_l2_from_base": 5.4763201973173636e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 21,
+        "factor": 2,
+        "stage": "decoder_input",
+        "size": 6,
+        "norm": 8.316082000732422,
+        "l2_from_base": 4.5541528947978804e-07,
+        "relative_l2_from_base": 5.4763201973173636e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 21,
+        "factor": 4,
+        "stage": "attention",
+        "size": 12,
+        "norm": 4.733636856079102,
+        "l2_from_base": 3.247195365929656e-07,
+        "relative_l2_from_base": 6.859831103156466e-08,
+        "logit_change": 9.5367431640625e-07
+      },
+      {
+        "base_id": 21,
+        "factor": 4,
+        "stage": "modified",
+        "size": 12,
+        "norm": 4.733636856079102,
+        "l2_from_base": 3.247195365929656e-07,
+        "relative_l2_from_base": 6.859831103156466e-08,
+        "logit_change": 9.5367431640625e-07
+      },
+      {
+        "base_id": 21,
+        "factor": 4,
+        "stage": "post_norm",
+        "size": 12,
+        "norm": 8.065067291259766,
+        "l2_from_base": 6.116059694249998e-07,
+        "relative_l2_from_base": 7.583395955634842e-08,
+        "logit_change": 9.5367431640625e-07
+      },
+      {
+        "base_id": 21,
+        "factor": 4,
+        "stage": "representation",
+        "size": 12,
+        "norm": 8.316081047058105,
+        "l2_from_base": 9.902548754325835e-07,
+        "relative_l2_from_base": 1.1907709307479308e-07,
+        "logit_change": 9.5367431640625e-07
+      },
+      {
+        "base_id": 21,
+        "factor": 4,
+        "stage": "decoder_input",
+        "size": 12,
+        "norm": 8.316081047058105,
+        "l2_from_base": 9.902548754325835e-07,
+        "relative_l2_from_base": 1.1907709307479308e-07,
+        "logit_change": 9.5367431640625e-07
+      },
+      {
+        "base_id": 21,
+        "factor": 8,
+        "stage": "attention",
+        "size": 24,
+        "norm": 4.733636856079102,
+        "l2_from_base": 7.691170367252198e-07,
+        "relative_l2_from_base": 1.6247908263267163e-07,
+        "logit_change": -4.76837158203125e-07
+      },
+      {
+        "base_id": 21,
+        "factor": 8,
+        "stage": "modified",
+        "size": 24,
+        "norm": 4.733636856079102,
+        "l2_from_base": 7.691170367252198e-07,
+        "relative_l2_from_base": 1.6247908263267163e-07,
+        "logit_change": -4.76837158203125e-07
+      },
+      {
+        "base_id": 21,
+        "factor": 8,
+        "stage": "post_norm",
+        "size": 24,
+        "norm": 8.065067291259766,
+        "l2_from_base": 1.3713471389564802e-06,
+        "relative_l2_from_base": 1.70035420410386e-07,
+        "logit_change": -4.76837158203125e-07
+      },
+      {
+        "base_id": 21,
+        "factor": 8,
+        "stage": "representation",
+        "size": 24,
+        "norm": 8.316082000732422,
+        "l2_from_base": 1.3702140222449088e-06,
+        "relative_l2_from_base": 1.6476677444643428e-07,
+        "logit_change": -4.76837158203125e-07
+      },
+      {
+        "base_id": 21,
+        "factor": 8,
+        "stage": "decoder_input",
+        "size": 24,
+        "norm": 8.316082000732422,
+        "l2_from_base": 1.3702140222449088e-06,
+        "relative_l2_from_base": 1.6476677444643428e-07,
+        "logit_change": -4.76837158203125e-07
+      },
+      {
+        "base_id": 22,
+        "factor": 1,
+        "stage": "attention",
+        "size": 3,
+        "norm": 3.602872610092163,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 22,
+        "factor": 1,
+        "stage": "modified",
+        "size": 3,
+        "norm": 3.602872610092163,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 22,
+        "factor": 1,
+        "stage": "post_norm",
+        "size": 3,
+        "norm": 8.063616752624512,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 22,
+        "factor": 1,
+        "stage": "representation",
+        "size": 3,
+        "norm": 8.324009895324707,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 22,
+        "factor": 1,
+        "stage": "decoder_input",
+        "size": 3,
+        "norm": 8.324009895324707,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 22,
+        "factor": 2,
+        "stage": "attention",
+        "size": 6,
+        "norm": 3.602872371673584,
+        "l2_from_base": 3.663165273337654e-07,
+        "relative_l2_from_base": 1.0167346431444457e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 22,
+        "factor": 2,
+        "stage": "modified",
+        "size": 6,
+        "norm": 3.602872371673584,
+        "l2_from_base": 3.663165273337654e-07,
+        "relative_l2_from_base": 1.0167346431444457e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 22,
+        "factor": 2,
+        "stage": "post_norm",
+        "size": 6,
+        "norm": 8.063616752624512,
+        "l2_from_base": 1.0415900533189415e-06,
+        "relative_l2_from_base": 1.2917156766434346e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 22,
+        "factor": 2,
+        "stage": "representation",
+        "size": 6,
+        "norm": 8.324009895324707,
+        "l2_from_base": 1.2926542467539548e-06,
+        "relative_l2_from_base": 1.5529225549926196e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 22,
+        "factor": 2,
+        "stage": "decoder_input",
+        "size": 6,
+        "norm": 8.324009895324707,
+        "l2_from_base": 1.2926542467539548e-06,
+        "relative_l2_from_base": 1.5529225549926196e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 22,
+        "factor": 4,
+        "stage": "attention",
+        "size": 12,
+        "norm": 3.602872371673584,
+        "l2_from_base": 4.6117020247038454e-07,
+        "relative_l2_from_base": 1.2800069271179382e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 22,
+        "factor": 4,
+        "stage": "modified",
+        "size": 12,
+        "norm": 3.602872371673584,
+        "l2_from_base": 4.6117020247038454e-07,
+        "relative_l2_from_base": 1.2800069271179382e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 22,
+        "factor": 4,
+        "stage": "post_norm",
+        "size": 12,
+        "norm": 8.063616752624512,
+        "l2_from_base": 1.0731746442615986e-06,
+        "relative_l2_from_base": 1.3308849133863987e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 22,
+        "factor": 4,
+        "stage": "representation",
+        "size": 12,
+        "norm": 8.324009895324707,
+        "l2_from_base": 1.2002262792520924e-06,
+        "relative_l2_from_base": 1.4418847626984643e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 22,
+        "factor": 4,
+        "stage": "decoder_input",
+        "size": 12,
+        "norm": 8.324009895324707,
+        "l2_from_base": 1.2002262792520924e-06,
+        "relative_l2_from_base": 1.4418847626984643e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 22,
+        "factor": 8,
+        "stage": "attention",
+        "size": 24,
+        "norm": 3.602872371673584,
+        "l2_from_base": 9.723935363581404e-07,
+        "relative_l2_from_base": 2.6989394541487854e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 22,
+        "factor": 8,
+        "stage": "modified",
+        "size": 24,
+        "norm": 3.602872371673584,
+        "l2_from_base": 9.723935363581404e-07,
+        "relative_l2_from_base": 2.6989394541487854e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 22,
+        "factor": 8,
+        "stage": "post_norm",
+        "size": 24,
+        "norm": 8.063616752624512,
+        "l2_from_base": 2.0705176666524494e-06,
+        "relative_l2_from_base": 2.567728358826571e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 22,
+        "factor": 8,
+        "stage": "representation",
+        "size": 24,
+        "norm": 8.324009895324707,
+        "l2_from_base": 2.2541303223988507e-06,
+        "relative_l2_from_base": 2.707986084260483e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 22,
+        "factor": 8,
+        "stage": "decoder_input",
+        "size": 24,
+        "norm": 8.324009895324707,
+        "l2_from_base": 2.2541303223988507e-06,
+        "relative_l2_from_base": 2.707986084260483e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 23,
+        "factor": 1,
+        "stage": "attention",
+        "size": 3,
+        "norm": 3.2309370040893555,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 23,
+        "factor": 1,
+        "stage": "modified",
+        "size": 3,
+        "norm": 3.2309370040893555,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 23,
+        "factor": 1,
+        "stage": "post_norm",
+        "size": 3,
+        "norm": 8.050155639648438,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 23,
+        "factor": 1,
+        "stage": "representation",
+        "size": 3,
+        "norm": 8.311667442321777,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 23,
+        "factor": 1,
+        "stage": "decoder_input",
+        "size": 3,
+        "norm": 8.311667442321777,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 23,
+        "factor": 2,
+        "stage": "attention",
+        "size": 6,
+        "norm": 3.2309370040893555,
+        "l2_from_base": 1.1956164769344468e-07,
+        "relative_l2_from_base": 3.7005253972210994e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 23,
+        "factor": 2,
+        "stage": "modified",
+        "size": 6,
+        "norm": 3.2309370040893555,
+        "l2_from_base": 1.1956164769344468e-07,
+        "relative_l2_from_base": 3.7005253972210994e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 23,
+        "factor": 2,
+        "stage": "post_norm",
+        "size": 6,
+        "norm": 8.050155639648438,
+        "l2_from_base": 3.3848931479951716e-07,
+        "relative_l2_from_base": 4.204754944225897e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 23,
+        "factor": 2,
+        "stage": "representation",
+        "size": 6,
+        "norm": 8.311668395996094,
+        "l2_from_base": 3.3513123298689607e-07,
+        "relative_l2_from_base": 4.0320578875707724e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 23,
+        "factor": 2,
+        "stage": "decoder_input",
+        "size": 6,
+        "norm": 8.311668395996094,
+        "l2_from_base": 3.3513123298689607e-07,
+        "relative_l2_from_base": 4.0320578875707724e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 23,
+        "factor": 4,
+        "stage": "attention",
+        "size": 12,
+        "norm": 3.2309370040893555,
+        "l2_from_base": 2.444965616632544e-07,
+        "relative_l2_from_base": 7.567357585003265e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 23,
+        "factor": 4,
+        "stage": "modified",
+        "size": 12,
+        "norm": 3.2309370040893555,
+        "l2_from_base": 2.444965616632544e-07,
+        "relative_l2_from_base": 7.567357585003265e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 23,
+        "factor": 4,
+        "stage": "post_norm",
+        "size": 12,
+        "norm": 8.050155639648438,
+        "l2_from_base": 5.723020990444638e-07,
+        "relative_l2_from_base": 7.109205313327038e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 23,
+        "factor": 4,
+        "stage": "representation",
+        "size": 12,
+        "norm": 8.311667442321777,
+        "l2_from_base": 5.474149133988249e-07,
+        "relative_l2_from_base": 6.586102330174981e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 23,
+        "factor": 4,
+        "stage": "decoder_input",
+        "size": 12,
+        "norm": 8.311667442321777,
+        "l2_from_base": 5.474149133988249e-07,
+        "relative_l2_from_base": 6.586102330174981e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 23,
+        "factor": 8,
+        "stage": "attention",
+        "size": 24,
+        "norm": 3.2309370040893555,
+        "l2_from_base": 5.234762170402973e-07,
+        "relative_l2_from_base": 1.6201994412767817e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 23,
+        "factor": 8,
+        "stage": "modified",
+        "size": 24,
+        "norm": 3.2309370040893555,
+        "l2_from_base": 5.234762170402973e-07,
+        "relative_l2_from_base": 1.6201994412767817e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 23,
+        "factor": 8,
+        "stage": "post_norm",
+        "size": 24,
+        "norm": 8.050155639648438,
+        "l2_from_base": 1.4318790135803283e-06,
+        "relative_l2_from_base": 1.7786973671718442e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 23,
+        "factor": 8,
+        "stage": "representation",
+        "size": 24,
+        "norm": 8.311668395996094,
+        "l2_from_base": 1.3905715832152055e-06,
+        "relative_l2_from_base": 1.673035683324997e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 23,
+        "factor": 8,
+        "stage": "decoder_input",
+        "size": 24,
+        "norm": 8.311668395996094,
+        "l2_from_base": 1.3905715832152055e-06,
+        "relative_l2_from_base": 1.673035683324997e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 24,
+        "factor": 1,
+        "stage": "attention",
+        "size": 3,
+        "norm": 3.246955394744873,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 24,
+        "factor": 1,
+        "stage": "modified",
+        "size": 3,
+        "norm": 3.246955394744873,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 24,
+        "factor": 1,
+        "stage": "post_norm",
+        "size": 3,
+        "norm": 8.047016143798828,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 24,
+        "factor": 1,
+        "stage": "representation",
+        "size": 3,
+        "norm": 8.310955047607422,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 24,
+        "factor": 1,
+        "stage": "decoder_input",
+        "size": 3,
+        "norm": 8.310955047607422,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 24,
+        "factor": 2,
+        "stage": "attention",
+        "size": 6,
+        "norm": 3.246955156326294,
+        "l2_from_base": 1.4757276289856236e-07,
+        "relative_l2_from_base": 4.5449581875800504e-08,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 24,
+        "factor": 2,
+        "stage": "modified",
+        "size": 6,
+        "norm": 3.246955156326294,
+        "l2_from_base": 1.4757276289856236e-07,
+        "relative_l2_from_base": 4.5449581875800504e-08,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 24,
+        "factor": 2,
+        "stage": "post_norm",
+        "size": 6,
+        "norm": 8.047016143798828,
+        "l2_from_base": 4.2769536889863957e-07,
+        "relative_l2_from_base": 5.314955942026245e-08,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 24,
+        "factor": 2,
+        "stage": "representation",
+        "size": 6,
+        "norm": 8.310955047607422,
+        "l2_from_base": 7.685843570470752e-07,
+        "relative_l2_from_base": 9.247846577409291e-08,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 24,
+        "factor": 2,
+        "stage": "decoder_input",
+        "size": 6,
+        "norm": 8.310955047607422,
+        "l2_from_base": 7.685843570470752e-07,
+        "relative_l2_from_base": 9.247846577409291e-08,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 24,
+        "factor": 4,
+        "stage": "attention",
+        "size": 12,
+        "norm": 3.246955156326294,
+        "l2_from_base": 2.6341120928918826e-07,
+        "relative_l2_from_base": 8.112559868322933e-08,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 24,
+        "factor": 4,
+        "stage": "modified",
+        "size": 12,
+        "norm": 3.246955156326294,
+        "l2_from_base": 2.6341120928918826e-07,
+        "relative_l2_from_base": 8.112559868322933e-08,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 24,
+        "factor": 4,
+        "stage": "post_norm",
+        "size": 12,
+        "norm": 8.047016143798828,
+        "l2_from_base": 6.996905881351267e-07,
+        "relative_l2_from_base": 8.69503153921869e-08,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 24,
+        "factor": 4,
+        "stage": "representation",
+        "size": 12,
+        "norm": 8.310955047607422,
+        "l2_from_base": 9.223879260389367e-07,
+        "relative_l2_from_base": 1.1098458685410151e-07,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 24,
+        "factor": 4,
+        "stage": "decoder_input",
+        "size": 12,
+        "norm": 8.310955047607422,
+        "l2_from_base": 9.223879260389367e-07,
+        "relative_l2_from_base": 1.1098458685410151e-07,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 24,
+        "factor": 8,
+        "stage": "attention",
+        "size": 24,
+        "norm": 3.246955394744873,
+        "l2_from_base": 4.3529442450562783e-07,
+        "relative_l2_from_base": 1.3406233279056323e-07,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 24,
+        "factor": 8,
+        "stage": "modified",
+        "size": 24,
+        "norm": 3.246955394744873,
+        "l2_from_base": 4.3529442450562783e-07,
+        "relative_l2_from_base": 1.3406233279056323e-07,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 24,
+        "factor": 8,
+        "stage": "post_norm",
+        "size": 24,
+        "norm": 8.047017097473145,
+        "l2_from_base": 1.2227903880557278e-06,
+        "relative_l2_from_base": 1.5195574576409854e-07,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 24,
+        "factor": 8,
+        "stage": "representation",
+        "size": 24,
+        "norm": 8.310954093933105,
+        "l2_from_base": 1.1928391359106172e-06,
+        "relative_l2_from_base": 1.4352612254242558e-07,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 24,
+        "factor": 8,
+        "stage": "decoder_input",
+        "size": 24,
+        "norm": 8.310954093933105,
+        "l2_from_base": 1.1928391359106172e-06,
+        "relative_l2_from_base": 1.4352612254242558e-07,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 25,
+        "factor": 1,
+        "stage": "attention",
+        "size": 3,
+        "norm": 3.3369317054748535,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 25,
+        "factor": 1,
+        "stage": "modified",
+        "size": 3,
+        "norm": 3.3369317054748535,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 25,
+        "factor": 1,
+        "stage": "post_norm",
+        "size": 3,
+        "norm": 8.051280975341797,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 25,
+        "factor": 1,
+        "stage": "representation",
+        "size": 3,
+        "norm": 8.301387786865234,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 25,
+        "factor": 1,
+        "stage": "decoder_input",
+        "size": 3,
+        "norm": 8.301387786865234,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 25,
+        "factor": 2,
+        "stage": "attention",
+        "size": 6,
+        "norm": 3.3369317054748535,
+        "l2_from_base": 1.5815217579984164e-07,
+        "relative_l2_from_base": 4.739449011026409e-08,
+        "logit_change": 4.76837158203125e-07
+      },
+      {
+        "base_id": 25,
+        "factor": 2,
+        "stage": "modified",
+        "size": 6,
+        "norm": 3.3369317054748535,
+        "l2_from_base": 1.5815217579984164e-07,
+        "relative_l2_from_base": 4.739449011026409e-08,
+        "logit_change": 4.76837158203125e-07
+      },
+      {
+        "base_id": 25,
+        "factor": 2,
+        "stage": "post_norm",
+        "size": 6,
+        "norm": 8.05128002166748,
+        "l2_from_base": 7.637168550900242e-07,
+        "relative_l2_from_base": 9.485656704555367e-08,
+        "logit_change": 4.76837158203125e-07
+      },
+      {
+        "base_id": 25,
+        "factor": 2,
+        "stage": "representation",
+        "size": 6,
+        "norm": 8.301387786865234,
+        "l2_from_base": 8.416188279625203e-07,
+        "relative_l2_from_base": 1.0138290917893755e-07,
+        "logit_change": 4.76837158203125e-07
+      },
+      {
+        "base_id": 25,
+        "factor": 2,
+        "stage": "decoder_input",
+        "size": 6,
+        "norm": 8.301387786865234,
+        "l2_from_base": 8.416188279625203e-07,
+        "relative_l2_from_base": 1.0138290917893755e-07,
+        "logit_change": 4.76837158203125e-07
+      },
+      {
+        "base_id": 25,
+        "factor": 4,
+        "stage": "attention",
+        "size": 12,
+        "norm": 3.3369317054748535,
+        "l2_from_base": 3.807731445704121e-07,
+        "relative_l2_from_base": 1.1410876510353773e-07,
+        "logit_change": 4.76837158203125e-07
+      },
+      {
+        "base_id": 25,
+        "factor": 4,
+        "stage": "modified",
+        "size": 12,
+        "norm": 3.3369317054748535,
+        "l2_from_base": 3.807731445704121e-07,
+        "relative_l2_from_base": 1.1410876510353773e-07,
+        "logit_change": 4.76837158203125e-07
+      },
+      {
+        "base_id": 25,
+        "factor": 4,
+        "stage": "post_norm",
+        "size": 12,
+        "norm": 8.05128002166748,
+        "l2_from_base": 1.2867589020970627e-06,
+        "relative_l2_from_base": 1.598203880348592e-07,
+        "logit_change": 4.76837158203125e-07
+      },
+      {
+        "base_id": 25,
+        "factor": 4,
+        "stage": "representation",
+        "size": 12,
+        "norm": 8.301387786865234,
+        "l2_from_base": 1.3413734905043384e-06,
+        "relative_l2_from_base": 1.615842535329648e-07,
+        "logit_change": 4.76837158203125e-07
+      },
+      {
+        "base_id": 25,
+        "factor": 4,
+        "stage": "decoder_input",
+        "size": 12,
+        "norm": 8.301387786865234,
+        "l2_from_base": 1.3413734905043384e-06,
+        "relative_l2_from_base": 1.615842535329648e-07,
+        "logit_change": 4.76837158203125e-07
+      },
+      {
+        "base_id": 25,
+        "factor": 8,
+        "stage": "attention",
+        "size": 24,
+        "norm": 3.3369317054748535,
+        "l2_from_base": 6.456813252952998e-07,
+        "relative_l2_from_base": 1.9349552360381495e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 25,
+        "factor": 8,
+        "stage": "modified",
+        "size": 24,
+        "norm": 3.3369317054748535,
+        "l2_from_base": 6.456813252952998e-07,
+        "relative_l2_from_base": 1.9349552360381495e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 25,
+        "factor": 8,
+        "stage": "post_norm",
+        "size": 24,
+        "norm": 8.05128002166748,
+        "l2_from_base": 1.6674183598297532e-06,
+        "relative_l2_from_base": 2.0709975956378912e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 25,
+        "factor": 8,
+        "stage": "representation",
+        "size": 24,
+        "norm": 8.301387786865234,
+        "l2_from_base": 1.654783886806399e-06,
+        "relative_l2_from_base": 1.9933821704398724e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 25,
+        "factor": 8,
+        "stage": "decoder_input",
+        "size": 24,
+        "norm": 8.301387786865234,
+        "l2_from_base": 1.654783886806399e-06,
+        "relative_l2_from_base": 1.9933821704398724e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 26,
+        "factor": 1,
+        "stage": "attention",
+        "size": 3,
+        "norm": 3.233642101287842,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 26,
+        "factor": 1,
+        "stage": "modified",
+        "size": 3,
+        "norm": 3.233642101287842,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 26,
+        "factor": 1,
+        "stage": "post_norm",
+        "size": 3,
+        "norm": 8.062450408935547,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 26,
+        "factor": 1,
+        "stage": "representation",
+        "size": 3,
+        "norm": 8.299127578735352,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 26,
+        "factor": 1,
+        "stage": "decoder_input",
+        "size": 3,
+        "norm": 8.299127578735352,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 26,
+        "factor": 2,
+        "stage": "attention",
+        "size": 6,
+        "norm": 3.233642101287842,
+        "l2_from_base": 3.299722095562174e-07,
+        "relative_l2_from_base": 1.0204351497122843e-07,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 26,
+        "factor": 2,
+        "stage": "modified",
+        "size": 6,
+        "norm": 3.233642101287842,
+        "l2_from_base": 3.299722095562174e-07,
+        "relative_l2_from_base": 1.0204351497122843e-07,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 26,
+        "factor": 2,
+        "stage": "post_norm",
+        "size": 6,
+        "norm": 8.06244945526123,
+        "l2_from_base": 1.0023449021900888e-06,
+        "relative_l2_from_base": 1.243226108726958e-07,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 26,
+        "factor": 2,
+        "stage": "representation",
+        "size": 6,
+        "norm": 8.299127578735352,
+        "l2_from_base": 1.0727219432737911e-06,
+        "relative_l2_from_base": 1.2925718806400255e-07,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 26,
+        "factor": 2,
+        "stage": "decoder_input",
+        "size": 6,
+        "norm": 8.299127578735352,
+        "l2_from_base": 1.0727219432737911e-06,
+        "relative_l2_from_base": 1.2925718806400255e-07,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 26,
+        "factor": 4,
+        "stage": "attention",
+        "size": 12,
+        "norm": 3.233642101287842,
+        "l2_from_base": 3.1490961305280507e-07,
+        "relative_l2_from_base": 9.738542416926066e-08,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 26,
+        "factor": 4,
+        "stage": "modified",
+        "size": 12,
+        "norm": 3.233642101287842,
+        "l2_from_base": 3.1490961305280507e-07,
+        "relative_l2_from_base": 9.738542416926066e-08,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 26,
+        "factor": 4,
+        "stage": "post_norm",
+        "size": 12,
+        "norm": 8.06244945526123,
+        "l2_from_base": 8.948542244979762e-07,
+        "relative_l2_from_base": 1.1099035646111588e-07,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 26,
+        "factor": 4,
+        "stage": "representation",
+        "size": 12,
+        "norm": 8.299127578735352,
+        "l2_from_base": 1.0143415920538246e-06,
+        "relative_l2_from_base": 1.222226728714304e-07,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 26,
+        "factor": 4,
+        "stage": "decoder_input",
+        "size": 12,
+        "norm": 8.299127578735352,
+        "l2_from_base": 1.0143415920538246e-06,
+        "relative_l2_from_base": 1.222226728714304e-07,
+        "logit_change": -2.384185791015625e-07
+      },
+      {
+        "base_id": 26,
+        "factor": 8,
+        "stage": "attention",
+        "size": 24,
+        "norm": 3.2336418628692627,
+        "l2_from_base": 5.66421761050151e-07,
+        "relative_l2_from_base": 1.7516525474547961e-07,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 26,
+        "factor": 8,
+        "stage": "modified",
+        "size": 24,
+        "norm": 3.2336418628692627,
+        "l2_from_base": 5.66421761050151e-07,
+        "relative_l2_from_base": 1.7516525474547961e-07,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 26,
+        "factor": 8,
+        "stage": "post_norm",
+        "size": 24,
+        "norm": 8.062450408935547,
+        "l2_from_base": 1.5143685914154048e-06,
+        "relative_l2_from_base": 1.8782981214826577e-07,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 26,
+        "factor": 8,
+        "stage": "representation",
+        "size": 24,
+        "norm": 8.299127578735352,
+        "l2_from_base": 1.6126828086271416e-06,
+        "relative_l2_from_base": 1.9431955422533065e-07,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 26,
+        "factor": 8,
+        "stage": "decoder_input",
+        "size": 24,
+        "norm": 8.299127578735352,
+        "l2_from_base": 1.6126828086271416e-06,
+        "relative_l2_from_base": 1.9431955422533065e-07,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 27,
+        "factor": 1,
+        "stage": "attention",
+        "size": 3,
+        "norm": 3.481494665145874,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 27,
+        "factor": 1,
+        "stage": "modified",
+        "size": 3,
+        "norm": 3.481494665145874,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 27,
+        "factor": 1,
+        "stage": "post_norm",
+        "size": 3,
+        "norm": 8.06702709197998,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 27,
+        "factor": 1,
+        "stage": "representation",
+        "size": 3,
+        "norm": 8.299344062805176,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 27,
+        "factor": 1,
+        "stage": "decoder_input",
+        "size": 3,
+        "norm": 8.299344062805176,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 27,
+        "factor": 2,
+        "stage": "attention",
+        "size": 6,
+        "norm": 3.481494426727295,
+        "l2_from_base": 3.0496227054754854e-07,
+        "relative_l2_from_base": 8.759521108459012e-08,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 27,
+        "factor": 2,
+        "stage": "modified",
+        "size": 6,
+        "norm": 3.481494426727295,
+        "l2_from_base": 3.0496227054754854e-07,
+        "relative_l2_from_base": 8.759521108459012e-08,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 27,
+        "factor": 2,
+        "stage": "post_norm",
+        "size": 6,
+        "norm": 8.06702709197998,
+        "l2_from_base": 8.998330827125756e-07,
+        "relative_l2_from_base": 1.115445726895814e-07,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 27,
+        "factor": 2,
+        "stage": "representation",
+        "size": 6,
+        "norm": 8.29934310913086,
+        "l2_from_base": 9.793409390113084e-07,
+        "relative_l2_from_base": 1.1800221244584463e-07,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 27,
+        "factor": 2,
+        "stage": "decoder_input",
+        "size": 6,
+        "norm": 8.29934310913086,
+        "l2_from_base": 9.793409390113084e-07,
+        "relative_l2_from_base": 1.1800221244584463e-07,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 27,
+        "factor": 4,
+        "stage": "attention",
+        "size": 12,
+        "norm": 3.481494665145874,
+        "l2_from_base": 3.246751418828353e-07,
+        "relative_l2_from_base": 9.325739824816992e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 27,
+        "factor": 4,
+        "stage": "modified",
+        "size": 12,
+        "norm": 3.481494665145874,
+        "l2_from_base": 3.246751418828353e-07,
+        "relative_l2_from_base": 9.325739824816992e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 27,
+        "factor": 4,
+        "stage": "post_norm",
+        "size": 12,
+        "norm": 8.06702709197998,
+        "l2_from_base": 1.1495436638142564e-06,
+        "relative_l2_from_base": 1.4249904722873907e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 27,
+        "factor": 4,
+        "stage": "representation",
+        "size": 12,
+        "norm": 8.29934310913086,
+        "l2_from_base": 1.184274651677697e-06,
+        "relative_l2_from_base": 1.4269497228269756e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 27,
+        "factor": 4,
+        "stage": "decoder_input",
+        "size": 12,
+        "norm": 8.29934310913086,
+        "l2_from_base": 1.184274651677697e-06,
+        "relative_l2_from_base": 1.4269497228269756e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 27,
+        "factor": 8,
+        "stage": "attention",
+        "size": 24,
+        "norm": 3.481494665145874,
+        "l2_from_base": 5.610646667264518e-07,
+        "relative_l2_from_base": 1.6115626522150706e-07,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 27,
+        "factor": 8,
+        "stage": "modified",
+        "size": 24,
+        "norm": 3.481494665145874,
+        "l2_from_base": 5.610646667264518e-07,
+        "relative_l2_from_base": 1.6115626522150706e-07,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 27,
+        "factor": 8,
+        "stage": "post_norm",
+        "size": 24,
+        "norm": 8.06702709197998,
+        "l2_from_base": 1.3478190794558031e-06,
+        "relative_l2_from_base": 1.6707754468825442e-07,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 27,
+        "factor": 8,
+        "stage": "representation",
+        "size": 24,
+        "norm": 8.29934310913086,
+        "l2_from_base": 1.4097553275860264e-06,
+        "relative_l2_from_base": 1.6986346906833205e-07,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 27,
+        "factor": 8,
+        "stage": "decoder_input",
+        "size": 24,
+        "norm": 8.29934310913086,
+        "l2_from_base": 1.4097553275860264e-06,
+        "relative_l2_from_base": 1.6986346906833205e-07,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 28,
+        "factor": 1,
+        "stage": "attention",
+        "size": 3,
+        "norm": 3.3122475147247314,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 28,
+        "factor": 1,
+        "stage": "modified",
+        "size": 3,
+        "norm": 3.3122475147247314,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 28,
+        "factor": 1,
+        "stage": "post_norm",
+        "size": 3,
+        "norm": 8.05928897857666,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 28,
+        "factor": 1,
+        "stage": "representation",
+        "size": 3,
+        "norm": 8.279263496398926,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 28,
+        "factor": 1,
+        "stage": "decoder_input",
+        "size": 3,
+        "norm": 8.279263496398926,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 28,
+        "factor": 2,
+        "stage": "attention",
+        "size": 6,
+        "norm": 3.3122477531433105,
+        "l2_from_base": 2.372680256712556e-07,
+        "relative_l2_from_base": 7.163354354133844e-08,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 28,
+        "factor": 2,
+        "stage": "modified",
+        "size": 6,
+        "norm": 3.3122477531433105,
+        "l2_from_base": 2.372680256712556e-07,
+        "relative_l2_from_base": 7.163354354133844e-08,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 28,
+        "factor": 2,
+        "stage": "post_norm",
+        "size": 6,
+        "norm": 8.05928897857666,
+        "l2_from_base": 8.890137337402848e-07,
+        "relative_l2_from_base": 1.1030920177290682e-07,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 28,
+        "factor": 2,
+        "stage": "representation",
+        "size": 6,
+        "norm": 8.279263496398926,
+        "l2_from_base": 7.993330655153841e-07,
+        "relative_l2_from_base": 9.654640109602042e-08,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 28,
+        "factor": 2,
+        "stage": "decoder_input",
+        "size": 6,
+        "norm": 8.279263496398926,
+        "l2_from_base": 7.993330655153841e-07,
+        "relative_l2_from_base": 9.654640109602042e-08,
+        "logit_change": 2.384185791015625e-07
+      },
+      {
+        "base_id": 28,
+        "factor": 4,
+        "stage": "attention",
+        "size": 12,
+        "norm": 3.3122477531433105,
+        "l2_from_base": 3.128093339910265e-07,
+        "relative_l2_from_base": 9.444020321325297e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 28,
+        "factor": 4,
+        "stage": "modified",
+        "size": 12,
+        "norm": 3.3122477531433105,
+        "l2_from_base": 3.128093339910265e-07,
+        "relative_l2_from_base": 9.444020321325297e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 28,
+        "factor": 4,
+        "stage": "post_norm",
+        "size": 12,
+        "norm": 8.05928897857666,
+        "l2_from_base": 9.113238661484502e-07,
+        "relative_l2_from_base": 1.130774549551461e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 28,
+        "factor": 4,
+        "stage": "representation",
+        "size": 12,
+        "norm": 8.279263496398926,
+        "l2_from_base": 9.34476304337295e-07,
+        "relative_l2_from_base": 1.1286949330724383e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 28,
+        "factor": 4,
+        "stage": "decoder_input",
+        "size": 12,
+        "norm": 8.279263496398926,
+        "l2_from_base": 9.34476304337295e-07,
+        "relative_l2_from_base": 1.1286949330724383e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 28,
+        "factor": 8,
+        "stage": "attention",
+        "size": 24,
+        "norm": 3.3122477531433105,
+        "l2_from_base": 5.821041781928216e-07,
+        "relative_l2_from_base": 1.75742954411362e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 28,
+        "factor": 8,
+        "stage": "modified",
+        "size": 24,
+        "norm": 3.3122477531433105,
+        "l2_from_base": 5.821041781928216e-07,
+        "relative_l2_from_base": 1.75742954411362e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 28,
+        "factor": 8,
+        "stage": "post_norm",
+        "size": 24,
+        "norm": 8.059288024902344,
+        "l2_from_base": 1.5067801086843247e-06,
+        "relative_l2_from_base": 1.8696191261824424e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 28,
+        "factor": 8,
+        "stage": "representation",
+        "size": 24,
+        "norm": 8.279263496398926,
+        "l2_from_base": 1.4619819239669596e-06,
+        "relative_l2_from_base": 1.7658356910033035e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 28,
+        "factor": 8,
+        "stage": "decoder_input",
+        "size": 24,
+        "norm": 8.279263496398926,
+        "l2_from_base": 1.4619819239669596e-06,
+        "relative_l2_from_base": 1.7658356910033035e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 29,
+        "factor": 1,
+        "stage": "attention",
+        "size": 3,
+        "norm": 3.6781628131866455,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 29,
+        "factor": 1,
+        "stage": "modified",
+        "size": 3,
+        "norm": 3.6781628131866455,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 29,
+        "factor": 1,
+        "stage": "post_norm",
+        "size": 3,
+        "norm": 8.061628341674805,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 29,
+        "factor": 1,
+        "stage": "representation",
+        "size": 3,
+        "norm": 8.289542198181152,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 29,
+        "factor": 1,
+        "stage": "decoder_input",
+        "size": 3,
+        "norm": 8.289542198181152,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 29,
+        "factor": 2,
+        "stage": "attention",
+        "size": 6,
+        "norm": 3.6781628131866455,
+        "l2_from_base": 2.4033897716435604e-07,
+        "relative_l2_from_base": 6.534212815267892e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 29,
+        "factor": 2,
+        "stage": "modified",
+        "size": 6,
+        "norm": 3.6781628131866455,
+        "l2_from_base": 2.4033897716435604e-07,
+        "relative_l2_from_base": 6.534212815267892e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 29,
+        "factor": 2,
+        "stage": "post_norm",
+        "size": 6,
+        "norm": 8.061628341674805,
+        "l2_from_base": 5.264527658255247e-07,
+        "relative_l2_from_base": 6.530352436584508e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 29,
+        "factor": 2,
+        "stage": "representation",
+        "size": 6,
+        "norm": 8.289542198181152,
+        "l2_from_base": 5.174936177354539e-07,
+        "relative_l2_from_base": 6.242728289862498e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 29,
+        "factor": 2,
+        "stage": "decoder_input",
+        "size": 6,
+        "norm": 8.289542198181152,
+        "l2_from_base": 5.174936177354539e-07,
+        "relative_l2_from_base": 6.242728289862498e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 29,
+        "factor": 4,
+        "stage": "attention",
+        "size": 12,
+        "norm": 3.6781628131866455,
+        "l2_from_base": 2.4036785362113733e-07,
+        "relative_l2_from_base": 6.534997964990907e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 29,
+        "factor": 4,
+        "stage": "modified",
+        "size": 12,
+        "norm": 3.6781628131866455,
+        "l2_from_base": 2.4036785362113733e-07,
+        "relative_l2_from_base": 6.534997964990907e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 29,
+        "factor": 4,
+        "stage": "post_norm",
+        "size": 12,
+        "norm": 8.061628341674805,
+        "l2_from_base": 5.505931994775892e-07,
+        "relative_l2_from_base": 6.829801435515037e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 29,
+        "factor": 4,
+        "stage": "representation",
+        "size": 12,
+        "norm": 8.289542198181152,
+        "l2_from_base": 6.147970452730078e-07,
+        "relative_l2_from_base": 7.416537783910826e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 29,
+        "factor": 4,
+        "stage": "decoder_input",
+        "size": 12,
+        "norm": 8.289542198181152,
+        "l2_from_base": 6.147970452730078e-07,
+        "relative_l2_from_base": 7.416537783910826e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 29,
+        "factor": 8,
+        "stage": "attention",
+        "size": 24,
+        "norm": 3.6781630516052246,
+        "l2_from_base": 6.993656143094995e-07,
+        "relative_l2_from_base": 1.90139928690769e-07,
+        "logit_change": 4.76837158203125e-07
+      },
+      {
+        "base_id": 29,
+        "factor": 8,
+        "stage": "modified",
+        "size": 24,
+        "norm": 3.6781630516052246,
+        "l2_from_base": 6.993656143094995e-07,
+        "relative_l2_from_base": 1.90139928690769e-07,
+        "logit_change": 4.76837158203125e-07
+      },
+      {
+        "base_id": 29,
+        "factor": 8,
+        "stage": "post_norm",
+        "size": 24,
+        "norm": 8.061628341674805,
+        "l2_from_base": 1.5810568356755539e-06,
+        "relative_l2_from_base": 1.9612127744039753e-07,
+        "logit_change": 4.76837158203125e-07
+      },
+      {
+        "base_id": 29,
+        "factor": 8,
+        "stage": "representation",
+        "size": 24,
+        "norm": 8.289541244506836,
+        "l2_from_base": 1.6913351146286004e-06,
+        "relative_l2_from_base": 2.0403238920607691e-07,
+        "logit_change": 4.76837158203125e-07
+      },
+      {
+        "base_id": 29,
+        "factor": 8,
+        "stage": "decoder_input",
+        "size": 24,
+        "norm": 8.289541244506836,
+        "l2_from_base": 1.6913351146286004e-06,
+        "relative_l2_from_base": 2.0403238920607691e-07,
+        "logit_change": 4.76837158203125e-07
+      },
+      {
+        "base_id": 30,
+        "factor": 1,
+        "stage": "attention",
+        "size": 3,
+        "norm": 4.390371322631836,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 30,
+        "factor": 1,
+        "stage": "modified",
+        "size": 3,
+        "norm": 4.390371322631836,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 30,
+        "factor": 1,
+        "stage": "post_norm",
+        "size": 3,
+        "norm": 8.064691543579102,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 30,
+        "factor": 1,
+        "stage": "representation",
+        "size": 3,
+        "norm": 8.317374229431152,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 30,
+        "factor": 1,
+        "stage": "decoder_input",
+        "size": 3,
+        "norm": 8.317374229431152,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 30,
+        "factor": 2,
+        "stage": "attention",
+        "size": 6,
+        "norm": 4.390371322631836,
+        "l2_from_base": 1.032550756008277e-07,
+        "relative_l2_from_base": 2.3518529346233663e-08,
+        "logit_change": -4.76837158203125e-07
+      },
+      {
+        "base_id": 30,
+        "factor": 2,
+        "stage": "modified",
+        "size": 6,
+        "norm": 4.390371322631836,
+        "l2_from_base": 1.032550756008277e-07,
+        "relative_l2_from_base": 2.3518529346233663e-08,
+        "logit_change": -4.76837158203125e-07
+      },
+      {
+        "base_id": 30,
+        "factor": 2,
+        "stage": "post_norm",
+        "size": 6,
+        "norm": 8.064691543579102,
+        "l2_from_base": 2.920969564002007e-07,
+        "relative_l2_from_base": 3.621923383434478e-08,
+        "logit_change": -4.76837158203125e-07
+      },
+      {
+        "base_id": 30,
+        "factor": 2,
+        "stage": "representation",
+        "size": 6,
+        "norm": 8.317374229431152,
+        "l2_from_base": 7.085694164743472e-07,
+        "relative_l2_from_base": 8.519148053665049e-08,
+        "logit_change": -4.76837158203125e-07
+      },
+      {
+        "base_id": 30,
+        "factor": 2,
+        "stage": "decoder_input",
+        "size": 6,
+        "norm": 8.317374229431152,
+        "l2_from_base": 7.085694164743472e-07,
+        "relative_l2_from_base": 8.519148053665049e-08,
+        "logit_change": -4.76837158203125e-07
+      },
+      {
+        "base_id": 30,
+        "factor": 4,
+        "stage": "attention",
+        "size": 12,
+        "norm": 4.390371799468994,
+        "l2_from_base": 5.479533342622744e-07,
+        "relative_l2_from_base": 1.2480796840463881e-07,
+        "logit_change": -4.76837158203125e-07
+      },
+      {
+        "base_id": 30,
+        "factor": 4,
+        "stage": "modified",
+        "size": 12,
+        "norm": 4.390371799468994,
+        "l2_from_base": 5.479533342622744e-07,
+        "relative_l2_from_base": 1.2480796840463881e-07,
+        "logit_change": -4.76837158203125e-07
+      },
+      {
+        "base_id": 30,
+        "factor": 4,
+        "stage": "post_norm",
+        "size": 12,
+        "norm": 8.064692497253418,
+        "l2_from_base": 1.0854347465283354e-06,
+        "relative_l2_from_base": 1.3459097658596875e-07,
+        "logit_change": -4.76837158203125e-07
+      },
+      {
+        "base_id": 30,
+        "factor": 4,
+        "stage": "representation",
+        "size": 12,
+        "norm": 8.317375183105469,
+        "l2_from_base": 1.2933371635881485e-06,
+        "relative_l2_from_base": 1.5549825604921352e-07,
+        "logit_change": -4.76837158203125e-07
+      },
+      {
+        "base_id": 30,
+        "factor": 4,
+        "stage": "decoder_input",
+        "size": 12,
+        "norm": 8.317375183105469,
+        "l2_from_base": 1.2933371635881485e-06,
+        "relative_l2_from_base": 1.5549825604921352e-07,
+        "logit_change": -4.76837158203125e-07
+      },
+      {
+        "base_id": 30,
+        "factor": 8,
+        "stage": "attention",
+        "size": 24,
+        "norm": 4.390371322631836,
+        "l2_from_base": 6.772399387955375e-07,
+        "relative_l2_from_base": 1.5425572996718984e-07,
+        "logit_change": -4.76837158203125e-07
+      },
+      {
+        "base_id": 30,
+        "factor": 8,
+        "stage": "modified",
+        "size": 24,
+        "norm": 4.390371322631836,
+        "l2_from_base": 6.772399387955375e-07,
+        "relative_l2_from_base": 1.5425572996718984e-07,
+        "logit_change": -4.76837158203125e-07
+      },
+      {
+        "base_id": 30,
+        "factor": 8,
+        "stage": "post_norm",
+        "size": 24,
+        "norm": 8.064692497253418,
+        "l2_from_base": 1.3191946663937415e-06,
+        "relative_l2_from_base": 1.6357658694232668e-07,
+        "logit_change": -4.76837158203125e-07
+      },
+      {
+        "base_id": 30,
+        "factor": 8,
+        "stage": "representation",
+        "size": 24,
+        "norm": 8.317374229431152,
+        "l2_from_base": 1.1641830042208312e-06,
+        "relative_l2_from_base": 1.3997001246934815e-07,
+        "logit_change": -4.76837158203125e-07
+      },
+      {
+        "base_id": 30,
+        "factor": 8,
+        "stage": "decoder_input",
+        "size": 24,
+        "norm": 8.317374229431152,
+        "l2_from_base": 1.1641830042208312e-06,
+        "relative_l2_from_base": 1.3997001246934815e-07,
+        "logit_change": -4.76837158203125e-07
+      },
+      {
+        "base_id": 31,
+        "factor": 1,
+        "stage": "attention",
+        "size": 3,
+        "norm": 4.387528419494629,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 31,
+        "factor": 1,
+        "stage": "modified",
+        "size": 3,
+        "norm": 4.387528419494629,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 31,
+        "factor": 1,
+        "stage": "post_norm",
+        "size": 3,
+        "norm": 8.06676959991455,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 31,
+        "factor": 1,
+        "stage": "representation",
+        "size": 3,
+        "norm": 8.31980037689209,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 31,
+        "factor": 1,
+        "stage": "decoder_input",
+        "size": 3,
+        "norm": 8.31980037689209,
+        "l2_from_base": 0.0,
+        "relative_l2_from_base": 0.0,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 31,
+        "factor": 2,
+        "stage": "attention",
+        "size": 6,
+        "norm": 4.387528419494629,
+        "l2_from_base": 3.541487956226774e-07,
+        "relative_l2_from_base": 8.071715029700499e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 31,
+        "factor": 2,
+        "stage": "modified",
+        "size": 6,
+        "norm": 4.387528419494629,
+        "l2_from_base": 3.541487956226774e-07,
+        "relative_l2_from_base": 8.071715029700499e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 31,
+        "factor": 2,
+        "stage": "post_norm",
+        "size": 6,
+        "norm": 8.06676959991455,
+        "l2_from_base": 7.336835778914974e-07,
+        "relative_l2_from_base": 9.095134601011523e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 31,
+        "factor": 2,
+        "stage": "representation",
+        "size": 6,
+        "norm": 8.31980037689209,
+        "l2_from_base": 7.469183742614405e-07,
+        "relative_l2_from_base": 8.97759946383303e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 31,
+        "factor": 2,
+        "stage": "decoder_input",
+        "size": 6,
+        "norm": 8.31980037689209,
+        "l2_from_base": 7.469183742614405e-07,
+        "relative_l2_from_base": 8.97759946383303e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 31,
+        "factor": 4,
+        "stage": "attention",
+        "size": 12,
+        "norm": 4.387528419494629,
+        "l2_from_base": 3.1665516075918276e-07,
+        "relative_l2_from_base": 7.217165176598428e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 31,
+        "factor": 4,
+        "stage": "modified",
+        "size": 12,
+        "norm": 4.387528419494629,
+        "l2_from_base": 3.1665516075918276e-07,
+        "relative_l2_from_base": 7.217165176598428e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 31,
+        "factor": 4,
+        "stage": "post_norm",
+        "size": 12,
+        "norm": 8.06676959991455,
+        "l2_from_base": 7.321042971852876e-07,
+        "relative_l2_from_base": 9.075557017013125e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 31,
+        "factor": 4,
+        "stage": "representation",
+        "size": 12,
+        "norm": 8.31980037689209,
+        "l2_from_base": 6.947965971448866e-07,
+        "relative_l2_from_base": 8.351121039140708e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 31,
+        "factor": 4,
+        "stage": "decoder_input",
+        "size": 12,
+        "norm": 8.31980037689209,
+        "l2_from_base": 6.947965971448866e-07,
+        "relative_l2_from_base": 8.351121039140708e-08,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 31,
+        "factor": 8,
+        "stage": "attention",
+        "size": 24,
+        "norm": 4.387528896331787,
+        "l2_from_base": 7.582984835607931e-07,
+        "relative_l2_from_base": 1.7283043973748136e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 31,
+        "factor": 8,
+        "stage": "modified",
+        "size": 24,
+        "norm": 4.387528896331787,
+        "l2_from_base": 7.582984835607931e-07,
+        "relative_l2_from_base": 1.7283043973748136e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 31,
+        "factor": 8,
+        "stage": "post_norm",
+        "size": 24,
+        "norm": 8.06676959991455,
+        "l2_from_base": 1.3553310509450966e-06,
+        "relative_l2_from_base": 1.680140968574051e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 31,
+        "factor": 8,
+        "stage": "representation",
+        "size": 24,
+        "norm": 8.31980037689209,
+        "l2_from_base": 1.2521534245024668e-06,
+        "relative_l2_from_base": 1.5050281376716157e-07,
+        "logit_change": 0.0
+      },
+      {
+        "base_id": 31,
+        "factor": 8,
+        "stage": "decoder_input",
+        "size": 24,
+        "norm": 8.31980037689209,
+        "l2_from_base": 1.2521534245024668e-06,
+        "relative_l2_from_base": 1.5050281376716157e-07,
+        "logit_change": 0.0
+      }
+    ]
+  },
+  "size_intervention": {
+    "reference_size_train_median": 3.0,
+    "mean_absolute_logit_change": 0.0,
+    "original": {
+      "overall": {
+        "n": 128112,
+        "positives": 64056,
+        "prevalence": 0.5,
+        "auroc": 0.8909774960212627,
+        "auprc": 0.8742281798221991,
+        "logit_std": 2.474975824356079,
+        "unique_logits": 127606,
+        "bce": 0.41527804732322693
+      },
+      "by_size": {
+        "4": {
+          "n": 77664,
+          "positives": 38832,
+          "prevalence": 0.5,
+          "auroc": 0.8930486440013579,
+          "auprc": 0.8773762630564004,
+          "logit_std": 2.4834489822387695,
+          "unique_logits": 77465,
+          "bce": 0.41252782940864563,
+          "small_bin": false
+        },
+        "5": {
+          "n": 50448,
+          "positives": 25224,
+          "prevalence": 0.5,
+          "auroc": 0.8877244444172855,
+          "auprc": 0.8691481649747889,
+          "logit_std": 2.461700201034546,
+          "unique_logits": 50382,
+          "bce": 0.4195118844509125,
+          "small_bin": false
+        }
+      },
+      "macro_size_auprc": 0.8732622140155946
+    },
+    "neutralized": {
+      "overall": {
+        "n": 128112,
+        "positives": 64056,
+        "prevalence": 0.5,
+        "auroc": 0.8909774960212627,
+        "auprc": 0.8742281798221991,
+        "logit_std": 2.474975824356079,
+        "unique_logits": 127606,
+        "bce": 0.41527804732322693
+      },
+      "by_size": {
+        "4": {
+          "n": 77664,
+          "positives": 38832,
+          "prevalence": 0.5,
+          "auroc": 0.8930486440013579,
+          "auprc": 0.8773762630564004,
+          "logit_std": 2.4834489822387695,
+          "unique_logits": 77465,
+          "bce": 0.41252782940864563,
+          "small_bin": false
+        },
+        "5": {
+          "n": 50448,
+          "positives": 25224,
+          "prevalence": 0.5,
+          "auroc": 0.8877244444172855,
+          "auprc": 0.8691481649747889,
+          "logit_std": 2.461700201034546,
+          "unique_logits": 50382,
+          "bce": 0.4195118844509125,
+          "small_bin": false
+        }
+      },
+      "macro_size_auprc": 0.8732622140155946
+    },
+    "by_size": {
+      "4": {
+        "n": 77664,
+        "mean_absolute_logit_change": 0.0
+      },
+      "5": {
+        "n": 50448,
+        "mean_absolute_logit_change": 0.0
+      }
+    },
+    "scope": "Only decoder size input/scaling is clamped; members, attention, and encoder are frozen. This diagnoses computational dependence, not an intervention on real interaction size."
+  }
+}

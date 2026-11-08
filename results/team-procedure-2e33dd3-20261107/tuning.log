@@ -1,0 +1,631 @@
+C:\Users\radud\OneDrive\Desktop\Uni Stuff\Master\GraphML\GML\tmp\team-procedure-2e33dd3\hnn_project\data.py:318: UserWarning: Sparse invariant checks are implicitly disabled. Memory errors (e.g. SEGFAULT) will occur when operating on a sparse tensor which violates the invariants, but checks incur performance overhead. To silence this warning, explicitly opt in or out. See `torch.sparse.check_sparse_tensor_invariants.__doc__` for guidance.  (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\aten\src\ATen\Context.cpp:767.)
+  adjacency = torch.sparse_coo_tensor(indices, values,
+Tune email-Enron/order-k3/{'hidden_dim': 32, 'layers': 1, 'dropout': 0.0}/seed-0/deepsets
+  deepsets lr=0.001 epoch=25 loss=0.6878 val_AP=0.6183
+  deepsets lr=0.001 epoch=50 loss=0.6192 val_AP=0.6671
+  deepsets lr=0.01 epoch=25 loss=0.5340 val_AP=0.5975
+Tune email-Enron/order-k3/{'hidden_dim': 32, 'layers': 1, 'dropout': 0.0}/seed-0/gcn
+  gcn lr=0.001 epoch=25 loss=0.6933 val_AP=0.6590
+  gcn lr=0.001 epoch=50 loss=0.6917 val_AP=0.6876
+  gcn lr=0.001 epoch=75 loss=0.6743 val_AP=0.7130
+  gcn lr=0.001 epoch=100 loss=0.5985 val_AP=0.6938
+  gcn lr=0.01 epoch=25 loss=0.6395 val_AP=0.6955
+  gcn lr=0.01 epoch=50 loss=0.5865 val_AP=0.6169
+Tune email-Enron/order-k3/{'hidden_dim': 32, 'layers': 1, 'dropout': 0.0}/seed-0/allset
+  allset lr=0.001 epoch=25 loss=0.6930 val_AP=0.6642
+  allset lr=0.001 epoch=50 loss=0.6816 val_AP=0.7109
+  allset lr=0.001 epoch=75 loss=0.5915 val_AP=0.6980
+  allset lr=0.01 epoch=25 loss=0.6610 val_AP=0.7254
+  allset lr=0.01 epoch=50 loss=0.5968 val_AP=0.6851
+Tune email-Enron/order-k3/{'hidden_dim': 32, 'layers': 1, 'dropout': 0.0}/seed-0/allset_cpa
+  allset_cpa lr=0.001 epoch=25 loss=0.6929 val_AP=0.6025
+  allset_cpa lr=0.001 epoch=50 loss=0.6845 val_AP=0.7234
+  allset_cpa lr=0.001 epoch=75 loss=0.5873 val_AP=0.7135
+  allset_cpa lr=0.01 epoch=25 loss=0.6672 val_AP=0.6887
+  allset_cpa lr=0.01 epoch=50 loss=0.5886 val_AP=0.6764
+Tune email-Enron/order-k3/{'hidden_dim': 32, 'layers': 1, 'dropout': 0.0}/seed-0/allset_size
+  allset_size lr=0.001 epoch=25 loss=0.6930 val_AP=0.6408
+  allset_size lr=0.001 epoch=50 loss=0.6824 val_AP=0.7089
+  allset_size lr=0.001 epoch=75 loss=0.5918 val_AP=0.6958
+  allset_size lr=0.01 epoch=25 loss=0.6847 val_AP=0.6871
+  allset_size lr=0.01 epoch=50 loss=0.5871 val_AP=0.6899
+  allset_size lr=0.01 epoch=75 loss=0.5580 val_AP=0.6779
+Tune email-Enron/order-k3/{'hidden_dim': 32, 'layers': 1, 'dropout': 0.2}/seed-0/deepsets
+  deepsets lr=0.001 epoch=25 loss=0.6891 val_AP=0.6074
+  deepsets lr=0.001 epoch=50 loss=0.6424 val_AP=0.6719
+  deepsets lr=0.001 epoch=75 loss=0.5673 val_AP=0.6281
+  deepsets lr=0.01 epoch=25 loss=0.5361 val_AP=0.5951
+Tune email-Enron/order-k3/{'hidden_dim': 32, 'layers': 1, 'dropout': 0.2}/seed-0/gcn
+  gcn lr=0.001 epoch=25 loss=0.6937 val_AP=0.6966
+  gcn lr=0.001 epoch=50 loss=0.6930 val_AP=0.6957
+  gcn lr=0.001 epoch=75 loss=0.6782 val_AP=0.7135
+  gcn lr=0.001 epoch=100 loss=0.6131 val_AP=0.7045
+  gcn lr=0.01 epoch=25 loss=0.6600 val_AP=0.7049
+  gcn lr=0.01 epoch=50 loss=0.5758 val_AP=0.6940
+Tune email-Enron/order-k3/{'hidden_dim': 32, 'layers': 1, 'dropout': 0.2}/seed-0/allset
+  allset lr=0.001 epoch=25 loss=0.6938 val_AP=0.6470
+  allset lr=0.001 epoch=50 loss=0.6904 val_AP=0.7018
+  allset lr=0.001 epoch=75 loss=0.6289 val_AP=0.7174
+  allset lr=0.001 epoch=100 loss=0.5999 val_AP=0.7147
+  allset lr=0.01 epoch=25 loss=0.6913 val_AP=0.7006
+  allset lr=0.01 epoch=50 loss=0.6009 val_AP=0.7066
+Tune email-Enron/order-k3/{'hidden_dim': 32, 'layers': 1, 'dropout': 0.2}/seed-0/allset_cpa
+  allset_cpa lr=0.001 epoch=25 loss=0.6938 val_AP=0.5980
+  allset_cpa lr=0.001 epoch=50 loss=0.6898 val_AP=0.6705
+  allset_cpa lr=0.001 epoch=75 loss=0.6113 val_AP=0.6918
+  allset_cpa lr=0.001 epoch=100 loss=0.5950 val_AP=0.7100
+  allset_cpa lr=0.01 epoch=25 loss=0.6945 val_AP=0.6494
+  allset_cpa lr=0.01 epoch=50 loss=0.6027 val_AP=0.6785
+  allset_cpa lr=0.01 epoch=75 loss=0.5551 val_AP=0.6746
+  allset_cpa lr=0.01 epoch=100 loss=0.4805 val_AP=0.7433
+  allset_cpa lr=0.01 epoch=125 loss=0.4201 val_AP=0.7055
+Tune email-Enron/order-k3/{'hidden_dim': 32, 'layers': 1, 'dropout': 0.2}/seed-0/allset_size
+  allset_size lr=0.001 epoch=25 loss=0.6941 val_AP=0.5843
+  allset_size lr=0.001 epoch=50 loss=0.6905 val_AP=0.6882
+  allset_size lr=0.001 epoch=75 loss=0.6322 val_AP=0.7055
+  allset_size lr=0.001 epoch=100 loss=0.5982 val_AP=0.7172
+  allset_size lr=0.01 epoch=25 loss=0.6924 val_AP=0.6866
+  allset_size lr=0.01 epoch=50 loss=0.6018 val_AP=0.7019
+  allset_size lr=0.01 epoch=75 loss=0.5613 val_AP=0.6423
+Tune email-Enron/order-k3/{'hidden_dim': 32, 'layers': 2, 'dropout': 0.0}/seed-0/deepsets
+  deepsets lr=0.001 epoch=25 loss=0.6878 val_AP=0.6183
+  deepsets lr=0.001 epoch=50 loss=0.6192 val_AP=0.6671
+  deepsets lr=0.01 epoch=25 loss=0.5340 val_AP=0.5975
+Tune email-Enron/order-k3/{'hidden_dim': 32, 'layers': 2, 'dropout': 0.0}/seed-0/gcn
+  gcn lr=0.001 epoch=25 loss=0.6882 val_AP=0.6653
+  gcn lr=0.001 epoch=50 loss=0.6447 val_AP=0.7125
+  gcn lr=0.001 epoch=75 loss=0.6077 val_AP=0.7078
+  gcn lr=0.001 epoch=100 loss=0.5815 val_AP=0.6562
+  gcn lr=0.01 epoch=25 loss=0.6860 val_AP=0.7310
+  gcn lr=0.01 epoch=50 loss=0.6055 val_AP=0.7236
+Tune email-Enron/order-k3/{'hidden_dim': 32, 'layers': 2, 'dropout': 0.0}/seed-0/allset
+  allset lr=0.001 epoch=25 loss=0.6931 val_AP=0.6812
+  allset lr=0.001 epoch=50 loss=0.6904 val_AP=0.7130
+  allset lr=0.001 epoch=75 loss=0.6132 val_AP=0.6988
+  allset lr=0.01 epoch=25 loss=0.6932 val_AP=0.6805
+  allset lr=0.01 epoch=50 loss=0.6885 val_AP=0.6755
+  allset lr=0.01 epoch=75 loss=0.6051 val_AP=0.6583
+Tune email-Enron/order-k3/{'hidden_dim': 32, 'layers': 2, 'dropout': 0.0}/seed-0/allset_cpa
+  allset_cpa lr=0.001 epoch=25 loss=0.6932 val_AP=0.6327
+  allset_cpa lr=0.001 epoch=50 loss=0.6928 val_AP=0.6605
+  allset_cpa lr=0.001 epoch=75 loss=0.6251 val_AP=0.6887
+  allset_cpa lr=0.001 epoch=100 loss=0.5934 val_AP=0.7111
+  allset_cpa lr=0.001 epoch=125 loss=0.5390 val_AP=0.6778
+  allset_cpa lr=0.01 epoch=25 loss=0.6931 val_AP=0.6458
+  allset_cpa lr=0.01 epoch=50 loss=0.6830 val_AP=0.6731
+  allset_cpa lr=0.01 epoch=75 loss=0.6254 val_AP=0.6795
+  allset_cpa lr=0.01 epoch=100 loss=0.6238 val_AP=0.7031
+Tune email-Enron/order-k3/{'hidden_dim': 32, 'layers': 2, 'dropout': 0.0}/seed-0/allset_size
+  allset_size lr=0.001 epoch=25 loss=0.6931 val_AP=0.5916
+  allset_size lr=0.001 epoch=50 loss=0.6879 val_AP=0.7110
+  allset_size lr=0.001 epoch=75 loss=0.6126 val_AP=0.6706
+  allset_size lr=0.01 epoch=25 loss=0.6932 val_AP=0.5988
+  allset_size lr=0.01 epoch=50 loss=0.6255 val_AP=0.6897
+  allset_size lr=0.01 epoch=75 loss=0.5991 val_AP=0.7141
+  allset_size lr=0.01 epoch=100 loss=0.5563 val_AP=0.7537
+  allset_size lr=0.01 epoch=125 loss=0.5205 val_AP=0.7260
+Tune email-Enron/order-k3/{'hidden_dim': 32, 'layers': 2, 'dropout': 0.2}/seed-0/deepsets
+  deepsets lr=0.001 epoch=25 loss=0.6891 val_AP=0.6074
+  deepsets lr=0.001 epoch=50 loss=0.6424 val_AP=0.6719
+  deepsets lr=0.001 epoch=75 loss=0.5673 val_AP=0.6281
+  deepsets lr=0.01 epoch=25 loss=0.5361 val_AP=0.5951
+Tune email-Enron/order-k3/{'hidden_dim': 32, 'layers': 2, 'dropout': 0.2}/seed-0/gcn
+  gcn lr=0.001 epoch=25 loss=0.6883 val_AP=0.6641
+  gcn lr=0.001 epoch=50 loss=0.6660 val_AP=0.7113
+  gcn lr=0.001 epoch=75 loss=0.6467 val_AP=0.7093
+  gcn lr=0.01 epoch=25 loss=0.6669 val_AP=0.7285
+  gcn lr=0.01 epoch=50 loss=0.6129 val_AP=0.7032
+Tune email-Enron/order-k3/{'hidden_dim': 32, 'layers': 2, 'dropout': 0.2}/seed-0/allset
+  allset lr=0.001 epoch=25 loss=0.6948 val_AP=0.6671
+  allset lr=0.001 epoch=50 loss=0.6928 val_AP=0.6776
+  allset lr=0.001 epoch=75 loss=0.6908 val_AP=0.7216
+  allset lr=0.001 epoch=100 loss=0.6167 val_AP=0.7182
+  allset lr=0.01 epoch=25 loss=0.6938 val_AP=0.6816
+  allset lr=0.01 epoch=50 loss=0.6932 val_AP=0.4150
+Tune email-Enron/order-k3/{'hidden_dim': 32, 'layers': 2, 'dropout': 0.2}/seed-0/allset_cpa
+  allset_cpa lr=0.001 epoch=25 loss=0.6953 val_AP=0.6093
+  allset_cpa lr=0.001 epoch=50 loss=0.6934 val_AP=0.6273
+  allset_cpa lr=0.001 epoch=75 loss=0.6934 val_AP=0.6634
+  allset_cpa lr=0.001 epoch=100 loss=0.6606 val_AP=0.6936
+  allset_cpa lr=0.01 epoch=25 loss=0.6926 val_AP=0.6059
+  allset_cpa lr=0.01 epoch=50 loss=0.6934 val_AP=0.6308
+  allset_cpa lr=0.01 epoch=75 loss=0.6711 val_AP=0.6078
+  allset_cpa lr=0.01 epoch=100 loss=0.6358 val_AP=0.6599
+  allset_cpa lr=0.01 epoch=125 loss=0.6186 val_AP=0.6712
+  allset_cpa lr=0.01 epoch=150 loss=0.6371 val_AP=0.6685
+Tune email-Enron/order-k3/{'hidden_dim': 32, 'layers': 2, 'dropout': 0.2}/seed-0/allset_size
+  allset_size lr=0.001 epoch=25 loss=0.6938 val_AP=0.5466
+  allset_size lr=0.001 epoch=50 loss=0.6926 val_AP=0.6103
+  allset_size lr=0.001 epoch=75 loss=0.6830 val_AP=0.7246
+  allset_size lr=0.001 epoch=100 loss=0.6191 val_AP=0.6345
+  allset_size lr=0.01 epoch=25 loss=0.6938 val_AP=0.6097
+  allset_size lr=0.01 epoch=50 loss=0.6418 val_AP=0.6211
+Tune email-Enron/order-k3/{'hidden_dim': 64, 'layers': 1, 'dropout': 0.0}/seed-0/deepsets
+  deepsets lr=0.001 epoch=25 loss=0.6365 val_AP=0.6424
+  deepsets lr=0.001 epoch=50 loss=0.5510 val_AP=0.5878
+  deepsets lr=0.01 epoch=25 loss=0.4462 val_AP=0.5879
+Tune email-Enron/order-k3/{'hidden_dim': 64, 'layers': 1, 'dropout': 0.0}/seed-0/gcn
+  gcn lr=0.001 epoch=25 loss=0.6750 val_AP=0.6958
+  gcn lr=0.001 epoch=50 loss=0.5835 val_AP=0.6887
+  gcn lr=0.01 epoch=25 loss=0.6116 val_AP=0.6946
+  gcn lr=0.01 epoch=50 loss=0.5163 val_AP=0.7050
+Tune email-Enron/order-k3/{'hidden_dim': 64, 'layers': 1, 'dropout': 0.0}/seed-0/allset
+  allset lr=0.001 epoch=25 loss=0.6853 val_AP=0.6832
+  allset lr=0.001 epoch=50 loss=0.5722 val_AP=0.6833
+  allset lr=0.01 epoch=25 loss=0.6935 val_AP=0.6621
+  allset lr=0.01 epoch=50 loss=0.5739 val_AP=0.6886
+  allset lr=0.01 epoch=75 loss=0.5230 val_AP=0.6905
+Tune email-Enron/order-k3/{'hidden_dim': 64, 'layers': 1, 'dropout': 0.0}/seed-0/allset_cpa
+  allset_cpa lr=0.001 epoch=25 loss=0.6665 val_AP=0.6908
+  allset_cpa lr=0.001 epoch=50 loss=0.5626 val_AP=0.6752
+  allset_cpa lr=0.01 epoch=25 loss=0.6397 val_AP=0.5878
+  allset_cpa lr=0.01 epoch=50 loss=0.5899 val_AP=0.7022
+  allset_cpa lr=0.01 epoch=75 loss=0.5129 val_AP=0.6802
+Tune email-Enron/order-k3/{'hidden_dim': 64, 'layers': 1, 'dropout': 0.0}/seed-0/allset_size
+  allset_size lr=0.001 epoch=25 loss=0.6885 val_AP=0.6797
+  allset_size lr=0.001 epoch=50 loss=0.5801 val_AP=0.7041
+  allset_size lr=0.001 epoch=75 loss=0.5268 val_AP=0.6558
+  allset_size lr=0.01 epoch=25 loss=0.6932 val_AP=0.6204
+  allset_size lr=0.01 epoch=50 loss=0.6456 val_AP=0.7182
+  allset_size lr=0.01 epoch=75 loss=0.5557 val_AP=0.6620
+Tune email-Enron/order-k3/{'hidden_dim': 64, 'layers': 1, 'dropout': 0.2}/seed-0/deepsets
+  deepsets lr=0.001 epoch=25 loss=0.6505 val_AP=0.6433
+  deepsets lr=0.001 epoch=50 loss=0.5546 val_AP=0.5983
+  deepsets lr=0.01 epoch=25 loss=0.4771 val_AP=0.6134
+Tune email-Enron/order-k3/{'hidden_dim': 64, 'layers': 1, 'dropout': 0.2}/seed-0/gcn
+  gcn lr=0.001 epoch=25 loss=0.6867 val_AP=0.6958
+  gcn lr=0.001 epoch=50 loss=0.5989 val_AP=0.6840
+  gcn lr=0.01 epoch=25 loss=0.6920 val_AP=0.6851
+  gcn lr=0.01 epoch=50 loss=0.5971 val_AP=0.6906
+  gcn lr=0.01 epoch=75 loss=0.5588 val_AP=0.7063
+  gcn lr=0.01 epoch=100 loss=0.5075 val_AP=0.7051
+Tune email-Enron/order-k3/{'hidden_dim': 64, 'layers': 1, 'dropout': 0.2}/seed-0/allset
+  allset lr=0.001 epoch=25 loss=0.6896 val_AP=0.6716
+  allset lr=0.001 epoch=50 loss=0.5948 val_AP=0.6996
+  allset lr=0.001 epoch=75 loss=0.5611 val_AP=0.6688
+  allset lr=0.01 epoch=25 loss=0.6936 val_AP=0.6672
+  allset lr=0.01 epoch=50 loss=0.6935 val_AP=0.6847
+  allset lr=0.01 epoch=75 loss=0.6396 val_AP=0.6727
+  allset lr=0.01 epoch=100 loss=0.5792 val_AP=0.6601
+Tune email-Enron/order-k3/{'hidden_dim': 64, 'layers': 1, 'dropout': 0.2}/seed-0/allset_cpa
+  allset_cpa lr=0.001 epoch=25 loss=0.6866 val_AP=0.6755
+  allset_cpa lr=0.001 epoch=50 loss=0.5875 val_AP=0.6968
+  allset_cpa lr=0.01 epoch=25 loss=0.6935 val_AP=0.7007
+  allset_cpa lr=0.01 epoch=50 loss=0.6200 val_AP=0.6796
+Tune email-Enron/order-k3/{'hidden_dim': 64, 'layers': 1, 'dropout': 0.2}/seed-0/allset_size
+  allset_size lr=0.001 epoch=25 loss=0.6906 val_AP=0.6704
+  allset_size lr=0.001 epoch=50 loss=0.5941 val_AP=0.6981
+  allset_size lr=0.001 epoch=75 loss=0.5596 val_AP=0.6724
+  allset_size lr=0.01 epoch=25 loss=0.6933 val_AP=0.4642
+Tune email-Enron/order-k3/{'hidden_dim': 64, 'layers': 2, 'dropout': 0.0}/seed-0/deepsets
+  deepsets lr=0.001 epoch=25 loss=0.6365 val_AP=0.6424
+  deepsets lr=0.001 epoch=50 loss=0.5510 val_AP=0.5878
+  deepsets lr=0.01 epoch=25 loss=0.4462 val_AP=0.5879
+Tune email-Enron/order-k3/{'hidden_dim': 64, 'layers': 2, 'dropout': 0.0}/seed-0/gcn
+  gcn lr=0.001 epoch=25 loss=0.6917 val_AP=0.6783
+  gcn lr=0.001 epoch=50 loss=0.6361 val_AP=0.7163
+  gcn lr=0.001 epoch=75 loss=0.6003 val_AP=0.7221
+  gcn lr=0.001 epoch=100 loss=0.5561 val_AP=0.7019
+  gcn lr=0.01 epoch=25 loss=0.6520 val_AP=0.6778
+  gcn lr=0.01 epoch=50 loss=0.5963 val_AP=0.7437
+  gcn lr=0.01 epoch=75 loss=0.5022 val_AP=0.7726
+  gcn lr=0.01 epoch=100 loss=0.4393 val_AP=0.7647
+  gcn lr=0.01 epoch=125 loss=0.4711 val_AP=0.7829
+Tune email-Enron/order-k3/{'hidden_dim': 64, 'layers': 2, 'dropout': 0.0}/seed-0/allset
+  allset lr=0.001 epoch=25 loss=0.6924 val_AP=0.7046
+  allset lr=0.001 epoch=50 loss=0.5962 val_AP=0.6969
+  allset lr=0.01 epoch=25 loss=0.6933 val_AP=0.6832
+  allset lr=0.01 epoch=50 loss=0.6934 val_AP=0.6802
+  allset lr=0.01 epoch=75 loss=0.6932 val_AP=0.6806
+Tune email-Enron/order-k3/{'hidden_dim': 64, 'layers': 2, 'dropout': 0.0}/seed-0/allset_cpa
+  allset_cpa lr=0.001 epoch=25 loss=0.6925 val_AP=0.6650
+  allset_cpa lr=0.001 epoch=50 loss=0.6057 val_AP=0.7037
+  allset_cpa lr=0.001 epoch=75 loss=0.5621 val_AP=0.6661
+  allset_cpa lr=0.01 epoch=25 loss=0.6933 val_AP=0.4361
+Tune email-Enron/order-k3/{'hidden_dim': 64, 'layers': 2, 'dropout': 0.0}/seed-0/allset_size
+  allset_size lr=0.001 epoch=25 loss=0.6927 val_AP=0.6747
+  allset_size lr=0.001 epoch=50 loss=0.6023 val_AP=0.6985
+  allset_size lr=0.01 epoch=25 loss=0.6933 val_AP=0.6019
+  allset_size lr=0.01 epoch=50 loss=0.6307 val_AP=0.6582
+Tune email-Enron/order-k3/{'hidden_dim': 64, 'layers': 2, 'dropout': 0.2}/seed-0/deepsets
+  deepsets lr=0.001 epoch=25 loss=0.6505 val_AP=0.6433
+  deepsets lr=0.001 epoch=50 loss=0.5546 val_AP=0.5983
+  deepsets lr=0.01 epoch=25 loss=0.4771 val_AP=0.6134
+Tune email-Enron/order-k3/{'hidden_dim': 64, 'layers': 2, 'dropout': 0.2}/seed-0/gcn
+  gcn lr=0.001 epoch=25 loss=0.6956 val_AP=0.6728
+  gcn lr=0.001 epoch=50 loss=0.6549 val_AP=0.7184
+  gcn lr=0.001 epoch=75 loss=0.6301 val_AP=0.7211
+  gcn lr=0.001 epoch=100 loss=0.6115 val_AP=0.7296
+  gcn lr=0.001 epoch=125 loss=0.5813 val_AP=0.7214
+  gcn lr=0.01 epoch=25 loss=0.6931 val_AP=0.7068
+  gcn lr=0.01 epoch=50 loss=0.6135 val_AP=0.7257
+  gcn lr=0.01 epoch=75 loss=0.5934 val_AP=0.7140
+Tune email-Enron/order-k3/{'hidden_dim': 64, 'layers': 2, 'dropout': 0.2}/seed-0/allset
+  allset lr=0.001 epoch=25 loss=0.6937 val_AP=0.6967
+  allset lr=0.001 epoch=50 loss=0.6183 val_AP=0.7162
+  allset lr=0.001 epoch=75 loss=0.5750 val_AP=0.6933
+  allset lr=0.01 epoch=25 loss=0.6937 val_AP=0.5015
+Tune email-Enron/order-k3/{'hidden_dim': 64, 'layers': 2, 'dropout': 0.2}/seed-0/allset_cpa
+  allset_cpa lr=0.001 epoch=25 loss=0.6927 val_AP=0.6715
+  allset_cpa lr=0.001 epoch=50 loss=0.6142 val_AP=0.7020
+  allset_cpa lr=0.01 epoch=25 loss=0.6930 val_AP=0.5225
+Tune email-Enron/order-k3/{'hidden_dim': 64, 'layers': 2, 'dropout': 0.2}/seed-0/allset_size
+  allset_size lr=0.001 epoch=25 loss=0.6952 val_AP=0.7008
+  allset_size lr=0.001 epoch=50 loss=0.6237 val_AP=0.6782
+  allset_size lr=0.01 epoch=25 loss=0.6937 val_AP=0.5253
+  allset_size lr=0.01 epoch=50 loss=0.6932 val_AP=0.5370
+  allset_size lr=0.01 epoch=75 loss=0.6937 val_AP=0.5405
+  allset_size lr=0.01 epoch=100 loss=0.6938 val_AP=0.5420
+email-Enron: {'hidden_dim': 32, 'layers': 2, 'dropout': 0.0} mean validation AP=0.7166
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 32, 'layers': 1, 'dropout': 0.0}/seed-0/deepsets
+  deepsets lr=0.001 epoch=25 loss=0.6757 val_AP=0.7653
+  deepsets lr=0.001 epoch=50 loss=0.5263 val_AP=0.8390
+  deepsets lr=0.001 epoch=75 loss=0.4109 val_AP=0.8613
+  deepsets lr=0.001 epoch=100 loss=0.3883 val_AP=0.8629
+  deepsets lr=0.001 epoch=125 loss=0.3837 val_AP=0.8629
+  deepsets lr=0.001 epoch=150 loss=0.3819 val_AP=0.8632
+  deepsets lr=0.01 epoch=25 loss=0.3939 val_AP=0.8573
+  deepsets lr=0.01 epoch=50 loss=0.3814 val_AP=0.8647
+  deepsets lr=0.01 epoch=75 loss=0.3759 val_AP=0.8664
+  deepsets lr=0.01 epoch=100 loss=0.3440 val_AP=0.8613
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 32, 'layers': 1, 'dropout': 0.0}/seed-0/gcn
+  gcn lr=0.001 epoch=25 loss=0.6209 val_AP=0.7656
+  gcn lr=0.01 epoch=25 loss=0.4321 val_AP=0.8746
+  gcn lr=0.01 epoch=50 loss=0.3904 val_AP=0.8802
+  gcn lr=0.01 epoch=75 loss=0.3864 val_AP=0.8812
+  gcn lr=0.01 epoch=100 loss=0.3766 val_AP=0.8806
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 32, 'layers': 1, 'dropout': 0.0}/seed-0/allset
+  allset lr=0.001 epoch=25 loss=0.6928 val_AP=0.7580
+  allset lr=0.001 epoch=50 loss=0.6377 val_AP=0.8231
+  allset lr=0.001 epoch=75 loss=0.4357 val_AP=0.8394
+  allset lr=0.001 epoch=100 loss=0.4052 val_AP=0.8453
+  allset lr=0.001 epoch=125 loss=0.3975 val_AP=0.8597
+  allset lr=0.001 epoch=150 loss=0.3872 val_AP=0.8665
+  allset lr=0.01 epoch=25 loss=0.5154 val_AP=0.8019
+  allset lr=0.01 epoch=50 loss=0.4590 val_AP=0.8458
+  allset lr=0.01 epoch=75 loss=0.4345 val_AP=0.8607
+  allset lr=0.01 epoch=100 loss=0.3868 val_AP=0.8637
+  allset lr=0.01 epoch=125 loss=0.3744 val_AP=0.8674
+  allset lr=0.01 epoch=150 loss=0.3716 val_AP=0.8689
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 32, 'layers': 1, 'dropout': 0.0}/seed-0/allset_cpa
+  allset_cpa lr=0.001 epoch=25 loss=0.6925 val_AP=0.6436
+  allset_cpa lr=0.001 epoch=50 loss=0.5672 val_AP=0.8266
+  allset_cpa lr=0.001 epoch=75 loss=0.4291 val_AP=0.8365
+  allset_cpa lr=0.001 epoch=100 loss=0.4004 val_AP=0.8553
+  allset_cpa lr=0.001 epoch=125 loss=0.3844 val_AP=0.8655
+  allset_cpa lr=0.001 epoch=150 loss=0.3771 val_AP=0.8691
+  allset_cpa lr=0.01 epoch=25 loss=0.5734 val_AP=0.7994
+  allset_cpa lr=0.01 epoch=50 loss=0.4206 val_AP=0.8300
+  allset_cpa lr=0.01 epoch=75 loss=0.3948 val_AP=0.8568
+  allset_cpa lr=0.01 epoch=100 loss=0.3777 val_AP=0.8657
+  allset_cpa lr=0.01 epoch=125 loss=0.3741 val_AP=0.8671
+  allset_cpa lr=0.01 epoch=150 loss=0.3697 val_AP=0.8680
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 32, 'layers': 1, 'dropout': 0.0}/seed-0/allset_size
+  allset_size lr=0.001 epoch=25 loss=0.6931 val_AP=0.6219
+  allset_size lr=0.001 epoch=50 loss=0.6706 val_AP=0.8216
+  allset_size lr=0.001 epoch=75 loss=0.4411 val_AP=0.8325
+  allset_size lr=0.01 epoch=25 loss=0.4767 val_AP=0.7772
+  allset_size lr=0.01 epoch=50 loss=0.4167 val_AP=0.8383
+  allset_size lr=0.01 epoch=75 loss=0.3965 val_AP=0.8558
+  allset_size lr=0.01 epoch=100 loss=0.3934 val_AP=0.8582
+  allset_size lr=0.01 epoch=125 loss=0.3820 val_AP=0.8627
+  allset_size lr=0.01 epoch=150 loss=0.3734 val_AP=0.8652
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 32, 'layers': 1, 'dropout': 0.2}/seed-0/deepsets
+  deepsets lr=0.001 epoch=25 loss=0.6764 val_AP=0.7657
+  deepsets lr=0.001 epoch=50 loss=0.5317 val_AP=0.8398
+  deepsets lr=0.001 epoch=75 loss=0.4169 val_AP=0.8606
+  deepsets lr=0.001 epoch=100 loss=0.3948 val_AP=0.8604
+  deepsets lr=0.01 epoch=25 loss=0.3994 val_AP=0.8562
+  deepsets lr=0.01 epoch=50 loss=0.3837 val_AP=0.8651
+  deepsets lr=0.01 epoch=75 loss=0.3759 val_AP=0.8658
+  deepsets lr=0.01 epoch=100 loss=0.3561 val_AP=0.8619
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 32, 'layers': 1, 'dropout': 0.2}/seed-0/gcn
+  gcn lr=0.001 epoch=25 loss=0.6297 val_AP=0.7673
+  gcn lr=0.01 epoch=25 loss=0.4497 val_AP=0.8741
+  gcn lr=0.01 epoch=50 loss=0.3993 val_AP=0.8806
+  gcn lr=0.01 epoch=75 loss=0.3907 val_AP=0.8810
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 32, 'layers': 1, 'dropout': 0.2}/seed-0/allset
+  allset lr=0.001 epoch=25 loss=0.6907 val_AP=0.7359
+  allset lr=0.001 epoch=50 loss=0.5772 val_AP=0.8330
+  allset lr=0.001 epoch=75 loss=0.4433 val_AP=0.8399
+  allset lr=0.001 epoch=100 loss=0.4171 val_AP=0.8520
+  allset lr=0.001 epoch=125 loss=0.4038 val_AP=0.8577
+  allset lr=0.001 epoch=150 loss=0.3953 val_AP=0.8615
+  allset lr=0.01 epoch=25 loss=0.5400 val_AP=0.7632
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 32, 'layers': 1, 'dropout': 0.2}/seed-0/allset_cpa
+  allset_cpa lr=0.001 epoch=25 loss=0.6896 val_AP=0.6684
+  allset_cpa lr=0.001 epoch=50 loss=0.5494 val_AP=0.8274
+  allset_cpa lr=0.001 epoch=75 loss=0.4392 val_AP=0.8462
+  allset_cpa lr=0.001 epoch=100 loss=0.4139 val_AP=0.8592
+  allset_cpa lr=0.001 epoch=125 loss=0.3971 val_AP=0.8690
+  allset_cpa lr=0.001 epoch=150 loss=0.3869 val_AP=0.8735
+  allset_cpa lr=0.01 epoch=25 loss=0.6671 val_AP=0.8323
+  allset_cpa lr=0.01 epoch=50 loss=0.5520 val_AP=0.7784
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 32, 'layers': 1, 'dropout': 0.2}/seed-0/allset_size
+  allset_size lr=0.001 epoch=25 loss=0.6913 val_AP=0.7298
+  allset_size lr=0.001 epoch=50 loss=0.5908 val_AP=0.8326
+  allset_size lr=0.001 epoch=75 loss=0.4441 val_AP=0.8398
+  allset_size lr=0.001 epoch=100 loss=0.4158 val_AP=0.8527
+  allset_size lr=0.001 epoch=125 loss=0.4011 val_AP=0.8583
+  allset_size lr=0.001 epoch=150 loss=0.3927 val_AP=0.8640
+  allset_size lr=0.01 epoch=25 loss=0.5193 val_AP=0.8224
+  allset_size lr=0.01 epoch=50 loss=0.4203 val_AP=0.8448
+  allset_size lr=0.01 epoch=75 loss=0.3983 val_AP=0.8584
+  allset_size lr=0.01 epoch=100 loss=0.3869 val_AP=0.8644
+  allset_size lr=0.01 epoch=125 loss=0.3824 val_AP=0.8656
+  allset_size lr=0.01 epoch=150 loss=0.3829 val_AP=0.8626
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 32, 'layers': 2, 'dropout': 0.0}/seed-0/deepsets
+  deepsets lr=0.001 epoch=25 loss=0.6757 val_AP=0.7653
+  deepsets lr=0.001 epoch=50 loss=0.5263 val_AP=0.8390
+  deepsets lr=0.001 epoch=75 loss=0.4109 val_AP=0.8613
+  deepsets lr=0.001 epoch=100 loss=0.3883 val_AP=0.8629
+  deepsets lr=0.001 epoch=125 loss=0.3837 val_AP=0.8629
+  deepsets lr=0.001 epoch=150 loss=0.3819 val_AP=0.8632
+  deepsets lr=0.01 epoch=25 loss=0.3939 val_AP=0.8573
+  deepsets lr=0.01 epoch=50 loss=0.3814 val_AP=0.8647
+  deepsets lr=0.01 epoch=75 loss=0.3759 val_AP=0.8664
+  deepsets lr=0.01 epoch=100 loss=0.3440 val_AP=0.8613
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 32, 'layers': 2, 'dropout': 0.0}/seed-0/gcn
+  gcn lr=0.001 epoch=25 loss=0.6566 val_AP=0.8065
+  gcn lr=0.01 epoch=25 loss=0.4248 val_AP=0.8825
+  gcn lr=0.01 epoch=50 loss=0.3993 val_AP=0.8838
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 32, 'layers': 2, 'dropout': 0.0}/seed-0/allset
+  allset lr=0.001 epoch=25 loss=0.6932 val_AP=0.6414
+  allset lr=0.001 epoch=50 loss=0.6923 val_AP=0.7606
+  allset lr=0.001 epoch=75 loss=0.5009 val_AP=0.8346
+  allset lr=0.001 epoch=100 loss=0.4264 val_AP=0.8466
+  allset lr=0.001 epoch=125 loss=0.4016 val_AP=0.8541
+  allset lr=0.001 epoch=150 loss=0.3914 val_AP=0.8623
+  allset lr=0.01 epoch=25 loss=0.6932 val_AP=0.7552
+  allset lr=0.01 epoch=50 loss=0.6931 val_AP=0.7957
+  allset lr=0.01 epoch=75 loss=0.5127 val_AP=0.7237
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 32, 'layers': 2, 'dropout': 0.0}/seed-0/allset_cpa
+  allset_cpa lr=0.001 epoch=25 loss=0.6931 val_AP=0.5945
+  allset_cpa lr=0.001 epoch=50 loss=0.6407 val_AP=0.7849
+  allset_cpa lr=0.001 epoch=75 loss=0.4558 val_AP=0.8054
+  allset_cpa lr=0.001 epoch=100 loss=0.4219 val_AP=0.8387
+  allset_cpa lr=0.001 epoch=125 loss=0.4027 val_AP=0.8535
+  allset_cpa lr=0.001 epoch=150 loss=0.3986 val_AP=0.8597
+  allset_cpa lr=0.01 epoch=25 loss=0.6932 val_AP=0.6444
+  allset_cpa lr=0.01 epoch=50 loss=0.4991 val_AP=0.7462
+  allset_cpa lr=0.01 epoch=75 loss=0.4794 val_AP=0.7475
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 32, 'layers': 2, 'dropout': 0.0}/seed-0/allset_size
+  allset_size lr=0.001 epoch=25 loss=0.6932 val_AP=0.5775
+  allset_size lr=0.001 epoch=50 loss=0.6919 val_AP=0.6987
+  allset_size lr=0.001 epoch=75 loss=0.4898 val_AP=0.8140
+  allset_size lr=0.001 epoch=100 loss=0.4292 val_AP=0.8214
+  allset_size lr=0.001 epoch=125 loss=0.4063 val_AP=0.8486
+  allset_size lr=0.001 epoch=150 loss=0.3976 val_AP=0.8549
+  allset_size lr=0.01 epoch=25 loss=0.6931 val_AP=0.6493
+  allset_size lr=0.01 epoch=50 loss=0.5105 val_AP=0.7457
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 32, 'layers': 2, 'dropout': 0.2}/seed-0/deepsets
+  deepsets lr=0.001 epoch=25 loss=0.6764 val_AP=0.7657
+  deepsets lr=0.001 epoch=50 loss=0.5317 val_AP=0.8398
+  deepsets lr=0.001 epoch=75 loss=0.4169 val_AP=0.8606
+  deepsets lr=0.001 epoch=100 loss=0.3948 val_AP=0.8604
+  deepsets lr=0.01 epoch=25 loss=0.3994 val_AP=0.8562
+  deepsets lr=0.01 epoch=50 loss=0.3837 val_AP=0.8651
+  deepsets lr=0.01 epoch=75 loss=0.3759 val_AP=0.8658
+  deepsets lr=0.01 epoch=100 loss=0.3561 val_AP=0.8619
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 32, 'layers': 2, 'dropout': 0.2}/seed-0/gcn
+  gcn lr=0.001 epoch=25 loss=0.6558 val_AP=0.8054
+  gcn lr=0.01 epoch=25 loss=0.4419 val_AP=0.8832
+  gcn lr=0.01 epoch=50 loss=0.4226 val_AP=0.8844
+  gcn lr=0.01 epoch=75 loss=0.4084 val_AP=0.8847
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 32, 'layers': 2, 'dropout': 0.2}/seed-0/allset
+  allset lr=0.001 epoch=25 loss=0.6903 val_AP=0.5990
+  allset lr=0.001 epoch=50 loss=0.6359 val_AP=0.7556
+  allset lr=0.001 epoch=75 loss=0.5285 val_AP=0.7787
+  allset lr=0.001 epoch=100 loss=0.4842 val_AP=0.7860
+  allset lr=0.01 epoch=25 loss=0.6925 val_AP=0.5279
+  allset lr=0.01 epoch=50 loss=0.5885 val_AP=0.7561
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 32, 'layers': 2, 'dropout': 0.2}/seed-0/allset_cpa
+  allset_cpa lr=0.001 epoch=25 loss=0.6880 val_AP=0.5441
+  allset_cpa lr=0.001 epoch=50 loss=0.5991 val_AP=0.7483
+  allset_cpa lr=0.001 epoch=75 loss=0.5155 val_AP=0.7874
+  allset_cpa lr=0.001 epoch=100 loss=0.4651 val_AP=0.7624
+  allset_cpa lr=0.01 epoch=25 loss=0.6896 val_AP=0.6125
+  allset_cpa lr=0.01 epoch=50 loss=0.5920 val_AP=0.6336
+  allset_cpa lr=0.01 epoch=75 loss=0.5099 val_AP=0.6320
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 32, 'layers': 2, 'dropout': 0.2}/seed-0/allset_size
+  allset_size lr=0.001 epoch=25 loss=0.6915 val_AP=0.5413
+  allset_size lr=0.001 epoch=50 loss=0.6665 val_AP=0.7314
+  allset_size lr=0.001 epoch=75 loss=0.5268 val_AP=0.7914
+  allset_size lr=0.001 epoch=100 loss=0.4694 val_AP=0.7899
+  allset_size lr=0.01 epoch=25 loss=0.6860 val_AP=0.5891
+  allset_size lr=0.01 epoch=50 loss=0.5107 val_AP=0.6080
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 64, 'layers': 1, 'dropout': 0.0}/seed-0/deepsets
+  deepsets lr=0.001 epoch=25 loss=0.5809 val_AP=0.8133
+  deepsets lr=0.001 epoch=50 loss=0.4029 val_AP=0.8598
+  deepsets lr=0.001 epoch=75 loss=0.3842 val_AP=0.8635
+  deepsets lr=0.001 epoch=100 loss=0.3807 val_AP=0.8647
+  deepsets lr=0.001 epoch=125 loss=0.3790 val_AP=0.8654
+  deepsets lr=0.001 epoch=150 loss=0.3778 val_AP=0.8663
+  deepsets lr=0.01 epoch=25 loss=0.3847 val_AP=0.8637
+  deepsets lr=0.01 epoch=50 loss=0.3712 val_AP=0.8686
+  deepsets lr=0.01 epoch=75 loss=0.3326 val_AP=0.8619
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 64, 'layers': 1, 'dropout': 0.0}/seed-0/gcn
+  gcn lr=0.001 epoch=25 loss=0.5115 val_AP=0.7961
+  gcn lr=0.001 epoch=50 loss=0.4360 val_AP=0.8732
+  gcn lr=0.001 epoch=75 loss=0.4027 val_AP=0.8810
+  gcn lr=0.001 epoch=100 loss=0.3904 val_AP=0.8824
+  gcn lr=0.001 epoch=125 loss=0.3852 val_AP=0.8820
+  gcn lr=0.01 epoch=25 loss=0.4103 val_AP=0.8784
+  gcn lr=0.01 epoch=50 loss=0.3847 val_AP=0.8809
+  gcn lr=0.01 epoch=75 loss=0.3780 val_AP=0.8808
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 64, 'layers': 1, 'dropout': 0.0}/seed-0/allset
+  allset lr=0.001 epoch=25 loss=0.6880 val_AP=0.8016
+  allset lr=0.001 epoch=50 loss=0.4379 val_AP=0.8362
+  allset lr=0.001 epoch=75 loss=0.3956 val_AP=0.8612
+  allset lr=0.001 epoch=100 loss=0.3812 val_AP=0.8693
+  allset lr=0.001 epoch=125 loss=0.3759 val_AP=0.8725
+  allset lr=0.001 epoch=150 loss=0.3726 val_AP=0.8723
+  allset lr=0.01 epoch=25 loss=0.6609 val_AP=0.8180
+  allset lr=0.01 epoch=50 loss=0.4896 val_AP=0.8113
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 64, 'layers': 1, 'dropout': 0.0}/seed-0/allset_cpa
+  allset_cpa lr=0.001 epoch=25 loss=0.6929 val_AP=0.7669
+  allset_cpa lr=0.001 epoch=50 loss=0.5006 val_AP=0.8317
+  allset_cpa lr=0.001 epoch=75 loss=0.4080 val_AP=0.8515
+  allset_cpa lr=0.001 epoch=100 loss=0.3835 val_AP=0.8658
+  allset_cpa lr=0.001 epoch=125 loss=0.3753 val_AP=0.8695
+  allset_cpa lr=0.001 epoch=150 loss=0.3718 val_AP=0.8710
+  allset_cpa lr=0.01 epoch=25 loss=0.5673 val_AP=0.8082
+  allset_cpa lr=0.01 epoch=50 loss=0.4570 val_AP=0.7837
+  allset_cpa lr=0.01 epoch=75 loss=0.4160 val_AP=0.8314
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 64, 'layers': 1, 'dropout': 0.0}/seed-0/allset_size
+  allset_size lr=0.001 epoch=25 loss=0.6913 val_AP=0.7934
+  allset_size lr=0.001 epoch=50 loss=0.4497 val_AP=0.8312
+  allset_size lr=0.001 epoch=75 loss=0.4004 val_AP=0.8537
+  allset_size lr=0.001 epoch=100 loss=0.3850 val_AP=0.8666
+  allset_size lr=0.001 epoch=125 loss=0.3769 val_AP=0.8711
+  allset_size lr=0.001 epoch=150 loss=0.3734 val_AP=0.8725
+  allset_size lr=0.01 epoch=25 loss=0.9043 val_AP=0.7881
+  allset_size lr=0.01 epoch=50 loss=0.4989 val_AP=0.7872
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 64, 'layers': 1, 'dropout': 0.2}/seed-0/deepsets
+  deepsets lr=0.001 epoch=25 loss=0.5873 val_AP=0.8135
+  deepsets lr=0.001 epoch=50 loss=0.4078 val_AP=0.8596
+  deepsets lr=0.001 epoch=75 loss=0.3878 val_AP=0.8621
+  deepsets lr=0.001 epoch=100 loss=0.3848 val_AP=0.8624
+  deepsets lr=0.001 epoch=125 loss=0.3827 val_AP=0.8628
+  deepsets lr=0.001 epoch=150 loss=0.3808 val_AP=0.8635
+  deepsets lr=0.01 epoch=25 loss=0.3872 val_AP=0.8638
+  deepsets lr=0.01 epoch=50 loss=0.3684 val_AP=0.8679
+  deepsets lr=0.01 epoch=75 loss=0.3465 val_AP=0.8568
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 64, 'layers': 1, 'dropout': 0.2}/seed-0/gcn
+  gcn lr=0.001 epoch=25 loss=0.5217 val_AP=0.7912
+  gcn lr=0.001 epoch=50 loss=0.4533 val_AP=0.8688
+  gcn lr=0.001 epoch=75 loss=0.4121 val_AP=0.8812
+  gcn lr=0.001 epoch=100 loss=0.3988 val_AP=0.8817
+  gcn lr=0.001 epoch=125 loss=0.3920 val_AP=0.8813
+  gcn lr=0.01 epoch=25 loss=0.4192 val_AP=0.8817
+  gcn lr=0.01 epoch=50 loss=0.3892 val_AP=0.8812
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 64, 'layers': 1, 'dropout': 0.2}/seed-0/allset
+  allset lr=0.001 epoch=25 loss=0.6683 val_AP=0.7781
+  allset lr=0.001 epoch=50 loss=0.4519 val_AP=0.8365
+  allset lr=0.001 epoch=75 loss=0.4148 val_AP=0.8396
+  allset lr=0.001 epoch=100 loss=0.3990 val_AP=0.8488
+  allset lr=0.001 epoch=125 loss=0.3924 val_AP=0.8557
+  allset lr=0.001 epoch=150 loss=0.3856 val_AP=0.8604
+  allset lr=0.01 epoch=25 loss=0.6457 val_AP=0.8147
+  allset lr=0.01 epoch=50 loss=0.4951 val_AP=0.7895
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 64, 'layers': 1, 'dropout': 0.2}/seed-0/allset_cpa
+  allset_cpa lr=0.001 epoch=25 loss=0.6879 val_AP=0.6885
+  allset_cpa lr=0.001 epoch=50 loss=0.4783 val_AP=0.8339
+  allset_cpa lr=0.001 epoch=75 loss=0.4174 val_AP=0.8433
+  allset_cpa lr=0.001 epoch=100 loss=0.3982 val_AP=0.8521
+  allset_cpa lr=0.001 epoch=125 loss=0.3869 val_AP=0.8596
+  allset_cpa lr=0.001 epoch=150 loss=0.3809 val_AP=0.8646
+  allset_cpa lr=0.01 epoch=25 loss=0.6849 val_AP=0.8298
+  allset_cpa lr=0.01 epoch=50 loss=0.4582 val_AP=0.8134
+  allset_cpa lr=0.01 epoch=75 loss=0.4052 val_AP=0.8531
+  allset_cpa lr=0.01 epoch=100 loss=0.3876 val_AP=0.8583
+  allset_cpa lr=0.01 epoch=125 loss=0.3823 val_AP=0.8605
+  allset_cpa lr=0.01 epoch=150 loss=0.3833 val_AP=0.8620
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 64, 'layers': 1, 'dropout': 0.2}/seed-0/allset_size
+  allset_size lr=0.001 epoch=25 loss=0.6668 val_AP=0.7748
+  allset_size lr=0.001 epoch=50 loss=0.4609 val_AP=0.8370
+  allset_size lr=0.001 epoch=75 loss=0.4167 val_AP=0.8395
+  allset_size lr=0.001 epoch=100 loss=0.4005 val_AP=0.8497
+  allset_size lr=0.001 epoch=125 loss=0.3923 val_AP=0.8570
+  allset_size lr=0.001 epoch=150 loss=0.3878 val_AP=0.8633
+  allset_size lr=0.01 epoch=25 loss=0.6931 val_AP=0.6034
+  allset_size lr=0.01 epoch=50 loss=0.4747 val_AP=0.7879
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 64, 'layers': 2, 'dropout': 0.0}/seed-0/deepsets
+  deepsets lr=0.001 epoch=25 loss=0.5809 val_AP=0.8133
+  deepsets lr=0.001 epoch=50 loss=0.4029 val_AP=0.8598
+  deepsets lr=0.001 epoch=75 loss=0.3842 val_AP=0.8635
+  deepsets lr=0.001 epoch=100 loss=0.3807 val_AP=0.8647
+  deepsets lr=0.001 epoch=125 loss=0.3790 val_AP=0.8654
+  deepsets lr=0.001 epoch=150 loss=0.3778 val_AP=0.8663
+  deepsets lr=0.01 epoch=25 loss=0.3847 val_AP=0.8637
+  deepsets lr=0.01 epoch=50 loss=0.3712 val_AP=0.8686
+  deepsets lr=0.01 epoch=75 loss=0.3326 val_AP=0.8619
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 64, 'layers': 2, 'dropout': 0.0}/seed-0/gcn
+  gcn lr=0.001 epoch=25 loss=0.5124 val_AP=0.7940
+  gcn lr=0.001 epoch=50 loss=0.4316 val_AP=0.8788
+  gcn lr=0.001 epoch=75 loss=0.4096 val_AP=0.8840
+  gcn lr=0.001 epoch=100 loss=0.4029 val_AP=0.8848
+  gcn lr=0.001 epoch=125 loss=0.3986 val_AP=0.8850
+  gcn lr=0.001 epoch=150 loss=0.3957 val_AP=0.8848
+  gcn lr=0.01 epoch=25 loss=0.4279 val_AP=0.8791
+  gcn lr=0.01 epoch=50 loss=0.3988 val_AP=0.8851
+  gcn lr=0.01 epoch=75 loss=0.3914 val_AP=0.8852
+  gcn lr=0.01 epoch=100 loss=0.3815 val_AP=0.8883
+  gcn lr=0.01 epoch=125 loss=0.3618 val_AP=0.8960
+  gcn lr=0.01 epoch=150 loss=0.3535 val_AP=0.8942
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 64, 'layers': 2, 'dropout': 0.0}/seed-0/allset
+  allset lr=0.001 epoch=25 loss=0.6932 val_AP=0.7237
+  allset lr=0.001 epoch=50 loss=0.6839 val_AP=0.7798
+  allset lr=0.001 epoch=75 loss=0.4491 val_AP=0.8077
+  allset lr=0.001 epoch=100 loss=0.4096 val_AP=0.8406
+  allset lr=0.001 epoch=125 loss=0.3990 val_AP=0.8589
+  allset lr=0.001 epoch=150 loss=0.3825 val_AP=0.8699
+  allset lr=0.01 epoch=25 loss=0.6932 val_AP=0.7381
+  allset lr=0.01 epoch=50 loss=0.6931 val_AP=0.7824
+  allset lr=0.01 epoch=75 loss=0.7043 val_AP=0.3693
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 64, 'layers': 2, 'dropout': 0.0}/seed-0/allset_cpa
+  allset_cpa lr=0.001 epoch=25 loss=0.6931 val_AP=0.6555
+  allset_cpa lr=0.001 epoch=50 loss=0.6892 val_AP=0.7765
+  allset_cpa lr=0.001 epoch=75 loss=0.4531 val_AP=0.8222
+  allset_cpa lr=0.001 epoch=100 loss=0.4038 val_AP=0.8476
+  allset_cpa lr=0.001 epoch=125 loss=0.3849 val_AP=0.8705
+  allset_cpa lr=0.001 epoch=150 loss=0.3734 val_AP=0.8774
+  allset_cpa lr=0.01 epoch=25 loss=0.6932 val_AP=0.6458
+  allset_cpa lr=0.01 epoch=50 loss=0.6290 val_AP=0.7522
+  allset_cpa lr=0.01 epoch=75 loss=0.5013 val_AP=0.7471
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 64, 'layers': 2, 'dropout': 0.0}/seed-0/allset_size
+  allset_size lr=0.001 epoch=25 loss=0.6931 val_AP=0.6651
+  allset_size lr=0.001 epoch=50 loss=0.5671 val_AP=0.7683
+  allset_size lr=0.001 epoch=75 loss=0.4338 val_AP=0.8060
+  allset_size lr=0.001 epoch=100 loss=0.4032 val_AP=0.8457
+  allset_size lr=0.001 epoch=125 loss=0.3943 val_AP=0.8620
+  allset_size lr=0.001 epoch=150 loss=0.3836 val_AP=0.8632
+  allset_size lr=0.01 epoch=25 loss=0.6934 val_AP=0.6365
+  allset_size lr=0.01 epoch=50 loss=0.6926 val_AP=0.7550
+  allset_size lr=0.01 epoch=75 loss=0.6938 val_AP=0.5323
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 64, 'layers': 2, 'dropout': 0.2}/seed-0/deepsets
+  deepsets lr=0.001 epoch=25 loss=0.5873 val_AP=0.8135
+  deepsets lr=0.001 epoch=50 loss=0.4078 val_AP=0.8596
+  deepsets lr=0.001 epoch=75 loss=0.3878 val_AP=0.8621
+  deepsets lr=0.001 epoch=100 loss=0.3848 val_AP=0.8624
+  deepsets lr=0.001 epoch=125 loss=0.3827 val_AP=0.8628
+  deepsets lr=0.001 epoch=150 loss=0.3808 val_AP=0.8635
+  deepsets lr=0.01 epoch=25 loss=0.3872 val_AP=0.8638
+  deepsets lr=0.01 epoch=50 loss=0.3684 val_AP=0.8679
+  deepsets lr=0.01 epoch=75 loss=0.3465 val_AP=0.8568
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 64, 'layers': 2, 'dropout': 0.2}/seed-0/gcn
+  gcn lr=0.001 epoch=25 loss=0.5188 val_AP=0.7958
+  gcn lr=0.001 epoch=50 loss=0.4504 val_AP=0.8729
+  gcn lr=0.001 epoch=75 loss=0.4201 val_AP=0.8843
+  gcn lr=0.001 epoch=100 loss=0.4129 val_AP=0.8849
+  gcn lr=0.001 epoch=125 loss=0.4092 val_AP=0.8847
+  gcn lr=0.01 epoch=25 loss=0.4330 val_AP=0.8813
+  gcn lr=0.01 epoch=50 loss=0.4094 val_AP=0.8851
+  gcn lr=0.01 epoch=75 loss=0.3974 val_AP=0.8849
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 64, 'layers': 2, 'dropout': 0.2}/seed-0/allset
+  allset lr=0.001 epoch=25 loss=0.6231 val_AP=0.4490
+  allset lr=0.001 epoch=50 loss=0.4986 val_AP=0.7628
+  allset lr=0.001 epoch=75 loss=0.4665 val_AP=0.7784
+  allset lr=0.001 epoch=100 loss=0.4414 val_AP=0.8007
+  allset lr=0.001 epoch=125 loss=0.4231 val_AP=0.8108
+  allset lr=0.001 epoch=150 loss=0.4077 val_AP=0.8368
+  allset lr=0.01 epoch=25 loss=0.6888 val_AP=0.4521
+  allset lr=0.01 epoch=50 loss=0.6119 val_AP=0.4190
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 64, 'layers': 2, 'dropout': 0.2}/seed-0/allset_cpa
+  allset_cpa lr=0.001 epoch=25 loss=0.5832 val_AP=0.6697
+  allset_cpa lr=0.001 epoch=50 loss=0.5431 val_AP=0.5756
+  allset_cpa lr=0.001 epoch=75 loss=0.4641 val_AP=0.7732
+  allset_cpa lr=0.01 epoch=25 loss=0.6930 val_AP=0.6108
+  allset_cpa lr=0.01 epoch=50 loss=0.5542 val_AP=0.5025
+Tune tags-ask-ubuntu/order-k3/{'hidden_dim': 64, 'layers': 2, 'dropout': 0.2}/seed-0/allset_size
+  allset_size lr=0.001 epoch=25 loss=0.5995 val_AP=0.7366
+  allset_size lr=0.001 epoch=50 loss=0.5153 val_AP=0.7804
+  allset_size lr=0.001 epoch=75 loss=0.4576 val_AP=0.7786
+  allset_size lr=0.001 epoch=100 loss=0.4349 val_AP=0.8187
+  allset_size lr=0.001 epoch=125 loss=0.4154 val_AP=0.8371
+  allset_size lr=0.001 epoch=150 loss=0.4022 val_AP=0.8463
+  allset_size lr=0.01 epoch=25 loss=0.6925 val_AP=0.4806
+  allset_size lr=0.01 epoch=50 loss=0.5385 val_AP=0.6006
+  allset_size lr=0.01 epoch=75 loss=0.4785 val_AP=0.5844
+tags-ask-ubuntu: {'hidden_dim': 64, 'layers': 2, 'dropout': 0.0} mean validation AP=0.8765
+Best settings: C:\Users\radud\OneDrive\Desktop\Uni Stuff\Master\GraphML\GML\results\team-procedure-2e33dd3-20261107\tuning\tuning-e30873fd50a2\best_settings.json
