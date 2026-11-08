@@ -26,4 +26,4 @@ The former campaign `7d0356f3d97c` and all associated tuning, pilot, test, place
 
 Legacy roots: `results/ast-tuning`, `results/ast-tuning-smoke`, `results/ast-test`, `results/encoder-cpa`, `results/readout-cpa`, `results/both-cpa`, `results/cpa-placement`, `results/cpa-placement-both`, `results/cardinality-diagnostic`, `results/encoder-signal-check`.
 
-Raw legacy artifacts are preserved without modifying their checkpoint, prediction, configuration, selection, or manifest bytes. Sidecar markers and warning banners identify the superseded status. Old diagnostics do not transfer automatically to newly trained models.
+On 2026-11-08, at the user's request, the superseded result directories, archived report draft, and obsolete diagnostic/readout plans were removed. The superseded paths remain in CURRENT_EXPERIMENT.json only as a denylist. Earlier Git history is historical and must not be restored as current evidence. The verified current campaign and its artifacts are unchanged.
